@@ -61,19 +61,19 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.58f2\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Scripts\WeaponModels.cs" />
-    <Compile Include="Assets\_Scripts\AimTargetUpdater.cs" />
-    <Compile Include="Assets\_Scripts\CameraPOV.cs" />
+    <Compile Include="Assets\_Scripts\Weapon\ElbowHintPositioner.cs" />
+    <Compile Include="Assets\_Scripts\Weapon\WeaponModels.cs" />
+    <Compile Include="Assets\_Scripts\Weapon\AimTargetUpdater.cs" />
+    <Compile Include="Assets\_Scripts\Player\Player.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
+    <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />
+    <Compile Include="Assets\_Scripts\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\_InputManager\PlayerControls.cs" />
+    <Compile Include="Assets\_Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Crosshair.cs" />
     <Compile Include="Assets\_Scripts\SetupWeaponMaterials.cs" />
-    <Compile Include="Assets\_Scripts\InputManager.cs" />
-    <Compile Include="Assets\_Scripts\AimTargetController.cs" />
-    <Compile Include="Assets\_Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\_Scripts\ElbowHintPositioner.cs" />
-    <Compile Include="Assets\_Scripts\PlayerWeaponVisuals.cs" />
-    <Compile Include="Assets\_Scripts\Player.cs" />
+    <Compile Include="Assets\_Scripts\Camera\CameraPOV.cs" />
+    <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
