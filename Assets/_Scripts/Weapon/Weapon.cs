@@ -14,6 +14,8 @@ public class Weapon
     public float reloadTime;
     public float reloadSpeed;
 
+    public float equipmentSpeed;
+
     public int bulletsPerShot { get; private set; }
     public float bulletSpeed;
     public GameObject bulletPrefab;
@@ -27,7 +29,7 @@ public class Weapon
 
     #region Burst mode variables
     [SerializeField] private bool burstAvailable;
-    [SerializeField] private bool burstActive;
+    public bool burstActive;
     private int burstBulletsPerShot;
     private float burstFireRate;
     public float burstFireDelay { get; private set; }
@@ -60,7 +62,10 @@ public class Weapon
 
         reloadTime = weapon.reloadTime;
 
+        equipmentSpeed = weapon.equipmentSpeed;
+
         fireRate = weapon.fireRate;
+        defaulFireRate = fireRate;
 
         bulletsPerShot = weapon.bulletsPerShot;
         shootType = weapon.shootType;
@@ -148,16 +153,17 @@ public class Weapon
 
     public void RefillBullets()
     {
-        int bulletsSpent = magazineCapacity - bulletsInMagazine;
+        int bulletsNeeded = magazineCapacity - bulletsInMagazine;
 
-        int bulletsToReload = Mathf.Min(magazineCapacity, totalReserveAmmo);
+        int bulletsToReload = Mathf.Min(bulletsNeeded, totalReserveAmmo);
 
-        totalReserveAmmo -= bulletsSpent;
-        bulletsInMagazine = bulletsToReload;
+        totalReserveAmmo -= bulletsToReload;
+        bulletsInMagazine += bulletsToReload;
 
-        if (totalReserveAmmo <= 0)
+        if (totalReserveAmmo < 0)
             totalReserveAmmo = 0;
     }
+
 
     private bool HaveEnoughBullets() => bulletsInMagazine > 0;
 

@@ -38,6 +38,9 @@ public class Weapon_SO : ScriptableObject
     [Range(1f, 2f)]
     public float reloadSpeed;
 
+    [Header("Equip")]
+    public float equipmentSpeed;
+
     [Header("Effects")]
     public GameObject muzzleFlashEffect;
     public GameObject bulletImpactEffect;
