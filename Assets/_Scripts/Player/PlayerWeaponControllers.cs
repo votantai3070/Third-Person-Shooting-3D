@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerWeaponControllers : MonoBehaviour
 {
@@ -6,15 +8,19 @@ public class PlayerWeaponControllers : MonoBehaviour
     public PlayerControls controls { private set; get; }
 
     [Header("Elements")]
+    private float averageMass;
+    private bool weaponReady;
+    private bool isShooting;
+
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float distanceShot = 1000f;
     private Transform gunPoint;
 
     WeaponModels currentWeaponModel;
-    Weapon_SO weaponData;
-    [SerializeField] Weapon weapon;
-    bool canShoot;
+    [SerializeField] Weapon_SO defaultWeaponData;
+    [SerializeField] private Weapon currentWeapon;
+    [SerializeField] List<Weapon> weaponSlots;
 
     private void Awake()
     {
@@ -25,25 +31,89 @@ public class PlayerWeaponControllers : MonoBehaviour
     {
         AssignInputEvents();
 
-        currentWeaponModel = player.visuals.GetCurrentWeapon();
-        weaponData = player.visuals.GetCurrentWeapon().weaponData;
-        weapon = new Weapon(weaponData);
+        EquipStartingWeapon();
+
+        currentWeaponModel = player.visuals.GetCurrentWeaponModel();
 
         gunPoint = currentWeaponModel.gunPoint;
 
         SetupWeapon();
+
+        SetWeaponReady(true);
+    }
+
+    private void Update()
+    {
+        if (isShooting)
+            Shoot();
+    }
+
+    private void EquipStartingWeapon()
+    {
+        if (weaponSlots.Count == 0)
+            weaponSlots.Add(new Weapon(defaultWeaponData));
+
+        weaponSlots[0] = new Weapon(defaultWeaponData);
+
+        EquipWeapon(0);
+    }
+
+    private void EquipWeapon(int i)
+    {
+        if (i >= weaponSlots.Count) return;
+
+        SetWeaponReady(false);
+
+
+        currentWeapon = weaponSlots[i];
+        if (player.visuals != null)
+            player.visuals.PlayWeaponEquipAnimation();
     }
 
     void SetupWeapon()
     {
-        bulletSpeed = weapon.bulletSpeed;
+        bulletSpeed = currentWeapon.bulletSpeed;
+        bulletPrefab = currentWeapon.bulletPrefab;
+        averageMass = currentWeapon.impactForce;
     }
 
-    public void Shoot()
+    private void Shoot()
     {
-        if (CanShoot()) return;
+        if (!WeaponReady()) return;
 
-        CanShoot(true);
+        if (!currentWeapon.CanShoot()) return;
+
+        if (currentWeapon.shootType == ShootType.Single)
+            isShooting = false;
+
+        player.visuals.PlayFireAnimation();
+
+        if (currentWeapon.BurstActivated())
+        {
+            StartCoroutine(BurstFire());
+            return;
+        }
+
+        FireSingleBullet();
+    }
+
+    IEnumerator BurstFire()
+    {
+        SetWeaponReady(false);
+
+        for (int i = 1; i <= currentWeapon.bulletsPerShot; i++)
+        {
+            FireSingleBullet();
+            yield return new WaitForSeconds(currentWeapon.burstFireDelay);
+
+            if (i >= currentWeapon.bulletsPerShot)
+                SetWeaponReady(true);
+        }
+    }
+
+    public void FireSingleBullet()
+    {
+        currentWeapon.bulletsInMagazine--;
 
         // Raycast từ center màn hình để tìm điểm bắn
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // center screen
@@ -62,33 +132,52 @@ public class PlayerWeaponControllers : MonoBehaviour
         Vector3 direction = (targetPoint - gunPoint.position).normalized;
 
         // Spread
-        Vector3 bulletDirection = weapon.ApplySpread(direction);
+        Vector3 bulletDirection = currentWeapon.ApplySpread(direction);
 
         // Spawn bullet và bắn
         GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position,
      Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0));
         Rigidbody rbBullet = newBullet.GetComponent<Rigidbody>();
+        rbBullet.mass = averageMass / bulletSpeed;
         rbBullet.linearVelocity = bulletDirection * bulletSpeed;
     }
 
-    public void CanShoot(bool shoot)
+    IEnumerator ReloadWeapon()
     {
-        canShoot = shoot;
+        SetWeaponReady(false);
+
+        player.visuals.PlayReloadAnimation();
+
+        yield return new WaitForSeconds(currentWeapon.reloadTime);
+
+        currentWeapon.RefillBullets();
+
+        SetWeaponReady(true);
     }
 
-    public bool CanShoot() => canShoot;
+    public void SetWeaponReady(bool ready) => weaponReady = ready;
+    public bool WeaponReady() => weaponReady;
+
+    public Weapon CurrentWeapon() => currentWeapon;
 
     void AssignInputEvents()
     {
         controls = player.controls;
 
-        controls.Player.Fire.performed += ctx =>
+        controls.Player.Fire.performed += ctx => isShooting = true;
+        controls.Player.Fire.canceled += ctx => isShooting = false;
+
+        controls.Player.BurstMode.performed += ctx =>
         {
-            if (!CanShoot())
-            {
-                Shoot();
-                player.anim.SetBool("Shooting", true);
-            }
+            SetWeaponReady(true);
+            currentWeapon.ToggleBurst();
+            Debug.Log("burstActive: " + currentWeapon.burstActive);
+        };
+
+        controls.Player.Reload.performed += ctx =>
+        {
+            if (WeaponReady() && currentWeapon.totalReserveAmmo > 0)
+                StartCoroutine(ReloadWeapon());
         };
     }
 }

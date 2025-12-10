@@ -1,5 +1,7 @@
 using UnityEngine;
 
+public enum EquipType { SideEquipAnimation, BackEquipAnimation };
+
 public enum LayerAnimationType { RifleBody = 1, PistolBody }
 
 public enum PlayerViewPoint { PistolAim, RifleAim }
@@ -10,6 +12,7 @@ public class WeaponModels : MonoBehaviour
     public Weapon_SO weaponData;
 
     public WeaponType weaponModelType;
+    public EquipType equipType;
     public LayerAnimationType layerAnimationType;
     public PlayerViewPoint playerViewPoint;
 

@@ -3,27 +3,35 @@ using UnityEngine.Animations.Rigging;
 
 public class PlayerWeaponVisuals : MonoBehaviour
 {
-    [SerializeField] private WeaponType weaponType;
     [SerializeField] private WeaponModels[] weaponModels;
 
     private Transform characterModel;
 
     public Player player { get; private set; }
-    public Rig rig { get; private set; }
-    public Transform leftHandIK;
-    public Transform leftHandElbow;
     public Transform aim;
+
+    public Rig rig { get; private set; }
+    [SerializeField] float rigWeightIncreaseRate;
+    private bool shouldIncrease_RigWeight;
+
+    [Header("Left Hand IK")]
+    [SerializeField] private float leftHandIKWeightIncreaseRate;
+    public TwoBoneIKConstraint leftHandIK;
+    public Transform leftHandElbow;
+    bool shouldIncrease_LeftHandWeight;
+    [SerializeField] private Transform leftHandIK_Target;
 
     [Header("Aiming")]
     [SerializeField] private Camera playerCamera;
 
-    private WeaponModels currentWeapon;
+    private WeaponModels currentWeaponModel;
 
     private void Awake()
     {
         player = GetComponent<Player>();
 
         rig = GetComponentInChildren<Rig>();
+
         weaponModels = GetComponentsInChildren<WeaponModels>(true);
 
         if (playerCamera == null)
@@ -37,9 +45,16 @@ public class PlayerWeaponVisuals : MonoBehaviour
             characterModel = player.anim.transform;
         }
 
-        currentWeapon = GetCurrentWeapon();
+        currentWeaponModel = GetCurrentWeaponModel();
+
         AttachLeftHand();
         SwitchAnimationLayer();
+    }
+
+    private void Update()
+    {
+        UpdateRigWeight();
+        UpdateLeftHandIKWeight();
     }
 
     private void LateUpdate()
@@ -47,12 +62,69 @@ public class PlayerWeaponVisuals : MonoBehaviour
         UpdateLeftHandIK();
     }
 
+    public void PlayWeaponEquipAnimation()
+    {
+        EquipType equipType = GetCurrentWeaponModel().equipType;
+        float equipmentSpeed = player.controller.CurrentWeapon().equipmentSpeed;
+
+        ReduceLeftHandIKWeight();
+        ReduceRigWeight();
+        player.anim.SetFloat("EquipType", ((float)equipType));
+        player.anim.SetFloat("EquipSpeed", equipmentSpeed);
+        player.anim.SetTrigger("EquipWeapon");
+    }
+
+
+    #region Animation Rigging Methods
+    private void UpdateLeftHandIKWeight()
+    {
+        if (shouldIncrease_LeftHandWeight)
+        {
+            leftHandIK.weight += leftHandIKWeightIncreaseRate * Time.deltaTime;
+
+            if (leftHandIK.weight >= 1f)
+            {
+                leftHandIK.weight = 1f;
+                shouldIncrease_LeftHandWeight = false;
+            }
+        }
+    }
+
+    private void UpdateRigWeight()
+    {
+        if (shouldIncrease_RigWeight)
+        {
+            rig.weight += rigWeightIncreaseRate * Time.deltaTime;
+
+            if (rig.weight >= 1f)
+            {
+                rig.weight = 1f;
+                shouldIncrease_RigWeight = false;
+            }
+        }
+    }
+
+    private void ReduceRigWeight()
+    {
+        rig.weight = .15f;
+    }
+
+    private void ReduceLeftHandIKWeight()
+    {
+        leftHandIK.weight = 0f;
+    }
+
+    public void MaximizeRigWeight() => shouldIncrease_RigWeight = true;
+
+    public void MaximizeLeftHandWeight() => shouldIncrease_LeftHandWeight = true;
+    #endregion
+
     public Transform GetPlayerViewPointTransform()
     {
-        if (currentWeapon == null)
-            currentWeapon = GetCurrentWeapon();
+        if (currentWeaponModel == null)
+            currentWeaponModel = GetCurrentWeaponModel();
 
-        return currentWeapon?.playerViewPointTransform;
+        return currentWeaponModel?.playerViewPointTransform;
     }
 
     public void SetRunning(Vector3 worldDirection)
@@ -72,57 +144,68 @@ public class PlayerWeaponVisuals : MonoBehaviour
         player.anim.SetFloat("z", localDirection.z, 0.1f, Time.deltaTime);
     }
 
+    public void PlayFireAnimation() => player.anim.SetTrigger("Shooting");
+
+    public void PlayReloadAnimation()
+    {
+        float reloadSpeed = player.controller.CurrentWeapon().reloadSpeed;
+
+        player.anim.SetTrigger("Reloading");
+        player.anim.SetFloat("ReloadSpeed", reloadSpeed);
+        ReduceRigWeight();
+    }
+
     private void AttachLeftHand()
     {
-        if (currentWeapon == null)
+        if (currentWeaponModel == null)
         {
             Debug.LogWarning("No current weapon!");
             return;
         }
 
-        if (currentWeapon.leftHandIK == null)
+        if (currentWeaponModel.leftHandIK == null)
         {
-            Debug.LogWarning($"Weapon {currentWeapon.name} has no leftHandIK!");
+            Debug.LogWarning($"Weapon {currentWeaponModel.name} has no leftHandIK!");
             return;
         }
 
-        if (leftHandIK != null && currentWeapon.leftHandIK != null)
+        if (leftHandIK != null && currentWeaponModel.leftHandIK != null)
         {
-            leftHandIK.localPosition = currentWeapon.leftHandIK.localPosition;
-            leftHandIK.localRotation = currentWeapon.leftHandIK.localRotation;
+            leftHandIK_Target.localPosition = currentWeaponModel.leftHandIK.localPosition;
+            leftHandIK_Target.localRotation = currentWeaponModel.leftHandIK.localRotation;
         }
 
-        if (leftHandElbow != null && currentWeapon.leftHandElbow != null)
+        if (leftHandElbow != null && currentWeaponModel.leftHandElbow != null)
         {
-            leftHandElbow.localPosition = currentWeapon.leftHandElbow.localPosition;
-            leftHandElbow.localRotation = currentWeapon.leftHandElbow.localRotation;
+            leftHandElbow.localPosition = currentWeaponModel.leftHandElbow.localPosition;
+            leftHandElbow.localRotation = currentWeaponModel.leftHandElbow.localRotation;
         }
     }
 
     void UpdateLeftHandIK()
     {
-        if (currentWeapon == null || !currentWeapon.gameObject.activeInHierarchy)
+        if (currentWeaponModel == null || !currentWeaponModel.gameObject.activeInHierarchy)
             return;
 
-        if (leftHandIK != null && currentWeapon.leftHandIK != null)
+        if (leftHandIK != null && currentWeaponModel.leftHandIK != null)
         {
-            leftHandIK.localPosition = currentWeapon.leftHandIK.localPosition;
-            leftHandIK.localRotation = currentWeapon.leftHandIK.localRotation;
+            leftHandIK.transform.localPosition = currentWeaponModel.leftHandIK.localPosition;
+            leftHandIK.transform.localRotation = currentWeaponModel.leftHandIK.localRotation;
         }
 
-        if (leftHandElbow != null && currentWeapon.leftHandElbow != null)
+        if (leftHandElbow != null && currentWeaponModel.leftHandElbow != null)
         {
-            leftHandElbow.localPosition = currentWeapon.leftHandElbow.localPosition;
-            leftHandElbow.localRotation = currentWeapon.leftHandElbow.localRotation;
+            leftHandElbow.localPosition = currentWeaponModel.leftHandElbow.localPosition;
+            leftHandElbow.localRotation = currentWeaponModel.leftHandElbow.localRotation;
         }
     }
 
     private void SwitchAnimationLayer()
     {
-        if (currentWeapon == null)
+        if (currentWeaponModel == null)
             return;
 
-        int layerIndex = (int)currentWeapon.layerAnimationType;
+        int layerIndex = (int)currentWeaponModel.layerAnimationType;
 
         for (int i = 0; i < player.anim.layerCount; i++)
         {
@@ -135,22 +218,31 @@ public class PlayerWeaponVisuals : MonoBehaviour
         }
     }
 
-    public WeaponModels GetCurrentWeapon()
+    public WeaponModels GetCurrentWeaponModel()
     {
+        WeaponType weaponType = default;
+
         foreach (var weaponModel in weaponModels)
         {
             weaponModel.gameObject.SetActive(false);
 
+            // Thêm null check
+            if (player.controller != null && player.controller.CurrentWeapon() != null)
+                weaponType = player.controller.CurrentWeapon().weaponType;
+            else
+                continue; // Bỏ qua nếu chưa có weapon
+
             if (weaponModel.weaponModelType == weaponType)
             {
                 weaponModel.gameObject.SetActive(true);
-                currentWeapon = weaponModel;
+                currentWeaponModel = weaponModel;
                 return weaponModel;
             }
         }
 
         return null;
     }
+
 
     // Debug để check giá trị
     private void OnGUI()
@@ -170,4 +262,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
             GUI.Label(new Rect(10, 275, 400, 25), $"Model Rotation: {characterModel.eulerAngles.y:F1}°", style);
         }
     }
+
+
 }

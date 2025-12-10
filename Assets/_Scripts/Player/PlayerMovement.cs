@@ -64,8 +64,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        ApplyMovement();
         ApplyRotation();
+    }
+
+    private void FixedUpdate()
+    {
+        ApplyMovement();
     }
 
     void ApplyRotation()
@@ -100,7 +104,6 @@ public class PlayerMovement : MonoBehaviour
             rotationSpeed * Time.deltaTime
         );
     }
-
     void RotateTowardsMovement()
     {
         // Chỉ xoay khi đi forward (W key)
