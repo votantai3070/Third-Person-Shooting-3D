@@ -219,6 +219,37 @@ BlendTree:
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!206 &-2408365715411746846
+BlendTree:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Blend Tree
+  m_Childs:
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: e281515e9250af444be09ef38cb1e934, type: 2}
+    m_Threshold: 0
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: x
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 48081186fac3f6541b3a432810fc594b, type: 2}
+    m_Threshold: 1
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: x
+    m_Mirror: 0
+  m_BlendParameter: EquipType
+  m_BlendParameterY: x
+  m_MinThreshold: 0
+  m_MaxThreshold: 1
+  m_UseAutomaticThresholds: 0
+  m_NormalizedBlendValues: 0
+  m_BlendType: 0
 --- !u!1107 &-1075407287789110270
 AnimatorStateMachine:
   serializedVersion: 6
@@ -432,6 +463,9 @@ AnimatorController:
     - serializedVersion: 2
       m_State: {fileID: -8655840798859683407}
       m_Motion: {fileID: -203655887218126122, guid: ac18c278ecf78094db0b29d8780ed8b0, type: 3}
+    - serializedVersion: 2
+      m_State: {fileID: -360670322055486206}
+      m_Motion: {fileID: -2408365715411746846}
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: 1

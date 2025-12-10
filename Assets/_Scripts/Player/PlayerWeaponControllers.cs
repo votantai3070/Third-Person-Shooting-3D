@@ -176,7 +176,7 @@ public class PlayerWeaponControllers : MonoBehaviour
 
         controls.Player.Reload.performed += ctx =>
         {
-            if (WeaponReady() && currentWeapon.totalReserveAmmo > 0)
+            if (WeaponReady() && currentWeapon.IsReloading())
                 StartCoroutine(ReloadWeapon());
         };
     }

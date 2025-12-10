@@ -120,7 +120,7 @@ public class Weapon
 
     public bool CanShoot()
     {
-        if (HaveEnoughBullets() && ReadyToFire())
+        if (HasEnoughBullets() && ReadyToFire())
         {
             return true;
         }
@@ -164,8 +164,13 @@ public class Weapon
             totalReserveAmmo = 0;
     }
 
+    public bool IsReloading() => HasEnoughReserveAmmo() && !HasFullBullets();
 
-    private bool HaveEnoughBullets() => bulletsInMagazine > 0;
+    private bool HasEnoughBullets() => bulletsInMagazine > 0;
+
+    private bool HasEnoughReserveAmmo() => totalReserveAmmo > 0;
+
+    private bool HasFullBullets() => bulletsInMagazine == magazineCapacity;
 
     #endregion
 
