@@ -10,6 +10,8 @@ public class PlayerWeaponVisuals : MonoBehaviour
     public Player player { get; private set; }
     public Transform aim;
 
+    private bool isRunning;
+
     public Rig rig { get; private set; }
     [SerializeField] float rigWeightIncreaseRate;
     private bool shouldIncrease_RigWeight;
@@ -53,6 +55,9 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("shouldIncrease_RigWeight: " + shouldIncrease_RigWeight);
+        Debug.Log("shouldIncrease_LeftHandWeight: " + shouldIncrease_LeftHandWeight);
+
         UpdateRigWeight();
         UpdateLeftHandIKWeight();
     }
@@ -69,6 +74,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         ReduceLeftHandIKWeight();
         ReduceRigWeight();
+
         player.anim.SetFloat("EquipType", ((float)equipType));
         player.anim.SetFloat("EquipSpeed", equipmentSpeed);
         player.anim.SetTrigger("EquipWeapon");
@@ -136,12 +142,43 @@ public class PlayerWeaponVisuals : MonoBehaviour
             localDirection = characterModel.InverseTransformDirection(worldDirection);
         }
 
-        bool isRunning = worldDirection.magnitude > 0.01f;
+        isRunning = worldDirection.magnitude > 0.01f;
 
-        // Set animator parameters
-        player.anim.SetBool("Running", isRunning);
+        bool isShootingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Shoot_Weapon");
+        bool isShootingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Shoot_Weapon");
+        bool isReloadingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Reload_Weapon");
+        bool isReloadingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Reload_Weapon");
+
+        bool isShooting = isShootingRifle || isShootingPistol || isReloadingRifle || isReloadingPistol;
+
+        // Reset cả hai parameters trước
+        player.anim.SetBool("Running", false);
+        player.anim.SetBool("RunAndShoot", false);
+
+        // Set parameter phù hợp
+        if (isRunning && isShooting)
+        {
+            player.anim.SetBool("RunAndShoot", true);
+        }
+        else if (isRunning)
+        {
+            player.anim.SetBool("Running", true);
+        }
+
+
         player.anim.SetFloat("x", localDirection.x, 0.1f, Time.deltaTime);
         player.anim.SetFloat("z", localDirection.z, 0.1f, Time.deltaTime);
+
+        if (isRunning)
+        {
+            ReduceRigWeight();
+            ReduceLeftHandIKWeight();
+        }
+        else if (!isShooting)
+        {
+            MaximizeRigWeight();
+            MaximizeLeftHandWeight();
+        }
     }
 
     public void PlayFireAnimation() => player.anim.SetTrigger("Shooting");
