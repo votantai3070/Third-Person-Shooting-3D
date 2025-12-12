@@ -151,11 +151,9 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         bool isShooting = isShootingRifle || isShootingPistol || isReloadingRifle || isReloadingPistol;
 
-        // Reset cả hai parameters trước
         player.anim.SetBool("Running", false);
         player.anim.SetBool("RunAndShoot", false);
 
-        // Set parameter phù hợp
         if (isRunning && isShooting)
         {
             player.anim.SetBool("RunAndShoot", true);
@@ -230,11 +228,11 @@ public class PlayerWeaponVisuals : MonoBehaviour
             leftHandIK.transform.localRotation = currentWeaponModel.leftHandIK.localRotation;
         }
 
-        if (leftHandElbow != null && currentWeaponModel.leftHandElbow != null)
-        {
-            leftHandElbow.localPosition = currentWeaponModel.leftHandElbow.localPosition;
-            leftHandElbow.localRotation = currentWeaponModel.leftHandElbow.localRotation;
-        }
+        //if (leftHandElbow != null && currentWeaponModel.leftHandElbow != null)
+        //{
+        //    leftHandElbow.localPosition = currentWeaponModel.leftHandElbow.localPosition;
+        //    leftHandElbow.localRotation = currentWeaponModel.leftHandElbow.localRotation;
+        //}
     }
 
     private void SwitchAnimationLayer()
@@ -279,26 +277,5 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         return null;
     }
-
-
-    // Debug để check giá trị
-    private void OnGUI()
-    {
-        if (player.anim == null) return;
-
-        GUIStyle style = new GUIStyle();
-        style.fontSize = 16;
-        style.normal.textColor = Color.yellow;
-
-        GUI.Label(new Rect(10, 200, 400, 25), $"Running: {player.anim.GetBool("Running")}", style);
-        GUI.Label(new Rect(10, 225, 400, 25), $"X: {player.anim.GetFloat("x"):F2}", style);
-        GUI.Label(new Rect(10, 250, 400, 25), $"Z: {player.anim.GetFloat("z"):F2}", style);
-
-        if (characterModel != null)
-        {
-            GUI.Label(new Rect(10, 275, 400, 25), $"Model Rotation: {characterModel.eulerAngles.y:F1}°", style);
-        }
-    }
-
 
 }
