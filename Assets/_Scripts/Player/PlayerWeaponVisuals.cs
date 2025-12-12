@@ -55,9 +55,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("shouldIncrease_RigWeight: " + shouldIncrease_RigWeight);
-        Debug.Log("shouldIncrease_LeftHandWeight: " + shouldIncrease_LeftHandWeight);
-
         UpdateRigWeight();
         UpdateLeftHandIKWeight();
     }
@@ -110,12 +107,12 @@ public class PlayerWeaponVisuals : MonoBehaviour
         }
     }
 
-    private void ReduceRigWeight()
+    public void ReduceRigWeight()
     {
         rig.weight = .15f;
     }
 
-    private void ReduceLeftHandIKWeight()
+    public void ReduceLeftHandIKWeight()
     {
         leftHandIK.weight = 0f;
     }
@@ -123,6 +120,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
     public void MaximizeRigWeight() => shouldIncrease_RigWeight = true;
 
     public void MaximizeLeftHandWeight() => shouldIncrease_LeftHandWeight = true;
+
     #endregion
 
     public Transform GetPlayerViewPointTransform()
@@ -149,12 +147,13 @@ public class PlayerWeaponVisuals : MonoBehaviour
         bool isReloadingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Reload_Weapon");
         bool isReloadingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Reload_Weapon");
 
-        bool isShooting = isShootingRifle || isShootingPistol || isReloadingRifle || isReloadingPistol;
+        bool isShoot = isShootingRifle || isShootingPistol;
+        bool isReload = isReloadingRifle || isReloadingPistol;
 
         player.anim.SetBool("Running", false);
         player.anim.SetBool("RunAndShoot", false);
 
-        if (isRunning && isShooting)
+        if (isRunning && isShoot || isRunning && isReload)
         {
             player.anim.SetBool("RunAndShoot", true);
         }
@@ -167,12 +166,12 @@ public class PlayerWeaponVisuals : MonoBehaviour
         player.anim.SetFloat("x", localDirection.x, 0.1f, Time.deltaTime);
         player.anim.SetFloat("z", localDirection.z, 0.1f, Time.deltaTime);
 
-        if (isRunning)
+        if (isRunning && !isShoot && !isReload || !isRunning && isReload)
         {
             ReduceRigWeight();
             ReduceLeftHandIKWeight();
         }
-        else if (!isShooting)
+        else if (isRunning && isShoot || !isRunning && isShoot)
         {
             MaximizeRigWeight();
             MaximizeLeftHandWeight();
