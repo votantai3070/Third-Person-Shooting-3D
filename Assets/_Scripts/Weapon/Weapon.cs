@@ -45,7 +45,7 @@ public class Weapon
     private float spreadCooldown = 1;
 
     [Header("Magazine details")]
-    public int bulletsInMagazine; // Current Bullet
+    public int bulletsInMagazine; // Số đạn hiện tại
     public int magazineCapacity; // Sức chứa băng đạn
     public int totalReserveAmmo; // Số đạn còn lại
 
