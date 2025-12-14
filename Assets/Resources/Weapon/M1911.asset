@@ -19,7 +19,7 @@ MonoBehaviour:
   fireRate: 3
   bulletSpeed: 80
   shootRange: 50
-  impactForce: 0
+  impactForce: 3
   bulletsPerShot: 1
   magazineCapacity: 9
   bulletsInMagazine: 9
@@ -34,7 +34,7 @@ MonoBehaviour:
   maximumSpreadAngle: 2
   reloadTime: 1.8
   reloadSpeed: 1.8
-  equipmentSpeed: 0
+  equipmentSpeed: 1.5
   muzzleFlashEffect: {fileID: 0}
   bulletImpactEffect: {fileID: 0}
   shootSound: {fileID: 0}

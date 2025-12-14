@@ -10,8 +10,11 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController;
 
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float runSpeed = 5f;
+    [SerializeField] private float moveSpeed = 2f;
+    private float movementSpeed;
     [SerializeField] private float rotationSpeed = 10f;
+    [Range(0f, 1f)] private float runAndShootSpeed;
 
     [Header("References")]
     [SerializeField] private Transform cameraTarget; // PlayerView
@@ -59,6 +62,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        movementSpeed = runSpeed;
+
         AssignInput();
     }
 
@@ -140,13 +145,32 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.Normalize();
         }
 
+        bool isShootingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Shoot_Weapon");
+        bool isShootingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Shoot_Weapon");
+        bool isReloadingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Reload_Weapon");
+        bool isReloadingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Reload_Weapon");
+
+        bool isReact = isShootingRifle || isShootingPistol || isReloadingRifle || isReloadingPistol;
+
+        if (isReact)
+        {
+            runAndShootSpeed = 0.5f;
+            movementSpeed = moveSpeed;
+        }
+        else
+        {
+            runAndShootSpeed = 1f;
+            movementSpeed = runSpeed;
+        }
+
         // Apply movement
-        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+        characterController.Move(moveDirection * movementSpeed * Time.deltaTime);
 
         // Apply gravity
         ApplyGravity();
 
         // Update animator
+        player.anim.SetFloat("RunAndShootSpeed", runAndShootSpeed);
         player.visuals.SetRunning(moveDirection);
     }
 

@@ -45,7 +45,7 @@ public class Weapon
     private float spreadCooldown = 1;
 
     [Header("Magazine details")]
-    public int bulletsInMagazine; // Current Bullet
+    public int bulletsInMagazine; // Số đạn hiện tại
     public int magazineCapacity; // Sức chứa băng đạn
     public int totalReserveAmmo; // Số đạn còn lại
 
@@ -120,7 +120,7 @@ public class Weapon
 
     public bool CanShoot()
     {
-        if (HaveEnoughBullets() && ReadyToFire())
+        if (HasEnoughBullets() && ReadyToFire())
         {
             return true;
         }
@@ -164,8 +164,13 @@ public class Weapon
             totalReserveAmmo = 0;
     }
 
+    public bool IsReloading() => HasEnoughReserveAmmo() && !HasFullBullets();
 
-    private bool HaveEnoughBullets() => bulletsInMagazine > 0;
+    private bool HasEnoughBullets() => bulletsInMagazine > 0;
+
+    private bool HasEnoughReserveAmmo() => totalReserveAmmo > 0;
+
+    private bool HasFullBullets() => bulletsInMagazine == magazineCapacity;
 
     #endregion
 

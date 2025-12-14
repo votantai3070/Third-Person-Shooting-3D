@@ -10,6 +10,8 @@ public class PlayerWeaponVisuals : MonoBehaviour
     public Player player { get; private set; }
     public Transform aim;
 
+    private bool isRunning;
+
     public Rig rig { get; private set; }
     [SerializeField] float rigWeightIncreaseRate;
     private bool shouldIncrease_RigWeight;
@@ -69,6 +71,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         ReduceLeftHandIKWeight();
         ReduceRigWeight();
+
         player.anim.SetFloat("EquipType", ((float)equipType));
         player.anim.SetFloat("EquipSpeed", equipmentSpeed);
         player.anim.SetTrigger("EquipWeapon");
@@ -104,12 +107,12 @@ public class PlayerWeaponVisuals : MonoBehaviour
         }
     }
 
-    private void ReduceRigWeight()
+    public void ReduceRigWeight()
     {
         rig.weight = .15f;
     }
 
-    private void ReduceLeftHandIKWeight()
+    public void ReduceLeftHandIKWeight()
     {
         leftHandIK.weight = 0f;
     }
@@ -117,6 +120,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
     public void MaximizeRigWeight() => shouldIncrease_RigWeight = true;
 
     public void MaximizeLeftHandWeight() => shouldIncrease_LeftHandWeight = true;
+
     #endregion
 
     public Transform GetPlayerViewPointTransform()
@@ -136,12 +140,42 @@ public class PlayerWeaponVisuals : MonoBehaviour
             localDirection = characterModel.InverseTransformDirection(worldDirection);
         }
 
-        bool isRunning = worldDirection.magnitude > 0.01f;
+        isRunning = worldDirection.magnitude > 0.01f;
 
-        // Set animator parameters
-        player.anim.SetBool("Running", isRunning);
+        bool isShootingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Shoot_Weapon");
+        bool isShootingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Shoot_Weapon");
+        bool isReloadingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Reload_Weapon");
+        bool isReloadingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Reload_Weapon");
+
+        bool isShoot = isShootingRifle || isShootingPistol;
+        bool isReload = isReloadingRifle || isReloadingPistol;
+
+        player.anim.SetBool("Running", false);
+        player.anim.SetBool("RunAndShoot", false);
+
+        if (isRunning && isShoot || isRunning && isReload)
+        {
+            player.anim.SetBool("RunAndShoot", true);
+        }
+        else if (isRunning)
+        {
+            player.anim.SetBool("Running", true);
+        }
+
+
         player.anim.SetFloat("x", localDirection.x, 0.1f, Time.deltaTime);
         player.anim.SetFloat("z", localDirection.z, 0.1f, Time.deltaTime);
+
+        if (isRunning && !isShoot && !isReload || !isRunning && isReload)
+        {
+            ReduceRigWeight();
+            ReduceLeftHandIKWeight();
+        }
+        else if (isRunning && isShoot || !isRunning && isShoot)
+        {
+            MaximizeRigWeight();
+            MaximizeLeftHandWeight();
+        }
     }
 
     public void PlayFireAnimation() => player.anim.SetTrigger("Shooting");
@@ -193,11 +227,11 @@ public class PlayerWeaponVisuals : MonoBehaviour
             leftHandIK.transform.localRotation = currentWeaponModel.leftHandIK.localRotation;
         }
 
-        if (leftHandElbow != null && currentWeaponModel.leftHandElbow != null)
-        {
-            leftHandElbow.localPosition = currentWeaponModel.leftHandElbow.localPosition;
-            leftHandElbow.localRotation = currentWeaponModel.leftHandElbow.localRotation;
-        }
+        //if (leftHandElbow != null && currentWeaponModel.leftHandElbow != null)
+        //{
+        //    leftHandElbow.localPosition = currentWeaponModel.leftHandElbow.localPosition;
+        //    leftHandElbow.localRotation = currentWeaponModel.leftHandElbow.localRotation;
+        //}
     }
 
     private void SwitchAnimationLayer()
@@ -242,26 +276,5 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         return null;
     }
-
-
-    // Debug để check giá trị
-    private void OnGUI()
-    {
-        if (player.anim == null) return;
-
-        GUIStyle style = new GUIStyle();
-        style.fontSize = 16;
-        style.normal.textColor = Color.yellow;
-
-        GUI.Label(new Rect(10, 200, 400, 25), $"Running: {player.anim.GetBool("Running")}", style);
-        GUI.Label(new Rect(10, 225, 400, 25), $"X: {player.anim.GetFloat("x"):F2}", style);
-        GUI.Label(new Rect(10, 250, 400, 25), $"Z: {player.anim.GetFloat("z"):F2}", style);
-
-        if (characterModel != null)
-        {
-            GUI.Label(new Rect(10, 275, 400, 25), $"Model Rotation: {characterModel.eulerAngles.y:F1}°", style);
-        }
-    }
-
 
 }

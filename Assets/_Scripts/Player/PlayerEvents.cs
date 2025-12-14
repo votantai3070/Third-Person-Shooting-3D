@@ -16,7 +16,7 @@ public class PlayerEvents : MonoBehaviour
 
     public void ReloadIsOver()
     {
-        player.visuals.MaximizeRigWeight();
+        ReturnRig();
         //Refill bullets
         player.controller.CurrentWeapon().RefillBullets();
 
@@ -27,5 +27,11 @@ public class PlayerEvents : MonoBehaviour
     {
         player.visuals.MaximizeRigWeight();
         player.visuals.MaximizeLeftHandWeight();
+    }
+
+    public void ReduceRig()
+    {
+        player.visuals.ReduceRigWeight();
+        player.visuals.ReduceLeftHandIKWeight();
     }
 }

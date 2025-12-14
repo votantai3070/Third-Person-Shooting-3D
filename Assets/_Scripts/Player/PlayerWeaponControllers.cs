@@ -22,6 +22,8 @@ public class PlayerWeaponControllers : MonoBehaviour
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] List<Weapon> weaponSlots;
 
+    [SerializeField] GameObject pickupWeaponPrefab;
+
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -68,6 +70,17 @@ public class PlayerWeaponControllers : MonoBehaviour
         currentWeapon = weaponSlots[i];
         if (player.visuals != null)
             player.visuals.PlayWeaponEquipAnimation();
+    }
+
+    private void DropWeapon()
+    {
+        CreateWeaponInGround();
+    }
+    private void CreateWeaponInGround()
+    {
+        GameObject dropped = Instantiate(pickupWeaponPrefab);
+        PickupWeapon dropWeapon = dropped.GetComponent<PickupWeapon>();
+        dropWeapon.SetupPickupWeapon(transform, currentWeapon);
     }
 
     void SetupWeapon()
@@ -176,8 +189,10 @@ public class PlayerWeaponControllers : MonoBehaviour
 
         controls.Player.Reload.performed += ctx =>
         {
-            if (WeaponReady() && currentWeapon.totalReserveAmmo > 0)
+            if (WeaponReady() && currentWeapon.IsReloading())
                 StartCoroutine(ReloadWeapon());
         };
+
+        controls.Player.Drop.performed += ctx => DropWeapon();
     }
 }
