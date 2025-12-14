@@ -30,8 +30,8 @@ public class Weapon
     #region Burst mode variables
     [SerializeField] private bool burstAvailable;
     public bool burstActive;
-    private int burstBulletsPerShot;
-    private float burstFireRate;
+    [SerializeField] private int burstBulletsPerShot;
+    [SerializeField] private float burstFireRate;
     public float burstFireDelay { get; private set; }
     #endregion
 
@@ -83,6 +83,7 @@ public class Weapon
         shootType = weapon.shootType;
 
         reloadSpeed = weapon.reloadSpeed;
+
     }
 
     #region Burst methods

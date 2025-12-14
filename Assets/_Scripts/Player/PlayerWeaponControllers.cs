@@ -34,14 +34,6 @@ public class PlayerWeaponControllers : MonoBehaviour
         AssignInputEvents();
 
         EquipStartingWeapon();
-
-        currentWeaponModel = player.visuals.GetCurrentWeaponModel();
-
-        gunPoint = currentWeaponModel.gunPoint;
-
-        SetupWeapon();
-
-        SetWeaponReady(true);
     }
 
     private void Update()
@@ -53,9 +45,10 @@ public class PlayerWeaponControllers : MonoBehaviour
     private void EquipStartingWeapon()
     {
         if (weaponSlots.Count == 0)
+        {
             weaponSlots.Add(new Weapon(defaultWeaponData));
-
-        weaponSlots[0] = new Weapon(defaultWeaponData);
+            //weaponSlots[0] = new Weapon(defaultWeaponData);
+        }
 
         EquipWeapon(0);
     }
@@ -66,19 +59,31 @@ public class PlayerWeaponControllers : MonoBehaviour
 
         SetWeaponReady(false);
 
-
         currentWeapon = weaponSlots[i];
+
+        player.visuals.SwitchOffWeaponHolder();
+        currentWeaponModel = player.visuals.SwitchOnWeaponHolder();
+
         if (player.visuals != null)
             player.visuals.PlayWeaponEquipAnimation();
+
+        player.visuals.SwitchAnimationLayer();
+
+        SetupWeapon();
+
+        SetWeaponReady(true);
     }
 
     private void DropWeapon()
     {
         CreateWeaponInGround();
+
+        weaponSlots.Remove(currentWeapon);
+        EquipWeapon(0);
     }
     private void CreateWeaponInGround()
     {
-        GameObject dropped = Instantiate(pickupWeaponPrefab);
+        GameObject dropped = ObjectPool.instance.GetObject(pickupWeaponPrefab);
         PickupWeapon dropWeapon = dropped.GetComponent<PickupWeapon>();
         dropWeapon.SetupPickupWeapon(transform, currentWeapon);
     }
@@ -88,6 +93,7 @@ public class PlayerWeaponControllers : MonoBehaviour
         bulletSpeed = currentWeapon.bulletSpeed;
         bulletPrefab = currentWeapon.bulletPrefab;
         averageMass = currentWeapon.impactForce;
+        gunPoint = currentWeaponModel.gunPoint;
     }
 
     private void Shoot()
@@ -141,6 +147,8 @@ public class PlayerWeaponControllers : MonoBehaviour
             targetPoint = ray.GetPoint(distanceShot); // Nếu không hit, lấy điểm xa về phía trước
         }
 
+        gunPoint = currentWeaponModel.gunPoint;
+
         // Tính direction từ gunPoint đến targetPoint
         Vector3 direction = (targetPoint - gunPoint.position).normalized;
 
@@ -148,8 +156,11 @@ public class PlayerWeaponControllers : MonoBehaviour
         Vector3 bulletDirection = currentWeapon.ApplySpread(direction);
 
         // Spawn bullet và bắn
-        GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position,
-     Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0));
+        GameObject newBullet = ObjectPool.instance.GetObject(bulletPrefab);
+
+        newBullet.transform.position = gunPoint.position;
+        newBullet.transform.rotation = Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0);
+
         Rigidbody rbBullet = newBullet.GetComponent<Rigidbody>();
         rbBullet.mass = averageMass / bulletSpeed;
         rbBullet.linearVelocity = bulletDirection * bulletSpeed;
@@ -168,9 +179,10 @@ public class PlayerWeaponControllers : MonoBehaviour
         SetWeaponReady(true);
     }
 
+    public List<Weapon> GetListWeapon() => weaponSlots;
+
     public void SetWeaponReady(bool ready) => weaponReady = ready;
     public bool WeaponReady() => weaponReady;
-
     public Weapon CurrentWeapon() => currentWeapon;
 
     void AssignInputEvents()
@@ -194,5 +206,8 @@ public class PlayerWeaponControllers : MonoBehaviour
         };
 
         controls.Player.Drop.performed += ctx => DropWeapon();
+
+        controls.Player.Equip1.performed += ctx => EquipWeapon(0);
+        controls.Player.Equip2.performed += ctx => EquipWeapon(1);
     }
 }

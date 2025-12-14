@@ -1270,6 +1270,7 @@ GameObject:
   - component: {fileID: 3753141423520551217}
   - component: {fileID: 5158872364730814236}
   - component: {fileID: 3414453869003942384}
+  - component: {fileID: -4291711455001011695}
   m_Layer: 0
   m_Name: Pickup_Weapon
   m_TagString: Untagged
@@ -1325,6 +1326,8 @@ MonoBehaviour:
     fireRate: 3
     burstAvailable: 0
     burstActive: 0
+    burstBulletsPerShot: 0
+    burstFireRate: 0
     baseSpread: 0
     maximumSpread: 2
     currentSpread: 0
@@ -1374,6 +1377,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27be8df1015c9ab458ccda5feb342481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4291711455001011695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4634282011486219149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd481c446faa80a45babcbbc79c1cdad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPrefab: {fileID: 4634282011486219149}
 --- !u!1 &4708072531726792554
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,8 +14,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void InteractWithClosest()
     {
-        if (closestInteractable != null)
-            closestInteractable.Interact();
+        closestInteractable?.Interact();
     }
 
     public void FindClosestInteractable()
