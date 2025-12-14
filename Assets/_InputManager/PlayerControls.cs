@@ -172,6 +172,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Equip - 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""e531df1e-2a42-41ee-83d9-58e167b6c84e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Equip - 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae5000ef-acc0-447d-b1d5-3595a9add6c3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -317,6 +335,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8395e46c-3511-46d6-bc90-c4a8e79c2f39"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Equip - 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""929032b5-e8e7-4546-b0d9-e27826ccd2ab"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Equip - 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -334,6 +374,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
+        m_Player_Equip1 = m_Player.FindAction("Equip - 1", throwIfNotFound: true);
+        m_Player_Equip2 = m_Player.FindAction("Equip - 2", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -423,6 +465,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Drop;
+    private readonly InputAction m_Player_Equip1;
+    private readonly InputAction m_Player_Equip2;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -470,6 +514,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Drop".
         /// </summary>
         public InputAction @Drop => m_Wrapper.m_Player_Drop;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Equip1".
+        /// </summary>
+        public InputAction @Equip1 => m_Wrapper.m_Player_Equip1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Equip2".
+        /// </summary>
+        public InputAction @Equip2 => m_Wrapper.m_Player_Equip2;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -523,6 +575,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Drop.started += instance.OnDrop;
             @Drop.performed += instance.OnDrop;
             @Drop.canceled += instance.OnDrop;
+            @Equip1.started += instance.OnEquip1;
+            @Equip1.performed += instance.OnEquip1;
+            @Equip1.canceled += instance.OnEquip1;
+            @Equip2.started += instance.OnEquip2;
+            @Equip2.performed += instance.OnEquip2;
+            @Equip2.canceled += instance.OnEquip2;
         }
 
         /// <summary>
@@ -561,6 +619,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Drop.started -= instance.OnDrop;
             @Drop.performed -= instance.OnDrop;
             @Drop.canceled -= instance.OnDrop;
+            @Equip1.started -= instance.OnEquip1;
+            @Equip1.performed -= instance.OnEquip1;
+            @Equip1.canceled -= instance.OnEquip1;
+            @Equip2.started -= instance.OnEquip2;
+            @Equip2.performed -= instance.OnEquip2;
+            @Equip2.canceled -= instance.OnEquip2;
         }
 
         /// <summary>
@@ -664,5 +728,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDrop(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Equip - 1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEquip1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Equip - 2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEquip2(InputAction.CallbackContext context);
     }
 }

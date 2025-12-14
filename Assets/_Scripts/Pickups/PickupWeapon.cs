@@ -3,7 +3,7 @@ using UnityEngine;
 public class PickupWeapon : MonoBehaviour
 {
     [SerializeField] Weapon_SO weaponData;
-    [SerializeField] Weapon weapon;
+    public Weapon weapon;
 
     [SerializeField] BackupWeaponModel[] backupWeaponModels;
 
@@ -24,7 +24,7 @@ public class PickupWeapon : MonoBehaviour
         this.weapon = weapon;
         weaponData = weapon.weaponData;
 
-        this.transform.position = transform.position + new Vector3(0, 0.5f, 0);
+        this.transform.position = transform.position;
     }
 
     [ContextMenu("Update Weapon Model")]

@@ -34,7 +34,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         rig = GetComponentInChildren<Rig>();
 
-        weaponModels = GetComponentsInChildren<WeaponModels>(true);
 
         if (playerCamera == null)
             playerCamera = Camera.main;
@@ -47,10 +46,9 @@ public class PlayerWeaponVisuals : MonoBehaviour
             characterModel = player.anim.transform;
         }
 
-        currentWeaponModel = GetCurrentWeaponModel();
+        currentWeaponModel = SwitchOnWeaponHolder();
 
         AttachLeftHand();
-        SwitchAnimationLayer();
     }
 
     private void Update()
@@ -66,7 +64,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
     public void PlayWeaponEquipAnimation()
     {
-        EquipType equipType = GetCurrentWeaponModel().equipType;
+        EquipType equipType = SwitchOnWeaponHolder().equipType;
         float equipmentSpeed = player.controller.CurrentWeapon().equipmentSpeed;
 
         ReduceLeftHandIKWeight();
@@ -126,7 +124,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
     public Transform GetPlayerViewPointTransform()
     {
         if (currentWeaponModel == null)
-            currentWeaponModel = GetCurrentWeaponModel();
+            currentWeaponModel = SwitchOnWeaponHolder();
 
         return currentWeaponModel?.playerViewPointTransform;
     }
@@ -234,7 +232,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
         //}
     }
 
-    private void SwitchAnimationLayer()
+    public void SwitchAnimationLayer()
     {
         if (currentWeaponModel == null)
             return;
@@ -252,20 +250,17 @@ public class PlayerWeaponVisuals : MonoBehaviour
         }
     }
 
-    public WeaponModels GetCurrentWeaponModel()
+    public WeaponModels SwitchOnWeaponHolder()
     {
         WeaponType weaponType = default;
 
+        weaponModels = GetComponentsInChildren<WeaponModels>(true);
+
+        if (player.controller != null && player.controller.CurrentWeapon() != null)
+            weaponType = player.controller.CurrentWeapon().weaponType;
+
         foreach (var weaponModel in weaponModels)
         {
-            weaponModel.gameObject.SetActive(false);
-
-            // Thêm null check
-            if (player.controller != null && player.controller.CurrentWeapon() != null)
-                weaponType = player.controller.CurrentWeapon().weaponType;
-            else
-                continue; // Bỏ qua nếu chưa có weapon
-
             if (weaponModel.weaponModelType == weaponType)
             {
                 weaponModel.gameObject.SetActive(true);
@@ -275,6 +270,16 @@ public class PlayerWeaponVisuals : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void SwitchOffWeaponHolder()
+    {
+        weaponModels = GetComponentsInChildren<WeaponModels>(true);
+
+        foreach (var weaponModel in weaponModels)
+        {
+            weaponModel.gameObject.SetActive(false);
+        }
     }
 
 }
