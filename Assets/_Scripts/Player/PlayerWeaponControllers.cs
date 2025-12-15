@@ -93,6 +93,8 @@ public class PlayerWeaponControllers : MonoBehaviour
     }
 
     private bool HasOneWeapon() => weaponSlots.Count <= 1;
+
+    public bool OnlyTwoWeaponInSlotEquip() => weaponSlots.Count <= 2 && weaponSlots.Count > 0;
     #endregion
 
     void SetupWeapon()

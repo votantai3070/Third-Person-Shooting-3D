@@ -43,6 +43,7 @@ public class Crosshair : MonoBehaviour
         }
     }
 
+    [ContextMenu("Update Crosshair")]
     void UpdateCrosshairColor()
     {
         if (crosshairImage == null) return;
