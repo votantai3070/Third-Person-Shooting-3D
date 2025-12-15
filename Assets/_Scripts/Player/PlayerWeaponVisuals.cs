@@ -62,20 +62,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
         UpdateLeftHandIK();
     }
 
-    public void PlayWeaponEquipAnimation()
-    {
-        EquipType equipType = SwitchOnWeaponHolder().equipType;
-        float equipmentSpeed = player.controller.CurrentWeapon().equipmentSpeed;
-
-        ReduceLeftHandIKWeight();
-        ReduceRigWeight();
-
-        player.anim.SetFloat("EquipType", ((float)equipType));
-        player.anim.SetFloat("EquipSpeed", equipmentSpeed);
-        player.anim.SetTrigger("EquipWeapon");
-    }
-
-
     #region Animation Rigging Methods
     private void UpdateLeftHandIKWeight()
     {
@@ -144,6 +130,8 @@ public class PlayerWeaponVisuals : MonoBehaviour
         bool isShootingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Shoot_Weapon");
         bool isReloadingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Reload_Weapon");
         bool isReloadingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Reload_Weapon");
+        bool isEquipWeapon = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Equip_Weapon") ||
+            player.anim.GetCurrentAnimatorStateInfo(2).IsName("Equip_Weapon");
 
         bool isShoot = isShootingRifle || isShootingPistol;
         bool isReload = isReloadingRifle || isReloadingPistol;
@@ -164,16 +152,34 @@ public class PlayerWeaponVisuals : MonoBehaviour
         player.anim.SetFloat("x", localDirection.x, 0.1f, Time.deltaTime);
         player.anim.SetFloat("z", localDirection.z, 0.1f, Time.deltaTime);
 
-        if (isRunning && !isShoot && !isReload || !isRunning && isReload)
+        SetupAnimationWithRig(isEquipWeapon, isShoot, isReload);
+    }
+
+    private void SetupAnimationWithRig(bool isEquipWeapon, bool isShoot, bool isReload)
+    {
+        if (isReload || isRunning || isEquipWeapon)
         {
             ReduceRigWeight();
             ReduceLeftHandIKWeight();
         }
-        else if (isRunning && isShoot || !isRunning && isShoot)
+        else if (!isEquipWeapon || isShoot)
         {
             MaximizeRigWeight();
             MaximizeLeftHandWeight();
         }
+    }
+
+    public void PlayWeaponEquipAnimation()
+    {
+        EquipType equipType = SwitchOnWeaponHolder().equipType;
+        float equipmentSpeed = player.controller.CurrentWeapon().equipmentSpeed;
+
+        ReduceLeftHandIKWeight();
+        ReduceRigWeight();
+
+        player.anim.SetFloat("EquipType", ((float)equipType));
+        player.anim.SetFloat("EquipSpeed", equipmentSpeed);
+        player.anim.SetTrigger("EquipWeapon");
     }
 
     public void PlayFireAnimation() => player.anim.SetTrigger("Shooting");
@@ -184,7 +190,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         player.anim.SetTrigger("Reloading");
         player.anim.SetFloat("ReloadSpeed", reloadSpeed);
-        ReduceRigWeight();
     }
 
     private void AttachLeftHand()

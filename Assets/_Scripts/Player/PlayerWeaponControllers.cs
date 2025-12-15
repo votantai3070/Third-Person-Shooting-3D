@@ -42,6 +42,7 @@ public class PlayerWeaponControllers : MonoBehaviour
             Shoot();
     }
 
+    #region Equip/Drop Weapon
     private void EquipStartingWeapon()
     {
         if (weaponSlots.Count == 0)
@@ -76,17 +77,23 @@ public class PlayerWeaponControllers : MonoBehaviour
 
     private void DropWeapon()
     {
+        if (HasOneWeapon()) return;
+
         CreateWeaponInGround();
 
         weaponSlots.Remove(currentWeapon);
         EquipWeapon(0);
     }
+
     private void CreateWeaponInGround()
     {
         GameObject dropped = ObjectPool.instance.GetObject(pickupWeaponPrefab);
         PickupWeapon dropWeapon = dropped.GetComponent<PickupWeapon>();
         dropWeapon.SetupPickupWeapon(transform, currentWeapon);
     }
+
+    private bool HasOneWeapon() => weaponSlots.Count <= 1;
+    #endregion
 
     void SetupWeapon()
     {
