@@ -16,6 +16,7 @@ public class Weapon_SO : ScriptableObject
     public float impactForce;
 
     [Header("Ammo Stats")]
+    public AmmoType ammoType;
     public int bulletsPerShot;
     public int magazineCapacity;
     public int bulletsInMagazine;

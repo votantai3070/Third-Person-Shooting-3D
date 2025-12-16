@@ -9,9 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
-    <ProjectGuid>{4557B456-A229-FA76-24C8-8C106CE347A8}</ProjectGuid>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{6098D2D2-2F4E-C283-AE14-ECB1447E34B2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -67,18 +66,20 @@
     <Compile Include="Assets\_Scripts\Player\PlayerWeaponControllers.cs" />
     <Compile Include="Assets\_Scripts\Weapon\WeaponModels.cs" />
     <Compile Include="Assets\_Scripts\Pickups\Interactable.cs" />
+    <Compile Include="Assets\_Scripts\Inventory\AmmoSlotUI.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Ammo\Ammo.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetUpdater.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerEvents.cs" />
     <Compile Include="Assets\_Scripts\Player\Player.cs" />
-    <Compile Include="Assets\_Scripts\Inventory\AmmoSlot.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\_InputManager\PlayerControls.cs" />
     <Compile Include="Assets\_Scripts\Pickups\PickupWeapon.cs" />
     <Compile Include="Assets\_Scripts\Weapon\BackupWeaponModel.cs" />
+    <Compile Include="Assets\_Scripts\Pickups\PickupAmmo.cs" />
     <Compile Include="Assets\_Scripts\Inventory\MainSlot.cs" />
+    <Compile Include="Assets\_Scripts\Inventory\AmmoInventoryUI.cs" />
     <Compile Include="Assets\_Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Crosshair.cs" />
     <Compile Include="Assets\_Scripts\SetupWeaponMaterials.cs" />
