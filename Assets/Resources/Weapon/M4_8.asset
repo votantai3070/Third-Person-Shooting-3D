@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: M4_8
   m_EditorClassIdentifier: 
   weaponName: M4_8
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: 418223a3a67c4594fb9ae9517e20c2f8, type: 3}
   bulletPrefab: {fileID: 4981483417408691638, guid: 73faa06297da07b4cb5a5e4306c17bbf, type: 3}
   damage: 1
   fireRate: 8
@@ -34,7 +34,7 @@ MonoBehaviour:
   maximumSpreadAngle: 2
   reloadTime: 3
   reloadSpeed: 1.5
-  equipmentSpeed: 1
+  equipmentSpeed: 1.2
   muzzleFlashEffect: {fileID: 0}
   bulletImpactEffect: {fileID: 0}
   shootSound: {fileID: 0}

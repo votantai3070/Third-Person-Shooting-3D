@@ -1,34 +1,56 @@
+﻿// PlayerInteraction.cs
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    private Player player;
+
     [SerializeField] private List<Interactable> interactList;
     [SerializeField] private Interactable closestInteractable;
 
     private void Start()
     {
-        Player player = GetComponent<Player>();
-        player.controls.Player.Interact.performed += ctx => InteractWithClosest();
+        player = GetComponent<Player>();
+        AssignInputEvents();
+
+        InventoryManager.instance.SetMainWeaponList(player.controller.GetListWeapon());
     }
 
     private void InteractWithClosest()
     {
+        if (InventoryManager.instance != null)
+        {
+            InventoryManager.instance.SetMainWeaponList(player.controller.GetListWeapon());
+        }
+
         closestInteractable?.Interact();
     }
 
     public void FindClosestInteractable()
     {
-        float maxDistance = float.MaxValue;
+        float minDistance = float.MaxValue;
 
         foreach (var item in interactList)
         {
             float distance = Vector3.Distance(transform.position, item.transform.position);
 
-            maxDistance = distance;
-            closestInteractable = item;
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestInteractable = item;
+            }
         }
     }
 
     public List<Interactable> GetInteractables() => interactList;
+
+    private void AssignInputEvents()
+    {
+        player.controls.Player.Interact.performed += ctx =>
+        {
+            if (player.controller.OnlyTwoWeaponInSlotEquip())
+                InteractWithClosest();
+        };
+    }
 }

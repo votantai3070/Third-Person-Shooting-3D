@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: M1911
   m_EditorClassIdentifier: 
   weaponName: M1911
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: 06de8d41e792c2b4ba92b3df854eac76, type: 3}
   bulletPrefab: {fileID: 5914128028956905109, guid: 59a3620bd337b994aab82c6aaa2fd52e, type: 3}
   damage: 1
   fireRate: 3
@@ -34,7 +34,7 @@ MonoBehaviour:
   maximumSpreadAngle: 2
   reloadTime: 1.8
   reloadSpeed: 1.8
-  equipmentSpeed: 1.5
+  equipmentSpeed: 1.6
   muzzleFlashEffect: {fileID: 0}
   bulletImpactEffect: {fileID: 0}
   shootSound: {fileID: 0}
