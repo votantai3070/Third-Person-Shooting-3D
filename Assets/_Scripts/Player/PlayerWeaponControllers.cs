@@ -96,7 +96,7 @@ public class PlayerWeaponControllers : MonoBehaviour
     // Method tạo clone weapon với ammo = 0
     private Weapon CloneWeaponWithoutAmmo(Weapon original)
     {
-        Weapon clone = new Weapon(original.weaponData);
+        Weapon clone = new(original.weaponData);
 
         clone.bulletsInMagazine = original.bulletsInMagazine;
 

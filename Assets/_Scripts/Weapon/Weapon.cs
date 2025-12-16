@@ -159,6 +159,7 @@ public class Weapon
 
         int bulletsToReload = Mathf.Min(bulletsNeeded, totalReserveAmmo);
 
+        AmmoInventoryUI.instance.MinusAmmo(weaponData, bulletsToReload);
         totalReserveAmmo -= bulletsToReload;
         bulletsInMagazine += bulletsToReload;
 

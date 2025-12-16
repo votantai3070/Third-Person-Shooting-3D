@@ -39,7 +39,7 @@ public class PickupAmmo : Interactable
 
         foreach (AmmoData ammo in currentAmmoList)
         {
-            AddAmmo(ammo.weaponType, ammo.amount);
+            AmmoInventoryUI.instance.AddAmmo(ammo.weaponType, ammo.amount);
         }
 
         ObjectPool.instance.ReturnToPool(gameObject);
