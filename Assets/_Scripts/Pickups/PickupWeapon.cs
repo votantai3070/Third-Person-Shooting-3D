@@ -26,7 +26,7 @@ public class PickupWeapon : Interactable
         if (!isOldWeapon)
         {
             // Súng mới: Add ammo vào inventory TRƯỚC
-            AddAmmo(weapon.weaponType, weapon.totalReserveAmmo);
+            AmmoInventoryUI.instance.AddAmmo(weapon.weaponType, weapon.totalReserveAmmo);
         }
 
         // Cả súng mới và cũ đều GET ammo từ inventory

@@ -68,6 +68,32 @@ public class AmmoInventoryUI : MonoBehaviour
         }
     }
 
+    public void AddAmmo(WeaponType weaponType, int amount)
+    {
+        AmmoSlotUI[] ammoTypeWeapons = GetComponentsInChildren<AmmoSlotUI>(true);
+
+        foreach (var ammoTypeWeapon in ammoTypeWeapons)
+        {
+            if (ammoTypeWeapon.GetAmmo().weaponType == weaponType)
+            {
+                ammoTypeWeapon.AddAmmoAmount(amount);
+            }
+        }
+    }
+
+    public void MinusAmmo(Weapon_SO weaponData, int amount)
+    {
+        AmmoSlotUI[] ammoTypeWeapons = GetComponentsInChildren<AmmoSlotUI>(true);
+
+        foreach (var ammoTypeWeapon in ammoTypeWeapons)
+        {
+            if (ammoTypeWeapon.GetAmmo().weaponType == weaponData.weaponType)
+            {
+                ammoTypeWeapon.MinusAmmoAmount(amount);
+            }
+        }
+    }
+
 
     private AmmoType ParseAmmoType(string spriteName)
     {
