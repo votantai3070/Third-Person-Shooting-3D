@@ -15,7 +15,6 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        // ✅ Sửa singleton pattern
         if (instance != null && instance != this)
         {
             Destroy(gameObject);

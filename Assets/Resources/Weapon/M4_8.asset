@@ -34,7 +34,7 @@ MonoBehaviour:
   maximumSpreadAngle: 2
   reloadTime: 3
   reloadSpeed: 1.5
-  equipmentSpeed: 1
+  equipmentSpeed: 1.2
   muzzleFlashEffect: {fileID: 0}
   bulletImpactEffect: {fileID: 0}
   shootSound: {fileID: 0}

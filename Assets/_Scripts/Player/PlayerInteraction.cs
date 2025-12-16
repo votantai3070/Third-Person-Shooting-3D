@@ -13,6 +13,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         player = GetComponent<Player>();
         AssignInputEvents();
+
+        InventoryManager.instance.SetMainWeaponList(player.controller.GetListWeapon());
     }
 
     private void InteractWithClosest()

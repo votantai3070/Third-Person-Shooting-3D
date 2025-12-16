@@ -66,9 +66,11 @@
     <Compile Include="Assets\_Scripts\Player\PlayerWeaponControllers.cs" />
     <Compile Include="Assets\_Scripts\Weapon\WeaponModels.cs" />
     <Compile Include="Assets\_Scripts\Pickups\Interactable.cs" />
+    <Compile Include="Assets\_Scripts\Weapon\Ammo\Ammo.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetUpdater.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerEvents.cs" />
     <Compile Include="Assets\_Scripts\Player\Player.cs" />
+    <Compile Include="Assets\_Scripts\Inventory\AmmoSlot.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerWeaponVisuals.cs" />

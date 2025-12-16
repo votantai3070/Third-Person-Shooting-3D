@@ -42,7 +42,7 @@ public class PlayerWeaponControllers : MonoBehaviour
             Shoot();
     }
 
-    #region Equip/Drop Weapon
+    #region Equip/Drop/Reload Weapon
     private void EquipStartingWeapon()
     {
         if (weaponSlots.Count == 0)
@@ -92,9 +92,22 @@ public class PlayerWeaponControllers : MonoBehaviour
         dropWeapon.SetupPickupWeapon(transform, currentWeapon);
     }
 
+    IEnumerator ReloadWeapon()
+    {
+        SetWeaponReady(false);
+
+        player.visuals.PlayReloadAnimation();
+
+        yield return new WaitForSeconds(currentWeapon.reloadTime);
+
+        currentWeapon.RefillBullets();
+
+        SetWeaponReady(true);
+    }
+
     private bool HasOneWeapon() => weaponSlots.Count <= 1;
 
-    public bool OnlyTwoWeaponInSlotEquip() => weaponSlots.Count <= 2 && weaponSlots.Count > 0;
+    public bool OnlyTwoWeaponInSlotEquip() => weaponSlots.Count < 2 && weaponSlots.Count > 0;
     #endregion
 
     void SetupWeapon()
@@ -105,6 +118,7 @@ public class PlayerWeaponControllers : MonoBehaviour
         gunPoint = currentWeaponModel.gunPoint;
     }
 
+    #region Shoot
     private void Shoot()
     {
         if (!WeaponReady()) return;
@@ -174,24 +188,15 @@ public class PlayerWeaponControllers : MonoBehaviour
         rbBullet.mass = averageMass / bulletSpeed;
         rbBullet.linearVelocity = bulletDirection * bulletSpeed;
     }
+    #endregion
 
-    IEnumerator ReloadWeapon()
-    {
-        SetWeaponReady(false);
-
-        player.visuals.PlayReloadAnimation();
-
-        yield return new WaitForSeconds(currentWeapon.reloadTime);
-
-        currentWeapon.RefillBullets();
-
-        SetWeaponReady(true);
-    }
 
     public List<Weapon> GetListWeapon() => weaponSlots;
 
     public void SetWeaponReady(bool ready) => weaponReady = ready;
+
     public bool WeaponReady() => weaponReady;
+
     public Weapon CurrentWeapon() => currentWeapon;
 
     void AssignInputEvents()

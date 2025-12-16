@@ -87,7 +87,6 @@ public class Weapon
     }
 
     #region Burst methods
-
     public bool BurstActivated()
     {
         if (weaponType == WeaponType.Bennel_M4)
@@ -116,9 +115,9 @@ public class Weapon
             fireRate = defaulFireRate;
         }
     }
-
     #endregion
 
+    #region Shoot methods
     public bool CanShoot()
     {
         if (HasEnoughBullets() && ReadyToFire())
@@ -139,6 +138,7 @@ public class Weapon
 
         return false;
     }
+    #endregion
 
     #region Reload methods
     public bool CanReload()
@@ -172,11 +172,9 @@ public class Weapon
     private bool HasEnoughReserveAmmo() => totalReserveAmmo > 0;
 
     private bool HasFullBullets() => bulletsInMagazine == magazineCapacity;
-
     #endregion
 
     #region Spread methods
-
     public Vector3 ApplySpread(Vector3 originalDirection)
     {
         UpdateSpread();
@@ -202,7 +200,6 @@ public class Weapon
     {
         currentSpread = Mathf.Clamp(currentSpread + spreadIncreaseRate, baseSpread, maximumSpread);
     }
-
     #endregion
 
 }
