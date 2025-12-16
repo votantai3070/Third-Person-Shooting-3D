@@ -1,6 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PickupWeapon : MonoBehaviour
+public class PickupWeapon : Interactable
 {
     [SerializeField] Weapon_SO weaponData;
     public Weapon weapon;
@@ -12,9 +12,44 @@ public class PickupWeapon : MonoBehaviour
     private void Start()
     {
         if (!isOldWeapon)
+        {
             weapon = new Weapon(weaponData);
+        }
 
         SetupGameObject();
+    }
+
+    public override void Interact()
+    {
+        base.Interact();
+
+        if (!isOldWeapon)
+        {
+            // Súng mới: Add ammo vào inventory TRƯỚC
+            AddAmmo(weapon.weaponType, weapon.totalReserveAmmo);
+        }
+
+        // Cả súng mới và cũ đều GET ammo từ inventory
+        weapon.totalReserveAmmo = GetAmmoFromInventory(weapon.weaponType);
+
+        player.controller.GetListWeapon().Add(weapon);
+        ObjectPool.instance.DelayReturnToPool(gameObject);
+    }
+
+    // Method lấy ammo từ inventory
+    private int GetAmmoFromInventory(WeaponType weaponType)
+    {
+        AmmoSlotUI[] ammoSlots = AmmoInventoryUI.instance.GetComponentsInChildren<AmmoSlotUI>(true);
+
+        foreach (var ammoSlot in ammoSlots)
+        {
+            if (weaponType == ammoSlot.GetAmmo().weaponType)
+            {
+                return ammoSlot.GetAmmo().GetTotalAmmo();
+            }
+        }
+
+        return 0;
     }
 
     public void SetupPickupWeapon(Transform transform, Weapon weapon)

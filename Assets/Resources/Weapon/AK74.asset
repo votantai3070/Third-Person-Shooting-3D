@@ -20,6 +20,7 @@ MonoBehaviour:
   bulletSpeed: 80
   shootRange: 100
   impactForce: 5
+  ammoType: 2
   bulletsPerShot: 1
   magazineCapacity: 30
   bulletsInMagazine: 30

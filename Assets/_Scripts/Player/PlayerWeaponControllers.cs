@@ -46,10 +46,7 @@ public class PlayerWeaponControllers : MonoBehaviour
     private void EquipStartingWeapon()
     {
         if (weaponSlots.Count == 0)
-        {
             weaponSlots.Add(new Weapon(defaultWeaponData));
-            //weaponSlots[0] = new Weapon(defaultWeaponData);
-        }
 
         EquipWeapon(0);
     }
@@ -89,8 +86,25 @@ public class PlayerWeaponControllers : MonoBehaviour
     {
         GameObject dropped = ObjectPool.instance.GetObject(pickupWeaponPrefab);
         PickupWeapon dropWeapon = dropped.GetComponent<PickupWeapon>();
-        dropWeapon.SetupPickupWeapon(transform, currentWeapon);
+
+        // Clone weapon và set ammo = 0
+        Weapon droppedWeapon = CloneWeaponWithoutAmmo(currentWeapon);
+
+        dropWeapon.SetupPickupWeapon(transform, droppedWeapon);
     }
+
+    // Method tạo clone weapon với ammo = 0
+    private Weapon CloneWeaponWithoutAmmo(Weapon original)
+    {
+        Weapon clone = new Weapon(original.weaponData);
+
+        clone.bulletsInMagazine = original.bulletsInMagazine;
+
+        clone.totalReserveAmmo = 0;
+
+        return clone;
+    }
+
 
     IEnumerator ReloadWeapon()
     {

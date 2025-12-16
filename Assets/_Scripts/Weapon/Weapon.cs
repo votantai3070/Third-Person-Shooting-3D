@@ -10,12 +10,12 @@ public class Weapon
     [Header("Info weapon")]
     public WeaponType weaponType;
     public ShootType shootType;
+    public AmmoType ammoType;
 
     public float reloadTime;
     public float reloadSpeed;
 
     public float equipmentSpeed;
-
     public int bulletsPerShot { get; private set; }
     public float bulletSpeed;
     public GameObject bulletPrefab;
@@ -61,6 +61,7 @@ public class Weapon
         impactForce = weapon.impactForce;
 
         reloadTime = weapon.reloadTime;
+        ammoType = weapon.ammoType;
 
         equipmentSpeed = weapon.equipmentSpeed;
 

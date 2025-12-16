@@ -2,17 +2,26 @@
 
 public class Interactable : MonoBehaviour
 {
-    Player player;
+    protected Player player;
 
-    public void Interact()
+    public virtual void Interact()
     {
         Debug.Log(gameObject.name);
-
-        Weapon weapon = GetComponent<PickupWeapon>().weapon;
-
-        player.controller.GetListWeapon().Add(weapon);
-        ObjectPool.instance.DelayReturnToPool(gameObject);
     }
+
+    protected void AddAmmo(WeaponType weaponType, int amount)
+    {
+        AmmoSlotUI[] ammoSlots = AmmoInventoryUI.instance.GetComponentsInChildren<AmmoSlotUI>(true);
+
+        foreach (var ammoSlot in ammoSlots)
+        {
+            if (weaponType == ammoSlot.GetAmmo().weaponType)
+            {
+                ammoSlot.AddAmmoAmount(amount);
+            }
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
