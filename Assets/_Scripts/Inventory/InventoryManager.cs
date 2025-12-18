@@ -1,4 +1,5 @@
 ﻿// InventoryManager.cs
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,9 @@ public class InventoryManager : MonoBehaviour
     [Space]
     [SerializeField] List<Weapon> mainWeaponList;
 
-    private bool inventoryEnable = false;
+    [SerializeField] private bool inventoryEnable = false;
+    private Vector3 originPos;
+    private Vector3 targetPos;
 
     private void Awake()
     {
@@ -26,12 +29,24 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         AssignInputEvents();
+
+        originPos = inventoryPanel.transform.position;
+        targetPos = originPos + new Vector3(-798, 0, 0);
     }
 
     void InventoryEnable()
     {
         inventoryEnable = !inventoryEnable;
-        inventoryPanel.SetActive(inventoryEnable);
+
+        if (inventoryEnable)
+        {
+            inventoryPanel.transform.DOMove(targetPos, 1.5f).SetEase(Ease.OutQuad);
+        }
+        else
+        {
+            inventoryPanel.transform.DOMove(originPos, 1.5f).SetEase(Ease.Flash);
+        }
+
     }
 
     public void SetMainWeaponList(List<Weapon> weaponList)

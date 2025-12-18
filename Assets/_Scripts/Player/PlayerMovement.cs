@@ -200,7 +200,10 @@ public class PlayerMovement : MonoBehaviour
     public void SetAiming(bool aiming)
     {
         isAiming = aiming;
+        Crosshair.instance.SetVisible(aiming);
     }
+
+    public bool IsAiming() => isAiming;
 
     // Debug
     private void OnGUI()

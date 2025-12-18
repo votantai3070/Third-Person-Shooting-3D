@@ -6,6 +6,7 @@ public class PlayerWeaponControllers : MonoBehaviour
 {
     public Player player { private set; get; }
     public PlayerControls controls { private set; get; }
+    [SerializeField] AmmoInventoryUI ammoInventory;
 
     [Header("Elements")]
     private float averageMass;
@@ -34,6 +35,8 @@ public class PlayerWeaponControllers : MonoBehaviour
         AssignInputEvents();
 
         EquipStartingWeapon();
+
+        //Invoke(nameof(AddAmmoFromWeaponGenerateIntoInventory), .1f);
     }
 
     private void Update()
@@ -41,6 +44,15 @@ public class PlayerWeaponControllers : MonoBehaviour
         if (isShooting)
             Shoot();
     }
+
+    //Add ammo into inventory
+    //void AddAmmoFromWeaponGenerateIntoInventory()
+    //{
+    //    foreach (var weapon in weaponSlots)
+    //    {
+    //        ammoInventory.AddAmmo(weapon.weaponType, weapon.totalReserveAmmo);
+    //    }
+    //}
 
     #region Equip/Drop/Reload Weapon
     private void EquipStartingWeapon()
@@ -203,7 +215,6 @@ public class PlayerWeaponControllers : MonoBehaviour
     }
     #endregion
 
-
     public List<Weapon> GetListWeapon() => weaponSlots;
 
     public void SetWeaponReady(bool ready) => weaponReady = ready;
@@ -236,5 +247,8 @@ public class PlayerWeaponControllers : MonoBehaviour
 
         controls.Player.Equip1.performed += ctx => EquipWeapon(0);
         controls.Player.Equip2.performed += ctx => EquipWeapon(1);
+
+        controls.Player.Aim.performed += ctx => player.movement.SetAiming(true);
+        controls.Player.Aim.canceled += ctx => player.movement.SetAiming(false);
     }
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ThirdPersonCameraController : MonoBehaviour
 {
+    Player player;
+
     [Header("Cinemachine")]
     [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private Transform cameraTarget;
@@ -23,7 +25,8 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     private void Start()
     {
-        // Auto-find components
+        player = GetComponentInParent<Player>();
+
         if (virtualCamera == null)
         {
             virtualCamera = FindAnyObjectByType<CinemachineCamera>();
@@ -54,8 +57,21 @@ public class ThirdPersonCameraController : MonoBehaviour
     private void Update()
     {
         UpdateCameraRotation();
+        UpdateCameraPosition();
         HandleCursorToggle();
     }
+
+    void UpdateCameraPosition()
+    {
+        if (virtualCamera.TryGetComponent<CinemachineThirdPersonFollow>(out var position))
+        {
+            if (player.movement.IsAiming())
+                position.ShoulderOffset = new Vector3(0.6f, 1.25f, 2.33f);
+            else
+                position.ShoulderOffset = new Vector3(0f, 2f, -2f);
+        }
+    }
+
 
     void UpdateCameraRotation()
     {

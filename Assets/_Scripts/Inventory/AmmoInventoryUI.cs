@@ -7,6 +7,7 @@ public class AmmoInventoryUI : MonoBehaviour
     public static AmmoInventoryUI instance;
 
     [SerializeField] Sprite[] sprites;
+    [SerializeField] GameObject[] ammoSlots;
     [SerializeField] GameObject ammoSlotPrefab;
 
     private void Awake()
@@ -27,16 +28,16 @@ public class AmmoInventoryUI : MonoBehaviour
 
     private void GenerateAmmoSlot()
     {
-        for (int i = 0; i < sprites.Length; i++)
+        foreach (var slot in ammoSlots)
         {
-            GameObject ammoSlot = Instantiate(ammoSlotPrefab, transform);
-            ammoSlot.AddComponent<AmmoSlotUI>();
+            slot.AddComponent<AmmoSlotUI>();
         }
+
     }
 
     private void GenerateAmmoSlotInfo()
     {
-        for (int i = 0; i < sprites.Length; i++)
+        for (int i = 0; i < sprites.Length && i < ammoSlots.Length; i++)
         {
             AmmoType ammoType = ParseAmmoType(sprites[i].name);
             WeaponType weaponType = GetCompatibleWeapon(ammoType);
