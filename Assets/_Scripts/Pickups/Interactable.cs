@@ -4,10 +4,14 @@ public class Interactable : MonoBehaviour
 {
     protected Player player;
 
+    protected bool isAmmoPickup;
+
     public virtual void Interact()
     {
         Debug.Log(gameObject.name);
     }
+
+    public bool IsPickupAmmo() => isAmmoPickup;
 
     private void OnTriggerEnter(Collider other)
     {

@@ -1958,6 +1958,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.079
       objectReference: {fileID: 0}
+    - target: {fileID: 8024167348997087418, guid: 7166087c57f18214f9cc1622ff2e3113, type: 3}
+      propertyPath: weaponSlots.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2373,6 +2377,18 @@ PrefabInstance:
     - target: {fileID: 4891552316994137927, guid: c9ae50fb8f157124cb5a12dc5eac0d81, type: 3}
       propertyPath: smallBoxAmmo.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891552316994137927, guid: c9ae50fb8f157124cb5a12dc5eac0d81, type: 3}
+      propertyPath: bigBoxAmmo.Array.data[0].amount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891552316994137927, guid: c9ae50fb8f157124cb5a12dc5eac0d81, type: 3}
+      propertyPath: bigBoxAmmo.Array.data[1].amount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891552316994137927, guid: c9ae50fb8f157124cb5a12dc5eac0d81, type: 3}
+      propertyPath: smallBoxAmmo.Array.data[0].amount
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4891552316994137927, guid: c9ae50fb8f157124cb5a12dc5eac0d81, type: 3}
       propertyPath: bigBoxAmmo.Array.data[0].maxAmount

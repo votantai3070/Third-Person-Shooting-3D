@@ -25,6 +25,8 @@ public class PickupAmmo : Interactable
     private void Start()
     {
         SetupBoxModel();
+
+        isAmmoPickup = true;
     }
 
     public override void Interact()
@@ -39,6 +41,8 @@ public class PickupAmmo : Interactable
 
         foreach (AmmoData ammo in currentAmmoList)
         {
+            Debug.Log("Ammo amount: " + ammo.amount);
+
             AmmoInventoryUI.instance.AddAmmo(ammo.weaponType, ammo.amount);
         }
 

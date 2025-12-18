@@ -49,7 +49,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         player.controls.Player.Interact.performed += ctx =>
         {
-            if (player.controller.OnlyTwoWeaponInSlotEquip())
+            if (player.controller.OnlyTwoWeaponInSlotEquip() || closestInteractable.IsPickupAmmo())
                 InteractWithClosest();
         };
     }

@@ -93,8 +93,6 @@ public class AmmoInventoryUI : MonoBehaviour
             }
         }
     }
-
-
     private AmmoType ParseAmmoType(string spriteName)
     {
         if (spriteName.Contains("7.62x39"))
