@@ -59,7 +59,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
     private void LateUpdate()
     {
-        UpdateLeftHandIK();
+        //UpdateLeftHandIK();
     }
 
     #region Animation Rigging Methods
@@ -115,7 +115,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
         return currentWeaponModel?.playerViewPointTransform;
     }
 
-    public void SetRunning(Vector3 worldDirection)
+    public void SetRunning(Vector3 worldDirection, bool isShootingRifle, bool isShootingPistol, bool isReloadingRifle, bool isReloadingPistol, bool isEquipWeapon)
     {
         Vector3 localDirection = Vector3.zero;
 
@@ -125,13 +125,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
         }
 
         isRunning = worldDirection.magnitude > 0.01f;
-
-        bool isShootingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Shoot_Weapon");
-        bool isShootingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Shoot_Weapon");
-        bool isReloadingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Reload_Weapon");
-        bool isReloadingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Reload_Weapon");
-        bool isEquipWeapon = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Equip_Weapon") ||
-            player.anim.GetCurrentAnimatorStateInfo(2).IsName("Equip_Weapon");
 
         bool isShoot = isShootingRifle || isShootingPistol;
         bool isReload = isReloadingRifle || isReloadingPistol;
@@ -219,24 +212,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
         }
     }
 
-    void UpdateLeftHandIK()
-    {
-        if (currentWeaponModel == null || !currentWeaponModel.gameObject.activeInHierarchy)
-            return;
-
-        if (leftHandIK != null && currentWeaponModel.leftHandIK != null)
-        {
-            leftHandIK.transform.localPosition = currentWeaponModel.leftHandIK.localPosition;
-            leftHandIK.transform.localRotation = currentWeaponModel.leftHandIK.localRotation;
-        }
-
-        //if (leftHandElbow != null && currentWeaponModel.leftHandElbow != null)
-        //{
-        //    leftHandElbow.localPosition = currentWeaponModel.leftHandElbow.localPosition;
-        //    leftHandElbow.localRotation = currentWeaponModel.leftHandElbow.localRotation;
-        //}
-    }
-
     public void SwitchAnimationLayer()
     {
         if (currentWeaponModel == null)
@@ -270,12 +245,16 @@ public class PlayerWeaponVisuals : MonoBehaviour
             {
                 weaponModel.gameObject.SetActive(true);
                 currentWeaponModel = weaponModel;
+
+                AttachLeftHand();
+
                 return weaponModel;
             }
         }
 
         return null;
     }
+
 
     public void SwitchOffWeaponHolder()
     {

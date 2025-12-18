@@ -111,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void RotateTowardsMovement()
     {
-        // Chỉ xoay khi đi forward (W key)
         if (moveInput.y > 0.1f && moveDirection.sqrMagnitude > 0.01f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
@@ -149,6 +148,8 @@ public class PlayerMovement : MonoBehaviour
         bool isShootingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Shoot_Weapon");
         bool isReloadingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Reload_Weapon");
         bool isReloadingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Reload_Weapon");
+        bool isEquipWeapon = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Equip_Weapon") ||
+            player.anim.GetCurrentAnimatorStateInfo(2).IsName("Equip_Weapon");
 
         bool isReact = isShootingRifle || isShootingPistol || isReloadingRifle || isReloadingPistol;
 
@@ -171,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Update animator
         player.anim.SetFloat("RunAndShootSpeed", runAndShootSpeed);
-        player.visuals.SetRunning(moveDirection);
+        player.visuals.SetRunning(moveDirection, isShootingRifle, isShootingPistol, isReloadingRifle, isReloadingPistol, isEquipWeapon);
     }
 
     void ApplyGravity()
@@ -199,15 +200,6 @@ public class PlayerMovement : MonoBehaviour
     public void SetAiming(bool aiming)
     {
         isAiming = aiming;
-    }
-
-    private void OnDisable()
-    {
-        if (controls != null)
-        {
-            controls.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
-            controls.Player.Move.canceled -= ctx => moveInput = Vector2.zero;
-        }
     }
 
     // Debug
