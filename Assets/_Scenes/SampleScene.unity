@@ -2892,6 +2892,14 @@ PrefabInstance:
       propertyPath: transitionSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 723801885110804116, guid: 7166087c57f18214f9cc1622ff2e3113, type: 3}
+      propertyPath: maxVerticalAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 723801885110804116, guid: 7166087c57f18214f9cc1622ff2e3113, type: 3}
+      propertyPath: minVerticalAngle
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 1021034596772366858, guid: 7166087c57f18214f9cc1622ff2e3113, type: 3}
       propertyPath: m_Name
       value: Player

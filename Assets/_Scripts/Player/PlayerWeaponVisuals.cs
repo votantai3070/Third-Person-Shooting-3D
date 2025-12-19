@@ -55,7 +55,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
     {
         UpdateRigWeight();
         UpdateLeftHandIKWeight();
-        UpdateRigAim();
     }
 
     private void LateUpdate()
@@ -64,20 +63,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
     }
 
     #region Animation Rigging Methods
-    private void UpdateRigAim()
-    {
-        if (player.aim.IsAiming())
-        {
-            MaximizeLeftHandWeight();
-            MaximizeRigWeight();
-        }
-        else
-        {
-            ReduceLeftHandIKWeight();
-            ReduceRigWeight();
-        }
-    }
-
     private void UpdateLeftHandIKWeight()
     {
         if (shouldIncrease_LeftHandWeight)
