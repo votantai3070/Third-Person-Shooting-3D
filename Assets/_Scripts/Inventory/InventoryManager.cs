@@ -57,8 +57,6 @@ public class InventoryManager : MonoBehaviour
 
         mainWeaponList.Clear();
         mainWeaponList.AddRange(weaponList);
-
-        Debug.Log($"✅ SetMainWeaponList: {mainWeaponList.Count}");
     }
 
     public void SetPreviousWeaponList(List<Weapon> weaponList)
@@ -68,8 +66,6 @@ public class InventoryManager : MonoBehaviour
 
         previousWeaponList.Clear();
         previousWeaponList.AddRange(weaponList);
-
-        Debug.Log($"✅ SetPreviousWeaponList: {previousWeaponList.Count}");
     }
 
     public List<Weapon> GetMainSlotWeaponList() => mainWeaponList;

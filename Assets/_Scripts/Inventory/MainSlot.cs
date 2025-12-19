@@ -15,10 +15,7 @@ public class MainSlot : MonoBehaviour
 
     private void UpdateInvenrotyMainSlot()
     {
-        Debug.Log("Updating Inventory Main Slot...");
-
         List<Weapon> weapons = inventoryManager.GetMainSlotWeaponList();
-        Debug.Log($"Main Slot Weapon Count: {weapons.Count}");
 
         int totalSlots = transform.childCount;
 
