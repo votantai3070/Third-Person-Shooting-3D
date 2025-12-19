@@ -10,7 +10,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] GameObject inventoryPanel;
     [Space]
-    [SerializeField] List<Weapon> mainWeaponList;
+    [SerializeField] private List<Weapon> mainWeaponList;
+    [SerializeField] private List<Weapon> previousWeaponList;
 
     [SerializeField] private bool inventoryEnable = false;
     private Vector3 originPos;
@@ -51,10 +52,29 @@ public class InventoryManager : MonoBehaviour
 
     public void SetMainWeaponList(List<Weapon> weaponList)
     {
-        mainWeaponList = new List<Weapon>(weaponList);
+        if (mainWeaponList == null)
+            mainWeaponList = new List<Weapon>();
+
+        mainWeaponList.Clear();
+        mainWeaponList.AddRange(weaponList);
+
+        Debug.Log($"✅ SetMainWeaponList: {mainWeaponList.Count}");
+    }
+
+    public void SetPreviousWeaponList(List<Weapon> weaponList)
+    {
+        if (previousWeaponList == null)
+            previousWeaponList = new List<Weapon>();
+
+        previousWeaponList.Clear();
+        previousWeaponList.AddRange(weaponList);
+
+        Debug.Log($"✅ SetPreviousWeaponList: {previousWeaponList.Count}");
     }
 
     public List<Weapon> GetMainSlotWeaponList() => mainWeaponList;
+
+    public List<Weapon> GetPreviousSlotWeaponList() => previousWeaponList;
 
     void AssignInputEvents()
     {
