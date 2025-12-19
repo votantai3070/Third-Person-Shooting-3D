@@ -10,7 +10,6 @@ public class Weapon
     [Header("Info weapon")]
     public WeaponType weaponType;
     public ShootType shootType;
-    public AmmoType ammoType;
 
     public float reloadTime;
     public float reloadSpeed;
@@ -61,7 +60,6 @@ public class Weapon
         impactForce = weapon.impactForce;
 
         reloadTime = weapon.reloadTime;
-        ammoType = weapon.ammoType;
 
         equipmentSpeed = weapon.equipmentSpeed;
 

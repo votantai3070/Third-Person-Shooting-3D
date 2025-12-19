@@ -20,7 +20,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <NoWarn>0169;USG0001</NoWarn>
-    <DefineConstants>UNITY_6000_0_58;UNITY_6000_0;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_AMD;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_USES_EXPLICIT_MEMORY_MANAGER_INITIALIZER;PLATFORM_SUPPORTS_WAIT_FOR_PRESENTATION;PLATFORM_SUPPORTS_SPLIT_GRAPHICS_JOBS;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_6000_0_58;UNITY_6000_0;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_AMD;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_USES_EXPLICIT_MEMORY_MANAGER_INITIALIZER;PLATFORM_SUPPORTS_WAIT_FOR_PRESENTATION;PLATFORM_SUPPORTS_SPLIT_GRAPHICS_JOBS;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;DOTWEEN;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -61,158 +61,19 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.58f2\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EBlendStatus.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Trajectory\TrajectoryGeneratorJob.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\Trajectory.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\MotionCurveData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Tags\BoolTagTrack.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\UI\HelpUIControl.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\ETransitionMethod.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Modules\TagNamingModule.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\AnimSpeedModifier\MotionPreset.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Jobs\BlendSpaceWeightJob.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Experimental\InertialBlending\TransformData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\UTIL\DrawArrow.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\WarpModule.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\ExampleDemoInput.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Events\MxMEventDefinition.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EUserTags.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\RootMotion\MxMDecoupleMotionApplicator.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Playables\MotionMatchingPlayable.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EMxMAnimtype.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\TrajectoryPoint.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\Vault System\VaultDetectionConfig.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Debug\PoseMask.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator_Curves.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator_BlendSpace.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Debug\MxMDebugData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Jobs\JobData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Experimental\SearchManager\MxMSearchManager.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EPoseMatchMethod.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\UTIL\PlayableUtils.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\IdleSetData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\MxMAnimData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Decoupling\MxMAnimationDecoupler.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EFavourTagMode.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator_Tags.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Playables\MxMPlayableState.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Tags\FootStepTagTrack.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\PoseCluster.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Experimental\InertialBlending\InertializerJob.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Processors\MxMFootstepDetector.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\ETags.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\BlendSpaceData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Extensions\MxMBlendSpaceLayers.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Interfaces\IMxMTrajectory.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator_Layers.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Modules\TrajectoryGeneratorModule.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Templates\RootMotionApplicatorTemplate.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EMxMRootMotion.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator_Events.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Controller\GenericControllerWrapper.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\PoseData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\RootMotion\MxMRootMotionApplicator.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Utility\FootstepTagTrackData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Tags\TagTrack.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EMxMEventType.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Debug\MxMDebugFrame.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Interfaces\IMxMUnityRiggingIntegration.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\Assets\MxMBlendSpace.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator_Debug.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Curves\MxMCurveTrack.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EAnimatorStates.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EBlendSpaceSmoothing.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Modules\EventNamingModule.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Processors\GlobalSpacePose.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\TagSelection.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\LocomotionSpeedRamp.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EIdleState.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\Assets\MxMAnimationClipComposite.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\SequenceData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\BlendSpace1DData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Processors\MxMPreProcessor.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Events\EventData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Tags\TagTrackBase.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Spawner\RuntimeMxMConstructor.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EBlendSpaceType.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\AnimSpeedModifier\MotionSection.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\MxMCalibrationData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Extensions\MxMTIPExtension.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EFootStepTags.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Extensions\MxMEventLayers.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EPostEventTrajectoryMode.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\JointData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Modules\AnimModuleDefaults.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EGenericTags.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\MxMPreProcessData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\ClipData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Modules\AnimationModule.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Utility\GenericTagTrackData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Trajectory\MxMTrajectoryGenerator_AI.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\ETrajectoryMoveMode.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\CompositeData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Experimental\InertialBlending\InertialBlendModule.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Interfaces\ILongitudinalWarper.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EJointVelocityCalculationMethod.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\NativeAnimData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\Assets\MxMBlendClip.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator_AnimManagement.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EMotionModType.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator_Jobs.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\UTIL\FSM\FSM.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Trajectory\MxMTrajectoryGenerator_BasicAI.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Playables\MxMBlendSpaceState.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Tags\FloatTagTrack.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\Assets\IMxMAnim.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Trajectory\MxMTrajectoryGenerator.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EMotionWarping.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMUtility.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\Vault System\EVaultContactOffsetMethod.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Events\EventContact.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Jobs\PoseJobs_VelCost.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Extensions\MxMAnimatorPlaybackSync.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\CompositeCategory.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Interfaces\IMxMExtension.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Jobs\MinimaJobs.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Controller\UnityControllerWrapper.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\ExampleDecoupleMovementControl.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\Vault System\VaultDetector.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EMotionModSmooth.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\ELongitudinalErrorWarp.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\IComplexAnimData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EEventWarpType.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\CalibrationModule.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Jobs\PoseJobs.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMLayer.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\BlendClipData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\Vault System\VaultDefinition.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\StressTestSpawner.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Jobs\TrajectoryJobs.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\Vault System\VaultableProfile.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\Goal.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator_States.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EComplexAnimType.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Utility\MxMInputProfile.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Interfaces\IMxMRootMotion.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\UTIL\FSM\FSMState.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Tags\EventMarker.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Core\PoseJoint.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Animation\Assets\MxMAnimationIdleSet.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\Vault System\EVaultType.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Events\EventFrameData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\AnimSpeedModifier\SpeedModData.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Components\Trajectory\MxMTrajectoryGeneratorBase.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EPastTrajectoryMode.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\MxMAnimator\MxMAnimator_Idle.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Enumerations\EEventState.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\AnimSpeedModifier\MotionTimingPresets.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Data\Modules\MotionMatchConfigModule.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Code\MxM\Runtime\Templates\TrajectoryGeneratorTemplate.cs" />
-    <Compile Include="Assets\Plugins\MotionMatching\Demo\Code\AIDestinationSetter.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Plugins\MotionMatching\Code\Integrations\Integration_README.txt" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.dll" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -693,6 +554,10 @@
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">

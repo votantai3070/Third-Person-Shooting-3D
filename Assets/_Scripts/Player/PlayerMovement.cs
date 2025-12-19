@@ -20,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform cameraTarget; // PlayerView
     [SerializeField] private Transform characterModel; // Visual model
 
-    [Header("Aiming")]
-    [SerializeField] private bool isAiming = false;
 
     [Header("Gravity")]
     [SerializeField] private float gravity = 9.81f;
@@ -81,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (characterModel == null || cameraTarget == null) return;
 
-        if (isAiming)
+        if (player.aim.IsAiming())
         {
             // AIM MODE: Xoay theo camera (strafe movement)
             RotateTowardsCamera();
@@ -195,23 +193,5 @@ public class PlayerMovement : MonoBehaviour
 
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
-    }
-
-    public void SetAiming(bool aiming)
-    {
-        isAiming = aiming;
-    }
-
-    // Debug
-    private void OnGUI()
-    {
-        GUIStyle style = new GUIStyle();
-        style.fontSize = 14;
-        style.normal.textColor = Color.cyan;
-
-        GUI.Label(new Rect(10, 100, 300, 25), $"Move Input: {moveInput}", style);
-        GUI.Label(new Rect(10, 120, 300, 25), $"Move Dir: {moveDirection}", style);
-        GUI.Label(new Rect(10, 140, 300, 25), $"Is Aiming: {isAiming}", style);
-        GUI.Label(new Rect(10, 160, 300, 25), $"Grounded: {characterController.isGrounded}", style);
     }
 }

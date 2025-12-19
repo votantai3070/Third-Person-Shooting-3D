@@ -3,13 +3,15 @@ using UnityEngine.UI;
 
 public class Crosshair : MonoBehaviour
 {
+    public static Crosshair instance;
+
     [Header("References")]
     [SerializeField] private Image crosshairImage;
 
     [Header("Crosshair Settings")]
-    [SerializeField] private Color normalColor = Color.white;
-    [SerializeField] private Color enemyColor = Color.red;
-    [SerializeField] private float crosshairSize = 32f;
+    //[SerializeField] private Color normalColor = Color.white;
+    //[SerializeField] private Color enemyColor = Color.red;
+    //[SerializeField] private float crosshairSize = 32f;
 
     [Header("Dynamic Spread (Optional)")]
     [SerializeField] private bool useDynamicSpread = false;
@@ -19,6 +21,17 @@ public class Crosshair : MonoBehaviour
     private Camera playerCamera;
     private RectTransform crosshairRect;
 
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+    }
+
     private void Start()
     {
         playerCamera = Camera.main;
@@ -27,6 +40,8 @@ public class Crosshair : MonoBehaviour
         {
             crosshairRect = crosshairImage.GetComponent<RectTransform>();
         }
+
+        SetVisible(false);
 
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;

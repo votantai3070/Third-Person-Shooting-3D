@@ -255,7 +255,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
         return null;
     }
 
-
     public void SwitchOffWeaponHolder()
     {
         weaponModels = GetComponentsInChildren<WeaponModels>(true);
