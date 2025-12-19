@@ -36,23 +36,23 @@ public class PlayerWeaponControllers : MonoBehaviour
 
         EquipStartingWeapon();
 
-        //Invoke(nameof(AddAmmoFromWeaponGenerateIntoInventory), .1f);
+        Invoke(nameof(AddAmmoFromWeaponGenerateIntoInventory), .1f);
     }
 
     private void Update()
     {
-        if (isShooting)
+        if (isShooting && player.aim.IsAiming())
             Shoot();
     }
 
     //Add ammo into inventory
-    //void AddAmmoFromWeaponGenerateIntoInventory()
-    //{
-    //    foreach (var weapon in weaponSlots)
-    //    {
-    //        ammoInventory.AddAmmo(weapon.weaponType, weapon.totalReserveAmmo);
-    //    }
-    //}
+    void AddAmmoFromWeaponGenerateIntoInventory()
+    {
+        foreach (var weapon in weaponSlots)
+        {
+            ammoInventory.AddAmmo(weapon.weaponType, weapon.totalReserveAmmo);
+        }
+    }
 
     #region Equip/Drop/Reload Weapon
     private void EquipStartingWeapon()
@@ -248,7 +248,7 @@ public class PlayerWeaponControllers : MonoBehaviour
         controls.Player.Equip1.performed += ctx => EquipWeapon(0);
         controls.Player.Equip2.performed += ctx => EquipWeapon(1);
 
-        controls.Player.Aim.performed += ctx => player.movement.SetAiming(true);
-        controls.Player.Aim.canceled += ctx => player.movement.SetAiming(false);
+        controls.Player.Aim.performed += ctx => player.aim.SetAiming(true);
+        controls.Player.Aim.canceled += ctx => player.aim.SetAiming(false);
     }
 }

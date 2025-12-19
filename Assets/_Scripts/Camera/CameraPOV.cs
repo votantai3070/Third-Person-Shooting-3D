@@ -8,6 +8,10 @@ public class ThirdPersonCameraController : MonoBehaviour
     [Header("Cinemachine")]
     [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private Transform cameraTarget;
+    [SerializeField] private float transitionSpeed = 5f;
+
+    private Vector3 normalOffset = new Vector3(0f, 2f, -2f);
+    private Vector3 aimOffset = new Vector3(0.6f, 1.25f, 2.33f);
 
     [Header("Mouse Settings")]
     [SerializeField] private float mouseSensitivity = 100f;
@@ -43,6 +47,12 @@ public class ThirdPersonCameraController : MonoBehaviour
             }
         }
 
+        // Set initial shoulder offset
+        if (virtualCamera.TryGetComponent<CinemachineThirdPersonFollow>(out var position))
+        {
+            position.ShoulderOffset = normalOffset;
+        }
+
         // Initialize rotations
         if (cameraTarget != null)
         {
@@ -56,19 +66,21 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     private void Update()
     {
-        UpdateCameraRotation();
         UpdateCameraPosition();
+        UpdateCameraRotation();
         HandleCursorToggle();
     }
 
     void UpdateCameraPosition()
     {
+        Vector3 targetOffset = player.aim.IsAiming() ? aimOffset : normalOffset;
+
         if (virtualCamera.TryGetComponent<CinemachineThirdPersonFollow>(out var position))
         {
-            if (player.movement.IsAiming())
-                position.ShoulderOffset = new Vector3(0.6f, 1.25f, 2.33f);
-            else
-                position.ShoulderOffset = new Vector3(0f, 2f, -2f);
+            position.ShoulderOffset = Vector3.Lerp(
+        position.ShoulderOffset,
+        targetOffset,
+        Time.deltaTime * transitionSpeed);
         }
     }
 
