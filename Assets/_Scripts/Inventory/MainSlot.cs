@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,22 +15,30 @@ public class MainSlot : MonoBehaviour
 
     private void UpdateInvenrotyMainSlot()
     {
-        for (int i = 0; i < inventoryManager.GetMainSlotWeaponList().Count; i++)
+        List<Weapon> weapons = inventoryManager.GetMainSlotWeaponList();
+
+        int totalSlots = transform.childCount;
+
+        for (int i = 0; i < totalSlots; i++)
         {
-            Weapon weapon = inventoryManager.GetMainSlotWeaponList()[i];
+            Transform slot = transform.GetChild(i);
+            Image iconImage = slot.GetChild(0).GetComponent<Image>();
+            TextMeshProUGUI textName = slot.GetChild(1).GetComponent<TextMeshProUGUI>();
 
-            Sprite weaponIcon = weapon.weaponData.weaponIcon;
-            string nameWeapon = weapon.weaponData.weaponName;
-
-            Transform slotImageTransform = transform.GetChild(i).GetChild(0);
-            Transform slotTextTransform = transform.GetChild(i).GetChild(1);
-            Image iconImage = slotImageTransform.GetComponent<Image>();
-            TextMeshProUGUI textNameWeapon = slotTextTransform.GetComponent<TextMeshProUGUI>();
-            iconImage.sprite = weaponIcon;
-            textNameWeapon.text = nameWeapon;
-
-            // Enable image nếu có weapon, disable nếu null
-            iconImage.enabled = (weaponIcon != null);
+            if (i < weapons.Count && weapons[i] != null)
+            {
+                Weapon weapon = weapons[i];
+                iconImage.sprite = weapon.weaponData.weaponIcon;
+                iconImage.enabled = true;
+                textName.text = weapon.weaponData.weaponName;
+            }
+            else
+            {
+                iconImage.sprite = null;
+                iconImage.enabled = false;
+                textName.text = "";
+            }
         }
     }
+
 }

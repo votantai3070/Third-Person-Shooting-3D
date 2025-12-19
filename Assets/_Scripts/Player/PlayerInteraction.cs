@@ -17,13 +17,28 @@ public class PlayerInteraction : MonoBehaviour
         InventoryManager.instance.SetMainWeaponList(player.controller.GetListWeapon());
     }
 
+    void Update()
+    {
+        UpdateMainWeaponInInventory();
+    }
+
+    private void UpdateMainWeaponInInventory()
+    {
+        List<Weapon> weaponList = player.controller.GetListWeapon();
+
+        if (weaponList != InventoryManager.instance.GetPreviousSlotWeaponList())
+        {
+            InventoryManager.instance.SetMainWeaponList(weaponList);
+            InventoryManager.instance.SetPreviousWeaponList(weaponList);
+        }
+    }
+
     private void InteractWithClosest()
     {
-        if (InventoryManager.instance != null)
-        {
-            InventoryManager.instance.SetMainWeaponList(player.controller.GetListWeapon());
-        }
-
+        //if (InventoryManager.instance != null)
+        //{
+        //    InventoryManager.instance.SetMainWeaponList(player.controller.GetListWeapon());
+        //}
         closestInteractable?.Interact();
     }
 
