@@ -34,4 +34,10 @@ public class PlayerEvents : MonoBehaviour
         player.visuals.ReduceRigWeight();
         player.visuals.ReduceLeftHandIKWeight();
     }
+
+    public void Interaction()
+    {
+        player.interaction.GetClosestInteractable()?.Interact();
+        player.visuals.SwitchOnWeaponHolder();
+    }
 }
