@@ -142,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.Normalize();
         }
 
+<<<<<<< Updated upstream
         bool isShootingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Shoot_Weapon");
         bool isShootingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Shoot_Weapon");
         bool isReloadingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Reload_Weapon");
@@ -150,6 +151,10 @@ public class PlayerMovement : MonoBehaviour
             player.anim.GetCurrentAnimatorStateInfo(2).IsName("Equip_Weapon");
         bool isInteraction = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Pickup_Item") ||
             player.anim.GetCurrentAnimatorStateInfo(2).IsName("Pickup_Item");
+=======
+        bool isShootingRifle, isShootingPistol, isReloadingRifle, isReloadingPistol, isEquipWeapon, isInteraction;
+        player.visuals.GetAnimationState(out isShootingRifle, out isShootingPistol, out isReloadingRifle, out isReloadingPistol, out isEquipWeapon, out isInteraction);
+>>>>>>> Stashed changes
 
         Debug.Log("Interaction State: " + isInteraction);
 
@@ -182,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
         player.anim.SetFloat("RunAndShootSpeed", runAndShootSpeed);
         player.visuals.SetRunning(moveDirection, isShootingRifle, isShootingPistol, isReloadingRifle, isReloadingPistol, isEquipWeapon, isInteraction);
     }
+
 
     void ApplyGravity()
     {

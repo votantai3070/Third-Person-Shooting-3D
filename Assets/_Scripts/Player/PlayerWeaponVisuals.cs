@@ -56,9 +56,16 @@ public class PlayerWeaponVisuals : MonoBehaviour
         UpdateLeftHandIKWeight();
     }
 
-    private void LateUpdate()
+    public void GetAnimationState(out bool isShootingRifle, out bool isShootingPistol, out bool isReloadingRifle, out bool isReloadingPistol, out bool isEquipWeapon, out bool isInteraction)
     {
-        //UpdateLeftHandIK();
+        isShootingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Shoot_Weapon");
+        isShootingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Shoot_Weapon");
+        isReloadingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Reload_Weapon");
+        isReloadingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Reload_Weapon");
+        isEquipWeapon = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Equip_Weapon") ||
+            player.anim.GetCurrentAnimatorStateInfo(2).IsName("Equip_Weapon");
+        isInteraction = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Pickup_Item") ||
+            player.anim.GetCurrentAnimatorStateInfo(2).IsName("Pickup_Item");
     }
 
     #region Animation Rigging Methods
