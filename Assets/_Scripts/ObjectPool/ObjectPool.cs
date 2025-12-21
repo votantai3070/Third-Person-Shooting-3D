@@ -91,7 +91,7 @@ public class ObjectPool : MonoBehaviour
             return;
         }
 
-        // ✅ Tự động tạo pool mới nếu chưa tồn tại
+        // Tự động tạo pool mới nếu chưa tồn tại
         if (!poolDict.ContainsKey(originalPrefab))
         {
             Debug.Log($"Tạo pool mới cho: {originalPrefab.name}");
