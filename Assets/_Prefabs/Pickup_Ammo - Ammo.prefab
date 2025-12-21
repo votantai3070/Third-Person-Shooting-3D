@@ -69,9 +69,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3d26c567ef8d54db47da929f986092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoBoxType: 0
-  smallBoxAmmo: []
-  bigBoxAmmo: []
+  ammoBoxType: 1
+  smallBoxAmmo:
+  - weaponType: 0
+    amount: 20
+  bigBoxAmmo:
+  - weaponType: 2
+    amount: 20
+  - weaponType: 3
+    amount: 20
   boxModel:
   - {fileID: 3241224853683324056}
   - {fileID: 330745254079837370}

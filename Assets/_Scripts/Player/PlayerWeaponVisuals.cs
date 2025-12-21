@@ -31,7 +31,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<Player>();
-
         rig = GetComponentInChildren<Rig>();
 
 
@@ -115,7 +114,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
         return currentWeaponModel?.playerViewPointTransform;
     }
 
-    public void SetRunning(Vector3 worldDirection, bool isShootingRifle, bool isShootingPistol, bool isReloadingRifle, bool isReloadingPistol, bool isEquipWeapon)
+    public void SetRunning(Vector3 worldDirection, bool isShootingRifle, bool isShootingPistol, bool isReloadingRifle, bool isReloadingPistol, bool isEquipWeapon, bool isInteraction)
     {
         Vector3 localDirection = Vector3.zero;
 
@@ -145,17 +144,17 @@ public class PlayerWeaponVisuals : MonoBehaviour
         player.anim.SetFloat("x", localDirection.x, 0.1f, Time.deltaTime);
         player.anim.SetFloat("z", localDirection.z, 0.1f, Time.deltaTime);
 
-        SetupAnimationWithRig(isEquipWeapon, isShoot, isReload);
+        SetupAnimationWithRig(isEquipWeapon, isShoot, isReload, isInteraction);
     }
 
-    private void SetupAnimationWithRig(bool isEquipWeapon, bool isShoot, bool isReload)
+    private void SetupAnimationWithRig(bool isEquipWeapon, bool isShoot, bool isReload, bool isInteraction)
     {
-        if (isReload || isRunning || isEquipWeapon)
+        if (isReload || isRunning || isEquipWeapon || isInteraction)
         {
             ReduceRigWeight();
             ReduceLeftHandIKWeight();
         }
-        else if (!isEquipWeapon || isShoot)
+        else if (!isEquipWeapon || isShoot || !isInteraction)
         {
             MaximizeRigWeight();
             MaximizeLeftHandWeight();

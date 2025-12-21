@@ -148,6 +148,10 @@ public class PlayerMovement : MonoBehaviour
         bool isReloadingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Reload_Weapon");
         bool isEquipWeapon = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Equip_Weapon") ||
             player.anim.GetCurrentAnimatorStateInfo(2).IsName("Equip_Weapon");
+        bool isInteraction = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Pickup_Item") ||
+            player.anim.GetCurrentAnimatorStateInfo(2).IsName("Pickup_Item");
+
+        Debug.Log("Interaction State: " + isInteraction);
 
         bool isReact = isShootingRifle || isShootingPistol || isReloadingRifle || isReloadingPistol;
 
@@ -156,11 +160,17 @@ public class PlayerMovement : MonoBehaviour
             runAndShootSpeed = 0.5f;
             movementSpeed = moveSpeed;
         }
+        else if (isInteraction)
+        {
+            runAndShootSpeed = 0f;
+            movementSpeed = 0f;
+        }
         else
         {
             runAndShootSpeed = 1f;
             movementSpeed = runSpeed;
         }
+
 
         // Apply movement
         characterController.Move(moveDirection * movementSpeed * Time.deltaTime);
@@ -170,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Update animator
         player.anim.SetFloat("RunAndShootSpeed", runAndShootSpeed);
-        player.visuals.SetRunning(moveDirection, isShootingRifle, isShootingPistol, isReloadingRifle, isReloadingPistol, isEquipWeapon);
+        player.visuals.SetRunning(moveDirection, isShootingRifle, isShootingPistol, isReloadingRifle, isReloadingPistol, isEquipWeapon, isInteraction);
     }
 
     void ApplyGravity()

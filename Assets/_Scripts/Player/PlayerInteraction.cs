@@ -35,11 +35,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private void InteractWithClosest()
     {
-        //if (InventoryManager.instance != null)
-        //{
-        //    InventoryManager.instance.SetMainWeaponList(player.controller.GetListWeapon());
-        //}
-        closestInteractable?.Interact();
+        player.visuals.SwitchOffWeaponHolder();
+        player.anim.SetTrigger("Interact");
     }
 
     public void FindClosestInteractable()
@@ -59,6 +56,8 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     public List<Interactable> GetInteractables() => interactList;
+
+    public Interactable GetClosestInteractable() => closestInteractable;
 
     private void AssignInputEvents()
     {
