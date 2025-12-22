@@ -11,7 +11,7 @@ public class IdleState_Melee : EnemyState
     {
         base.Enter();
 
-        enemy.anim.SetFloat("IdleIndex", (int)enemy.visuals.idleType);
+        stateTimer = enemy.idleTimer;
     }
 
     public override void Exit()
@@ -22,5 +22,10 @@ public class IdleState_Melee : EnemyState
     public override void Update()
     {
         base.Update();
+
+        if (stateTimer < 0)
+            stateMachine.ChangeState(enemy.patrolState_Melee);
+        else if (enemy.ChasePlayer())
+            stateMachine.ChangeState(enemy.chaseState_Melee);
     }
 }

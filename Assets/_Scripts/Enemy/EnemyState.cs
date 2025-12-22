@@ -1,9 +1,13 @@
+using UnityEngine;
+
 public class EnemyState
 {
     protected Enemy enemyBase;
     protected StateMachine stateMachine;
 
     protected string animBoolName;
+
+    protected float stateTimer;
 
     public EnemyState(Enemy enemyBase, StateMachine stateMachine, string animBoolName)
     {
@@ -23,5 +27,8 @@ public class EnemyState
         enemyBase.anim.SetBool(animBoolName, false);
     }
 
-    public virtual void Update() { }
+    public virtual void Update()
+    {
+        stateTimer -= Time.deltaTime;
+    }
 }

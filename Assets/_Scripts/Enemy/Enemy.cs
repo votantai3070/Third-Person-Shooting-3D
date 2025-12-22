@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.AI;
 
-public enum EnemyIdleType
+public enum EnemyAnimationType
 {
-    OneHand_MeleeIdle,
-    TwoHand_MeleeIdle
+    OneHand_Melee,
+    TwoHand_Melee
 }
 
 public class Enemy : MonoBehaviour
@@ -11,6 +12,21 @@ public class Enemy : MonoBehaviour
     public StateMachine stateMachine { get; private set; }
     public Animator anim { get; private set; }
     public EnemyVisuals visuals { get; private set; }
+    public NavMeshAgent agent { get; private set; }
+    public Player player { get; private set; }
+
+    [Header("General Settings")]
+    public float idleTimer;
+    public float moveSpeed = 3.5f;
+    public float turnSpeed = 5f;
+    public float chaseRange = 10f;
+    public float chaseSpeed = 5f;
+
+    [Header("Patrol Settings")]
+    public int currentPatrolIndex;
+    [SerializeField] PointPatrol[] pointPatrols;
+    private Vector3[] patrolPointPosition;
+
 
     protected virtual void Awake()
     {
@@ -18,10 +34,62 @@ public class Enemy : MonoBehaviour
 
         anim = GetComponentInChildren<Animator>();
         visuals = GetComponent<EnemyVisuals>();
+        agent = GetComponent<NavMeshAgent>();
+        player = FindAnyObjectByType<Player>();
     }
 
     protected virtual void Start()
     {
+        IniatializePatrolPoints();
+    }
 
+    protected virtual void Update()
+    {
+        stateMachine.currentState?.Update();
+    }
+
+    public bool ChasePlayer() => Vector3.Distance(transform.position, player.transform.position) < chaseRange;
+
+    public void RotateFace(Vector3 target)
+    {
+        Vector3 moveDir = (target - transform.position).normalized;
+        if (moveDir != Vector3.zero)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(moveDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
+        }
+    }
+
+    public Vector3 GetMovePatrol()
+    {
+        Vector3 patrolPointDestination = patrolPointPosition[currentPatrolIndex];
+
+        currentPatrolIndex++;
+
+        if (currentPatrolIndex >= patrolPointPosition.Length)
+        {
+            currentPatrolIndex = 0;
+        }
+
+        return patrolPointDestination;
+    }
+
+    private void IniatializePatrolPoints()
+    {
+        patrolPointPosition = new Vector3[pointPatrols.Length];
+
+        Debug.Log("Patrol Points Length: " + patrolPointPosition.Length);
+
+        for (int i = 0; i < pointPatrols.Length; i++)
+        {
+            patrolPointPosition[i] = pointPatrols[i].transform.position;
+            pointPatrols[i].gameObject.SetActive(false);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
     }
 }

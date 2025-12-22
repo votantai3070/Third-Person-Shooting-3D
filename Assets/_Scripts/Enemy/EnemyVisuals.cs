@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyVisuals : MonoBehaviour
 {
     [SerializeField] EnemyWeaponModels enemyWeaponModel;
-    [HideInInspector] public EnemyIdleType idleType;
 
     private EnemyWeaponModel[] enemyWeaponModels;
 
@@ -17,24 +16,6 @@ public class EnemyVisuals : MonoBehaviour
         ShowWeaponModel();
     }
 
-    private void OnValidate()
-    {
-        switch (enemyWeaponModel)
-        {
-            case EnemyWeaponModels.OneHandedSword:
-                idleType = EnemyIdleType.OneHand_MeleeIdle;
-                break;
-            case EnemyWeaponModels.OneHandedAxe:
-                idleType = EnemyIdleType.OneHand_MeleeIdle;
-                break;
-            case EnemyWeaponModels.TwoHandedSword:
-                idleType = EnemyIdleType.TwoHand_MeleeIdle;
-                break;
-            case EnemyWeaponModels.TwoHandedAxe:
-                idleType = EnemyIdleType.TwoHand_MeleeIdle;
-                break;
-        }
-    }
 
     private void ShowWeaponModel()
     {

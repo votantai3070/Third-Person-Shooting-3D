@@ -81,14 +81,17 @@
     <Compile Include="Assets\_Scripts\Pickups\PickupWeapon.cs" />
     <Compile Include="Assets\_Scripts\Weapon\BackupWeaponModel.cs" />
     <Compile Include="Assets\_Scripts\Pickups\PickupAmmo.cs" />
+    <Compile Include="Assets\_Scripts\Enemy\Enemy_Melee\MoveState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerAim.cs" />
     <Compile Include="Assets\_Scripts\Inventory\MainSlot.cs" />
+    <Compile Include="Assets\_Scripts\Enemy\Enemy_Melee\ChaseState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Inventory\AmmoInventoryUI.cs" />
     <Compile Include="Assets\_Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Crosshair.cs" />
     <Compile Include="Assets\_Scripts\Enemy\EnemyState.cs" />
     <Compile Include="Assets\_Scripts\SetupWeaponMaterials.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerInteraction.cs" />
+    <Compile Include="Assets\_Scripts\Enemy\PointPatrol.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Bullet.cs" />
