@@ -1,7 +1,7 @@
 public class ChaseState_Melee : EnemyState
 {
     private Enemy_Melee enemy;
-
+    float lastUpdateTime;
     public ChaseState_Melee(Enemy enemyBase, StateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         enemy = enemyBase as Enemy_Melee;
@@ -26,8 +26,22 @@ public class ChaseState_Melee : EnemyState
     {
         base.Update();
 
-        enemy.agent.SetDestination(enemy.player.transform.position);
-
         enemy.RotateFace(enemy.player.transform.position);
+
+        //if (CanUpdateDestination())
+        enemy.agent.destination = enemy.player.transform.position;
+
+        if (enemy.RangeDetectedAttackPlayer())
+            stateMachine.ChangeState(enemy.attackState);
     }
+
+    //private bool CanUpdateDestination()
+    //{
+    //    if (Time.time > lastUpdateTime + .25f)
+    //    {
+    //        lastUpdateTime = Time.time;
+    //        return true;
+    //    }
+    //    return false;
+    //}
 }

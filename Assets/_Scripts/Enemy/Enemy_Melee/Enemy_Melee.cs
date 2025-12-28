@@ -1,23 +1,27 @@
 public class Enemy_Melee : Enemy
 {
-    public IdleState_Melee idleState_Melee { get; private set; }
-    public MoveState_Melee patrolState_Melee { get; private set; }
-    public ChaseState_Melee chaseState_Melee { get; private set; }
+    public IdleState_Melee idleState { get; private set; }
+    public PatrolState_Melee patrolState { get; private set; }
+    public ChaseState_Melee chaseState { get; private set; }
+    public AttackState_Melee attackState { get; private set; }
+    public RecoveryState_Melee recoveryState { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
 
-        idleState_Melee = new IdleState_Melee(this, stateMachine, "Idle");
-        patrolState_Melee = new MoveState_Melee(this, stateMachine, "Walk");
-        chaseState_Melee = new ChaseState_Melee(this, stateMachine, "Chase");
+        idleState = new IdleState_Melee(this, stateMachine, "Idle");
+        patrolState = new PatrolState_Melee(this, stateMachine, "Patrol");
+        chaseState = new ChaseState_Melee(this, stateMachine, "Chase");
+        attackState = new AttackState_Melee(this, stateMachine, "Attack");
+        recoveryState = new RecoveryState_Melee(this, stateMachine, "Recovery");
     }
 
     protected override void Start()
     {
         base.Start();
 
-        stateMachine.Initialize(idleState_Melee);
+        stateMachine.Initialize(idleState);
     }
 
     protected override void Update()

@@ -1,7 +1,7 @@
-public class MoveState_Melee : EnemyState
+public class PatrolState_Melee : EnemyState
 {
     private Enemy_Melee enemy;
-    public MoveState_Melee(Enemy enemyBase, StateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public PatrolState_Melee(Enemy enemyBase, StateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         enemy = enemyBase as Enemy_Melee;
     }
@@ -29,9 +29,9 @@ public class MoveState_Melee : EnemyState
         enemy.RotateFace(enemy.agent.steeringTarget);
 
         if (enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + .5f)
-            stateMachine.ChangeState(enemy.idleState_Melee);
+            stateMachine.ChangeState(enemy.idleState);
 
-        else if (enemy.ChasePlayer())
-            stateMachine.ChangeState(enemy.chaseState_Melee);
+        else if (enemy.RangeDetectedPlayer())
+            stateMachine.ChangeState(enemy.recoveryState);
     }
 }

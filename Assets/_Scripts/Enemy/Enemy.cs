@@ -21,11 +21,20 @@ public class Enemy : MonoBehaviour
     public float turnSpeed = 5f;
     public float chaseRange = 10f;
     public float chaseSpeed = 5f;
+    public float attackRange = 2f;
+    public float attackCooldown;
+    private float lastAttackTime;
+
+
+    public bool isTrigger;
 
     [Header("Patrol Settings")]
     public int currentPatrolIndex;
     [SerializeField] PointPatrol[] pointPatrols;
     private Vector3[] patrolPointPosition;
+
+    [Header("Recovery Settings")]
+    public float recoveryTime = 1f;
 
 
     protected virtual void Awake()
@@ -48,7 +57,19 @@ public class Enemy : MonoBehaviour
         stateMachine.currentState?.Update();
     }
 
-    public bool ChasePlayer() => Vector3.Distance(transform.position, player.transform.position) < chaseRange;
+    public bool IsAttack()
+    {
+        if (Time.time > lastAttackTime + attackCooldown)
+        {
+            lastAttackTime = Time.time;
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool RangeDetectedPlayer() => Vector3.Distance(transform.position, player.transform.position) < chaseRange;
+    public bool RangeDetectedAttackPlayer() => Vector3.Distance(transform.position, player.transform.position) < attackRange;
 
     public void RotateFace(Vector3 target)
     {
