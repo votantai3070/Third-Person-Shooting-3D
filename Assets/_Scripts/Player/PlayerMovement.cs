@@ -142,21 +142,9 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.Normalize();
         }
 
-<<<<<<< Updated upstream
-        bool isShootingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Shoot_Weapon");
-        bool isShootingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Shoot_Weapon");
-        bool isReloadingRifle = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Reload_Weapon");
-        bool isReloadingPistol = player.anim.GetCurrentAnimatorStateInfo(2).IsName("Reload_Weapon");
-        bool isEquipWeapon = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Equip_Weapon") ||
-            player.anim.GetCurrentAnimatorStateInfo(2).IsName("Equip_Weapon");
-        bool isInteraction = player.anim.GetCurrentAnimatorStateInfo(1).IsName("Pickup_Item") ||
-            player.anim.GetCurrentAnimatorStateInfo(2).IsName("Pickup_Item");
-=======
         bool isShootingRifle, isShootingPistol, isReloadingRifle, isReloadingPistol, isEquipWeapon, isInteraction;
         player.visuals.GetAnimationState(out isShootingRifle, out isShootingPistol, out isReloadingRifle, out isReloadingPistol, out isEquipWeapon, out isInteraction);
->>>>>>> Stashed changes
 
-        Debug.Log("Interaction State: " + isInteraction);
 
         bool isReact = isShootingRifle || isShootingPistol || isReloadingRifle || isReloadingPistol;
 
