@@ -15,6 +15,7 @@ public class ChaseState_Melee : EnemyState
 
         enemy.agent.speed = enemy.chaseSpeed;
 
+        enemy.agent.stoppingDistance = 1f;
     }
 
     public override void Exit()

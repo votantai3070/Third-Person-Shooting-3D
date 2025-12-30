@@ -1,6 +1,11 @@
+using UnityEngine;
+
 public class AttackState_Melee : EnemyState
 {
     private Enemy_Melee enemy;
+
+    private float attackTypeIndex;
+    private float attackIndex;
 
     public AttackState_Melee(Enemy enemyBase, StateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
@@ -10,11 +15,24 @@ public class AttackState_Melee : EnemyState
     public override void Enter()
     {
         base.Enter();
+
+        attackIndex = attackTypeIndex == 1 ? Random.Range(0, 2) : -1;
+
+        enemy.anim.SetFloat("AttackTypeIndex", attackTypeIndex);
+        enemy.anim.SetFloat("AttackIndex", attackIndex);
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        attackTypeIndex = PlayerClose() ? 1 : 0;
+    }
+
+    private bool PlayerClose()
+    {
+        return Vector3.Distance
+            (enemy.transform.position, enemy.player.transform.position) <= 1f;
     }
 
     public override void Update()
