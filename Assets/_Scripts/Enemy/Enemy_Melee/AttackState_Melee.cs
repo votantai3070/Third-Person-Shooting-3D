@@ -32,7 +32,7 @@ public class AttackState_Melee : EnemyState
     private bool PlayerClose()
     {
         return Vector3.Distance
-            (enemy.transform.position, enemy.player.transform.position) <= 1f;
+            (enemy.transform.position, enemy.player.transform.position) <= 3f;
     }
 
     public override void Update()
