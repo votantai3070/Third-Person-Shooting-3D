@@ -4,6 +4,9 @@ public class RecoveryState_Melee : EnemyState
 {
     private Enemy_Melee enemy;
 
+    private float recoveryTime;
+    private float recoveryIndex;
+
     public RecoveryState_Melee(Enemy enemyBase, StateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         enemy = enemyBase as Enemy_Melee;
@@ -14,22 +17,28 @@ public class RecoveryState_Melee : EnemyState
         base.Enter();
 
         enemy.agent.isStopped = true;
+
+        this.recoveryTime = enemy.recoveryTime;
+
+        enemy.anim.SetFloat("RecoveryIndex", recoveryIndex);
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        recoveryIndex = enemy.RangeDetectedAttackPlayer() ? 1 : 0;
     }
 
     public override void Update()
     {
         base.Update();
 
-        enemy.recoveryTime -= Time.deltaTime;
+        recoveryTime -= Time.deltaTime;
 
         enemy.RotateFace(enemy.player.transform.position);
 
-        if (enemy.recoveryTime <= 0)
+        if (recoveryTime <= 0)
             stateMachine.ChangeState(enemy.chaseState);
     }
 }

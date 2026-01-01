@@ -26,14 +26,14 @@ public class AttackState_Melee : EnemyState
     {
         base.Exit();
 
-        attackTypeIndex = PlayerClose() ? 1 : 0;
+        attackTypeIndex = enemy.RangeDetectedAttackPlayer() ? 1 : 0;
     }
 
-    private bool PlayerClose()
-    {
-        return Vector3.Distance
-            (enemy.transform.position, enemy.player.transform.position) <= 1f;
-    }
+    //private bool PlayerClose()
+    //{
+    //    return Vector3.Distance
+    //        (enemy.transform.position, enemy.player.transform.position) <= 3f;
+    //}
 
     public override void Update()
     {
