@@ -99,8 +99,6 @@ public class Enemy : MonoBehaviour
     {
         patrolPointPosition = new Vector3[pointPatrols.Length];
 
-        Debug.Log("Patrol Points Length: " + patrolPointPosition.Length);
-
         for (int i = 0; i < pointPatrols.Length; i++)
         {
             patrolPointPosition[i] = pointPatrols[i].transform.position;
