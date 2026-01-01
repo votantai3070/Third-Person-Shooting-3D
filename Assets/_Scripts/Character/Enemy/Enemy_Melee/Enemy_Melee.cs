@@ -5,6 +5,7 @@ public class Enemy_Melee : Enemy
     public ChaseState_Melee chaseState { get; private set; }
     public AttackState_Melee attackState { get; private set; }
     public RecoveryState_Melee recoveryState { get; private set; }
+    public DeadState_Melee deadState { get; private set; }
 
     protected override void Awake()
     {
@@ -15,6 +16,7 @@ public class Enemy_Melee : Enemy
         chaseState = new ChaseState_Melee(this, stateMachine, "Chase");
         attackState = new AttackState_Melee(this, stateMachine, "Attack");
         recoveryState = new RecoveryState_Melee(this, stateMachine, "Recovery");
+        deadState = new DeadState_Melee(this, stateMachine, "Idle");
     }
 
     protected override void Start()
@@ -29,4 +31,10 @@ public class Enemy_Melee : Enemy
         base.Update();
     }
 
+    protected override void Die()
+    {
+        base.Die();
+
+        stateMachine.ChangeState(deadState);
+    }
 }

@@ -7,7 +7,7 @@ public enum EnemyAnimationType
     TwoHand_Melee
 }
 
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
     public StateMachine stateMachine { get; private set; }
     public Animator anim { get; private set; }

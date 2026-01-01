@@ -6,6 +6,13 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
+
+        if (enemy != null)
+        {
+            enemy.TakeDamage(1);
+        }
+
         GameObject impactVFX = ObjectPool.instance.GetObject(impactVFXPrefab);
         impactVFX.transform.position = collision.contacts[0].point;
 
