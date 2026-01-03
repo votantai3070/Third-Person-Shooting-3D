@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class EnemyVisuals : MonoBehaviour
 {
+    private Enemy enemy;
+
+    [SerializeField] int health = 100;
+
     [SerializeField] EnemyWeaponModels enemyWeaponModel;
 
     private EnemyWeaponModel[] enemyWeaponModels;
 
     private void Awake()
     {
+        enemy = GetComponent<Enemy>();
         enemyWeaponModels = GetComponentsInChildren<EnemyWeaponModel>(true);
     }
 
@@ -16,6 +21,10 @@ public class EnemyVisuals : MonoBehaviour
         ShowWeaponModel();
     }
 
+    public int GetHealth()
+    {
+        return health;
+    }
 
     private void ShowWeaponModel()
     {
