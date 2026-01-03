@@ -104,6 +104,7 @@
     <Compile Include="Assets\_Scripts\SO\Weapon_SO.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\_Scripts\StateMachine.cs" />
+    <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Ragdoll.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerAim.cs" />
     <Compile Include="Assets\_Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\IdleState_Melee.cs" />

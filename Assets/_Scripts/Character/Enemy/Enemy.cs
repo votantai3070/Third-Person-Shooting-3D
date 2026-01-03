@@ -14,6 +14,7 @@ public class Enemy : Character
     public EnemyVisuals visuals { get; private set; }
     public NavMeshAgent agent { get; private set; }
     public Player player { get; private set; }
+    public Enemy_Ragdoll ragdoll { get; private set; }
 
     [Header("General Settings")]
     public float idleTimer;
@@ -45,6 +46,7 @@ public class Enemy : Character
         visuals = GetComponent<EnemyVisuals>();
         agent = GetComponent<NavMeshAgent>();
         player = FindAnyObjectByType<Player>();
+        ragdoll = GetComponent<Enemy_Ragdoll>();
     }
 
     protected virtual void Start()

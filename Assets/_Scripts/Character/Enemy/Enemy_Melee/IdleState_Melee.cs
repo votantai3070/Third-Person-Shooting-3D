@@ -12,6 +12,9 @@ public class IdleState_Melee : EnemyState
         base.Enter();
 
         stateTimer = enemy.idleTimer;
+
+        //enemy.ragdoll.CollidersActive(true);
+        //enemy.ragdoll.RagdollActive(true);
     }
 
     public override void Exit()
