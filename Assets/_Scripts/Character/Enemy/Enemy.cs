@@ -42,16 +42,16 @@ public class Enemy : Character
     protected virtual void Awake()
     {
         stateMachine = new StateMachine();
+    }
 
+    protected virtual void Start()
+    {
         anim = GetComponentInChildren<Animator>();
         visuals = GetComponent<EnemyVisuals>();
         agent = GetComponent<NavMeshAgent>();
         player = FindAnyObjectByType<Player>();
         ragdoll = GetComponent<Enemy_Ragdoll>();
-    }
 
-    protected virtual void Start()
-    {
         IniatializePatrolPoints();
     }
 

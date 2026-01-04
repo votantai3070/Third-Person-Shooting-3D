@@ -14,12 +14,13 @@ public class EnemyVisuals : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
         enemyWeaponModels = GetComponentsInChildren<EnemyWeaponModel>(true);
+
+        RandomModel();
     }
 
     private void Start()
     {
         ShowWeaponModel();
-        RandomModel();
     }
 
     private void RandomModel()
