@@ -19,6 +19,26 @@ public class EnemyVisuals : MonoBehaviour
     private void Start()
     {
         ShowWeaponModel();
+        RandomModel();
+    }
+
+    private void RandomModel()
+    {
+        Enemy_Models[] models = GetComponentsInChildren<Enemy_Models>();
+
+        int randomIndex = Random.Range(0, models.Length);
+
+        for (int i = 0; i < models.Length; i++)
+        {
+            if (i == randomIndex)
+            {
+                models[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                models[i].gameObject.SetActive(false);
+            }
+        }
     }
 
     public int GetHealth()

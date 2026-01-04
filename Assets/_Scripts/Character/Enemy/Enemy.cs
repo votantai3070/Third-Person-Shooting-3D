@@ -28,6 +28,7 @@ public class Enemy : Character
 
 
     public bool isTrigger;
+    public bool isShooted;
 
     [Header("Patrol Settings")]
     public int currentPatrolIndex;
@@ -59,6 +60,8 @@ public class Enemy : Character
         stateMachine.currentState?.Update();
     }
 
+    public void Shooted() => isShooted = true;
+
     public bool IsAttack()
     {
         if (Time.time > lastAttackTime + attackCooldown)
@@ -71,6 +74,7 @@ public class Enemy : Character
     }
 
     public bool RangeDetectedPlayer() => Vector3.Distance(transform.position, player.transform.position) < chaseRange;
+
     public bool RangeDetectedAttackPlayer() => Vector3.Distance(transform.position, player.transform.position) < attackRange;
 
     public void RotateFace(Vector3 target)

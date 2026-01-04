@@ -83,6 +83,7 @@
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Character\Character.cs" />
+    <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Models.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerWeaponControllers.cs" />
     <Compile Include="Assets\_InputManager\PlayerControls.cs" />
     <Compile Include="Assets\_Scripts\Pickups\PickupWeapon.cs" />
@@ -1315,6 +1316,10 @@
     </Reference>
     <Reference Include="Unity.Settings.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Settings.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
