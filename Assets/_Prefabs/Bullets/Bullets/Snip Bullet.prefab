@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3936790508954702312}
   - component: {fileID: -2179359391372920554}
   - component: {fileID: 8790367515192085691}
-  - component: {fileID: 3543070659391725986}
+  - component: {fileID: 5388485035697129142}
   m_Layer: 0
   m_Name: Snip Bullet
   m_TagString: Untagged
@@ -178,7 +178,7 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!114 &3543070659391725986
+--- !u!114 &5388485035697129142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c65959bea88c58468ac9155fd051d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactVFXPrefab: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
 --- !u!1 &5523704948862509632
 GameObject:
   m_ObjectHideFlags: 0

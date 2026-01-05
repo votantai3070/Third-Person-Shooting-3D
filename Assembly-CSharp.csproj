@@ -67,10 +67,12 @@
     <Compile Include="Assets\_Scripts\Weapon\WeaponModels.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\Enemy_Melee.cs" />
     <Compile Include="Assets\_Scripts\Pickups\Interactable.cs" />
+    <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\Enemy_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerEvents.cs" />
     <Compile Include="Assets\_Scripts\Weapon\EnemyWeaponModels.cs" />
     <Compile Include="Assets\_Scripts\Inventory\AmmoSlotUI.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Ammo\Ammo.cs" />
+    <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\IdleState_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\DeadState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetUpdater.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\Player.cs" />

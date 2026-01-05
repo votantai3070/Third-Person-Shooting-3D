@@ -1,28 +1,47 @@
 using UnityEngine;
 
+public enum EnemyType
+{
+    Melee,
+    Range
+}
+
 public class EnemyVisuals : MonoBehaviour
 {
     private Enemy enemy;
 
     [SerializeField] int health = 100;
 
-    [SerializeField] EnemyWeaponModels enemyWeaponModel;
+    [Header("Enemy Models")]
+    [SerializeField] EnemyType enemyType;
 
-    private EnemyWeaponModel[] enemyWeaponModels;
+    [Header("Enemy Melee Weapon Models")]
+    [SerializeField] EnemyWeaponModels enemyMeleeWeaponModel;
+    [SerializeField] WeaponType enemyRangeWeaponModel;
+
+    [Header("Enemy Range Weapon Models")]
+
+    private EnemyWeaponModel[] enemyMeleeWeaponModels;
+    private WeaponModels[] enemyRangeWeaponModels;
 
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
-        enemyWeaponModels = GetComponentsInChildren<EnemyWeaponModel>(true);
+        enemyMeleeWeaponModels = GetComponentsInChildren<EnemyWeaponModel>(true);
+        enemyRangeWeaponModels = GetComponentsInChildren<WeaponModels>(true);
 
         RandomModel();
     }
 
     private void Start()
     {
-        ShowWeaponModel();
+        if (enemyType == EnemyType.Melee)
+            ShowMeleeWeaponModel();
+        else if (enemyType == EnemyType.Range)
+            ShowRangeWeaponModel();
     }
 
+    // Activate a random enemy melee model from the available models
     private void RandomModel()
     {
         Enemy_Models[] models = GetComponentsInChildren<Enemy_Models>();
@@ -47,11 +66,26 @@ public class EnemyVisuals : MonoBehaviour
         return health;
     }
 
-    private void ShowWeaponModel()
+    private void ShowMeleeWeaponModel()
     {
-        foreach (var model in enemyWeaponModels)
+        foreach (var model in enemyMeleeWeaponModels)
         {
-            if (model.weaponModel == enemyWeaponModel)
+            if (model.weaponModel == enemyMeleeWeaponModel)
+            {
+                model.gameObject.SetActive(true);
+            }
+            else
+            {
+                model.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void ShowRangeWeaponModel()
+    {
+        foreach (var model in enemyRangeWeaponModels)
+        {
+            if (model.weaponModelType == enemyRangeWeaponModel)
             {
                 model.gameObject.SetActive(true);
             }

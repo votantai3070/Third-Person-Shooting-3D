@@ -46,6 +46,7 @@ public class Enemy : Character
 
     protected virtual void Start()
     {
+        pointPatrols = GetComponentsInChildren<PointPatrol>();
         anim = GetComponentInChildren<Animator>();
         visuals = GetComponent<EnemyVisuals>();
         agent = GetComponent<NavMeshAgent>();
