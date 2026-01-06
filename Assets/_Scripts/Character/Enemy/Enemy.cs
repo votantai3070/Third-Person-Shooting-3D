@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public enum EnemyAnimationType
@@ -86,6 +86,23 @@ public class Enemy : Character
             Quaternion targetRot = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
         }
+    }
+
+    public bool ReachedDestination()
+    {
+        // Kiểm tra path không đang pending
+        if (agent.pathPending)
+            return false;
+
+        // Kiểm tra đã đến gần destination
+        if (agent.remainingDistance > agent.stoppingDistance + 0.5f)
+            return false;
+
+        // Kiểm tra không còn path hoặc velocity = 0
+        if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+            return true;
+
+        return false;
     }
 
     public Vector3 GetMovePatrol()

@@ -10,6 +10,12 @@ public class IdleState_Range : EnemyState
     public override void Enter()
     {
         base.Enter();
+
+        enemy.visuals.SetLayerAnimation(1, 1f);
+
+        enemy.agent.isStopped = true;
+
+        stateTimer = enemy.idleTimer;
     }
 
     public override void Exit()
@@ -19,5 +25,10 @@ public class IdleState_Range : EnemyState
     public override void Update()
     {
         base.Update();
+
+        if (stateTimer < 0)
+        {
+            stateMachine.ChangeState(enemy.patrolState);
+        }
     }
 }

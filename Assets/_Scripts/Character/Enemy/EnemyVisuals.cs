@@ -17,11 +17,10 @@ public class EnemyVisuals : MonoBehaviour
 
     [Header("Enemy Melee Weapon Models")]
     [SerializeField] EnemyWeaponModels enemyMeleeWeaponModel;
-    [SerializeField] WeaponType enemyRangeWeaponModel;
+    private EnemyWeaponModel[] enemyMeleeWeaponModels;
 
     [Header("Enemy Range Weapon Models")]
-
-    private EnemyWeaponModel[] enemyMeleeWeaponModels;
+    [SerializeField] WeaponType enemyRangeWeaponModel;
     private WeaponModels[] enemyRangeWeaponModels;
 
     private void Awake()
@@ -39,6 +38,12 @@ public class EnemyVisuals : MonoBehaviour
             ShowMeleeWeaponModel();
         else if (enemyType == EnemyType.Range)
             ShowRangeWeaponModel();
+    }
+
+    // Set the weight of a specific animation layer
+    public void SetLayerAnimation(int layerIndex, float weight)
+    {
+        enemy.anim.SetLayerWeight(layerIndex, weight);
     }
 
     // Activate a random enemy melee model from the available models
