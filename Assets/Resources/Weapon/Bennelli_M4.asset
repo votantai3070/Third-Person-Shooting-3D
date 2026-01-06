@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0800b5205de0af74cb60b30c0a53087d, type: 3}
+  m_Name: Bennelli_M4
+  m_EditorClassIdentifier: 
+  weaponName: Bennelli_M4
+  weaponIcon: {fileID: 0}
+  bulletPrefab: {fileID: 7617375672060013244, guid: 0fc85a5bdeff64141b6ec310c127e3e9, type: 3}
+  damage: 1
+  fireRate: 1
+  bulletSpeed: 80
+  shootRange: 60
+  impactForce: 20
+  ammoType: 5
+  bulletsPerShot: 5
+  magazineCapacity: 5
+  bulletsInMagazine: 5
+  totalReserveAmmo: 30
+  burstAvailable: 0
+  burstActive: 0
+  burstBulletsPerShot: 0
+  burstFireRate: 0
+  burstFireDelay: 0
+  recoilForce: 0
+  baseSpreadAngle: 0
+  maximumSpreadAngle: 0
+  reloadTime: 3
+  reloadSpeed: 1.2
+  equipmentSpeed: 1.5
+  muzzleFlashEffect: {fileID: 0}
+  bulletImpactEffect: {fileID: 0}
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
+  weaponType: 4
+  shootType: 0

@@ -30,8 +30,7 @@ public class PatrolState_Melee : EnemyState
 
         if (enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + .5f)
             stateMachine.ChangeState(enemy.idleState);
-
-        else if (enemy.RangeDetectedPlayer())
+        else if (enemy.RangeDetectedPlayer() || enemy.isShooted)
             stateMachine.ChangeState(enemy.recoveryState);
     }
 }

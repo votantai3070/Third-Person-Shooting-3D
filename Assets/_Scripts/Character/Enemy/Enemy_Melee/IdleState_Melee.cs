@@ -28,7 +28,7 @@ public class IdleState_Melee : EnemyState
 
         if (stateTimer < 0)
             stateMachine.ChangeState(enemy.patrolState);
-        else if (enemy.RangeDetectedPlayer())
+        else if (enemy.RangeDetectedPlayer() || enemy.isShooted)
             stateMachine.ChangeState(enemy.recoveryState);
     }
 }

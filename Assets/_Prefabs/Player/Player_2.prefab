@@ -2799,13 +2799,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5224862377860314097}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.21601473, y: 0.6670736, z: 0.71129096, w: -0.04915015}
-  m_LocalPosition: {x: -0.453, y: 0.336, z: -0.052}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: -0.8369349, y: 0.3024581, z: -0.12728275, w: 0.4380162}
+  m_LocalPosition: {x: 0.4832, y: -0.0245, z: -0.0025}
+  m_LocalScale: {x: 0.09999999, y: 0.10000001, z: 0.10000004}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3737268655537178938}
-  m_LocalEulerAnglesHint: {x: -68.084, y: -87.435, z: -106.37}
+  m_LocalEulerAnglesHint: {x: -41.01, y: -219.307, z: -125.047}
 --- !u!1 &5300720831705681690
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,7 +4364,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7891058214873949390, guid: fda479538d924144cabef019292cfd22, type: 3}
   bulletSpeed: 100
   distanceShot: 1000
-  defaultWeaponData: {fileID: 11400000, guid: 30f59501d8fed1647a11024e10248886, type: 2}
+  defaultWeaponData: {fileID: 11400000, guid: 0d427dc8ff2e2744487844f748d1bb13, type: 2}
   currentWeapon:
     weaponType: 0
     shootType: 0
@@ -4837,9 +4837,9 @@ Transform:
   m_GameObject: {fileID: 8340604638045652743}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46160036, y: 0.4135282, z: 0.78443384, w: 0.024149317}
-  m_LocalPosition: {x: -0.181, y: 0.67, z: -0.559}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0.387, y: -0.815, z: 0.234}
+  m_LocalScale: {x: 0.099999994, y: 0.1, z: 0.100000046}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3737268655537178938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

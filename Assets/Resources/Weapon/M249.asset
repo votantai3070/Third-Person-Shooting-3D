@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0800b5205de0af74cb60b30c0a53087d, type: 3}
+  m_Name: M249
+  m_EditorClassIdentifier: 
+  weaponName: M249
+  weaponIcon: {fileID: 0}
+  bulletPrefab: {fileID: 7891058214873949390, guid: fda479538d924144cabef019292cfd22, type: 3}
+  damage: 1
+  fireRate: 8
+  bulletSpeed: 100
+  shootRange: 0
+  impactForce: 0
+  ammoType: 0
+  bulletsPerShot: 1
+  magazineCapacity: 100
+  bulletsInMagazine: 100
+  totalReserveAmmo: 200
+  burstAvailable: 0
+  burstActive: 0
+  burstBulletsPerShot: 0
+  burstFireRate: 0
+  burstFireDelay: 0
+  recoilForce: 0
+  baseSpreadAngle: 0
+  maximumSpreadAngle: 0
+  reloadTime: 3
+  reloadSpeed: 1
+  equipmentSpeed: 1
+  muzzleFlashEffect: {fileID: 0}
+  bulletImpactEffect: {fileID: 0}
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
+  weaponType: 5
+  shootType: 1

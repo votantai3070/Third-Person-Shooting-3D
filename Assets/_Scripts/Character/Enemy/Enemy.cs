@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public enum EnemyAnimationType
@@ -28,6 +28,7 @@ public class Enemy : Character
 
 
     public bool isTrigger;
+    public bool isShooted;
 
     [Header("Patrol Settings")]
     public int currentPatrolIndex;
@@ -41,16 +42,17 @@ public class Enemy : Character
     protected virtual void Awake()
     {
         stateMachine = new StateMachine();
+    }
 
+    protected virtual void Start()
+    {
+        pointPatrols = GetComponentsInChildren<PointPatrol>();
         anim = GetComponentInChildren<Animator>();
         visuals = GetComponent<EnemyVisuals>();
         agent = GetComponent<NavMeshAgent>();
         player = FindAnyObjectByType<Player>();
         ragdoll = GetComponent<Enemy_Ragdoll>();
-    }
 
-    protected virtual void Start()
-    {
         IniatializePatrolPoints();
     }
 
@@ -58,6 +60,8 @@ public class Enemy : Character
     {
         stateMachine.currentState?.Update();
     }
+
+    public void Shooted() => isShooted = true;
 
     public bool IsAttack()
     {
@@ -71,6 +75,7 @@ public class Enemy : Character
     }
 
     public bool RangeDetectedPlayer() => Vector3.Distance(transform.position, player.transform.position) < chaseRange;
+
     public bool RangeDetectedAttackPlayer() => Vector3.Distance(transform.position, player.transform.position) < attackRange;
 
     public void RotateFace(Vector3 target)
@@ -81,6 +86,23 @@ public class Enemy : Character
             Quaternion targetRot = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
         }
+    }
+
+    public bool ReachedDestination()
+    {
+        // Kiểm tra path không đang pending
+        if (agent.pathPending)
+            return false;
+
+        // Kiểm tra đã đến gần destination
+        if (agent.remainingDistance > agent.stoppingDistance + 0.5f)
+            return false;
+
+        // Kiểm tra không còn path hoặc velocity = 0
+        if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+            return true;
+
+        return false;
     }
 
     public Vector3 GetMovePatrol()
