@@ -30,5 +30,8 @@ public class IdleState_Range : EnemyState
         {
             stateMachine.ChangeState(enemy.patrolState);
         }
+
+        //if (enemy.isShooted)
+        //    stateMachine.ChangeState(enemy.chaseState);
     }
 }

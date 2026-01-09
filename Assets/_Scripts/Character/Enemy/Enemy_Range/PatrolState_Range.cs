@@ -36,7 +36,10 @@ public class PatrolState_Range : EnemyState
         if (enemy.ReachedDestination())
             stateMachine.ChangeState(enemy.idleState);
 
-        if (enemy.RangeDetectedPlayer() || enemy.isShooted)
+        if (enemy.RangeDetectedPlayer())
             stateMachine.ChangeState(enemy.recoveryState);
+
+        //if (enemy.isShooted)
+        //    stateMachine.ChangeState(enemy.chaseState);
     }
 }
