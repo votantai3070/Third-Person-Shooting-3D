@@ -22,6 +22,7 @@ public class EnemyVisuals : MonoBehaviour
     [Header("Enemy Range Weapon Models")]
     [SerializeField] WeaponType enemyRangeWeaponModel;
     private WeaponModels[] enemyRangeWeaponModels;
+    private WeaponModels currentWeaponModel;
 
     private void Awake()
     {
@@ -71,6 +72,7 @@ public class EnemyVisuals : MonoBehaviour
         return health;
     }
 
+    #region Show Weapon Models
     private void ShowMeleeWeaponModel()
     {
         foreach (var model in enemyMeleeWeaponModels)
@@ -93,6 +95,7 @@ public class EnemyVisuals : MonoBehaviour
             if (model.weaponModelType == enemyRangeWeaponModel)
             {
                 model.gameObject.SetActive(true);
+                currentWeaponModel = model;
             }
             else
             {
@@ -100,4 +103,7 @@ public class EnemyVisuals : MonoBehaviour
             }
         }
     }
+
+    public WeaponModels GetCurrentWeaponModel() => currentWeaponModel;
+    #endregion
 }

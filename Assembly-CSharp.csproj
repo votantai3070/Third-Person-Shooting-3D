@@ -74,6 +74,7 @@
     <Compile Include="Assets\_Scripts\Weapon\Ammo\Ammo.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\IdleState_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\DeadState_Melee.cs" />
+    <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\DeadState_Range.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetUpdater.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\ChaseState_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\Player.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Assets\_Scripts\StateMachine.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Ragdoll.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerAim.cs" />
+    <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\AttackState_range.cs" />
     <Compile Include="Assets\_Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\IdleState_Melee.cs" />
     <Compile Include="Assets\_Scripts\ObjectPool\PooledObject.cs" />

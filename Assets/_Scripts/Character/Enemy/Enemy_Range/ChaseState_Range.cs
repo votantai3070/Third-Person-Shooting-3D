@@ -16,11 +16,11 @@ public class ChaseState_Range : EnemyState
     {
         base.Enter();
 
-        enemy.visuals.SetLayerAnimation(1, 0f);
+        enemy.visuals.SetLayerAnimation(1, 1f);
 
         enemy.agent.isStopped = false;
 
-        enemy.agent.stoppingDistance = 5f;
+        enemy.agent.stoppingDistance = enemy.attackRange;
 
         lastUpdateTime = 0f;
     }
@@ -43,8 +43,9 @@ public class ChaseState_Range : EnemyState
         }
 
         if (!enemy.RangeDetectedPlayer())
-        {
             stateMachine.ChangeState(enemy.recoveryState);
-        }
+
+        if (enemy.RangeDetectedAttackPlayer())
+            stateMachine.ChangeState(enemy.attackState);
     }
 }
