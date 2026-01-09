@@ -74,9 +74,9 @@ public class Enemy : Character
         return false;
     }
 
-    public bool RangeDetectedPlayer() => Vector3.Distance(transform.position, player.transform.position) < chaseRange;
+    public bool RangeDetectedPlayer() => Vector3.Distance(transform.position, player.transform.position) <= chaseRange;
 
-    public bool RangeDetectedAttackPlayer() => Vector3.Distance(transform.position, player.transform.position) < attackRange;
+    public bool RangeDetectedAttackPlayer() => Vector3.Distance(transform.position, player.transform.position) <= attackRange;
 
     public void RotateFace(Vector3 target)
     {
