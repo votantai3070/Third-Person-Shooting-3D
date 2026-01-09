@@ -1,11 +1,13 @@
 public class Enemy_Melee : Enemy
 {
+    #region States
     public IdleState_Melee idleState { get; private set; }
     public PatrolState_Melee patrolState { get; private set; }
     public ChaseState_Melee chaseState { get; private set; }
     public AttackState_Melee attackState { get; private set; }
     public RecoveryState_Melee recoveryState { get; private set; }
     public DeadState_Melee deadState { get; private set; }
+    #endregion
 
     protected override void Awake()
     {

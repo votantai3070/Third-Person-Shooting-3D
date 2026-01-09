@@ -4,12 +4,14 @@ public class Enemy_Range : Enemy
 {
     private float lastShootTime;
 
+    #region States
     public IdleState_Range idleState { get; private set; }
     public PatrolState_Range patrolState { get; private set; }
     public RecoveryState_Range recoveryState { get; private set; }
     public ChaseState_Range chaseState { get; private set; }
     public AttackState_Range attackState { get; private set; }
     public DeadState_Range deadState { get; private set; }
+    #endregion
 
     protected override void Awake()
     {

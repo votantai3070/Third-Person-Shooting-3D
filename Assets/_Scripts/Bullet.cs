@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     {
         Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
 
+        //Player player = collision.gameObject.GetComponentInParent<Player>();
+
         if (enemy != null)
         {
             enemy.TakeDamage(1);
