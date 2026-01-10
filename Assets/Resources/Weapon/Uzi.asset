@@ -31,8 +31,8 @@ MonoBehaviour:
   burstFireRate: 0
   burstFireDelay: 0
   recoilForce: 0
-  baseSpreadAngle: 0
-  maximumSpreadAngle: 0
+  baseSpreadAngle: 0.2
+  maximumSpreadAngle: 2
   reloadTime: 1.8
   reloadSpeed: 1.8
   equipmentSpeed: 1.6

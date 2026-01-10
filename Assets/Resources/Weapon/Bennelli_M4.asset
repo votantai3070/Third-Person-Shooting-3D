@@ -21,18 +21,18 @@ MonoBehaviour:
   shootRange: 60
   impactForce: 20
   ammoType: 5
-  bulletsPerShot: 5
+  bulletsPerShot: 1
   magazineCapacity: 5
   bulletsInMagazine: 5
   totalReserveAmmo: 30
-  burstAvailable: 0
+  burstAvailable: 1
   burstActive: 0
-  burstBulletsPerShot: 0
-  burstFireRate: 0
-  burstFireDelay: 0
+  burstBulletsPerShot: 5
+  burstFireRate: 1
+  burstFireDelay: 2
   recoilForce: 0
-  baseSpreadAngle: 0
-  maximumSpreadAngle: 0
+  baseSpreadAngle: 5
+  maximumSpreadAngle: 5
   reloadTime: 3
   reloadSpeed: 1.2
   equipmentSpeed: 1.5
