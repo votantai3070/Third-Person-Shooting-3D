@@ -18,8 +18,8 @@ MonoBehaviour:
   damage: 1
   fireRate: 8
   bulletSpeed: 100
-  shootRange: 0
-  impactForce: 0
+  shootRange: 300
+  impactForce: 15
   ammoType: 0
   bulletsPerShot: 1
   magazineCapacity: 100
@@ -31,8 +31,8 @@ MonoBehaviour:
   burstFireRate: 0
   burstFireDelay: 0
   recoilForce: 0
-  baseSpreadAngle: 0
-  maximumSpreadAngle: 0
+  baseSpreadAngle: 0.5
+  maximumSpreadAngle: 3
   reloadTime: 3
   reloadSpeed: 1
   equipmentSpeed: 1

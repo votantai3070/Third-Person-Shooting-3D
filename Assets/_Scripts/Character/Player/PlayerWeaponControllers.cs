@@ -162,6 +162,8 @@ public class PlayerWeaponControllers : MonoBehaviour
         }
 
         FireSingleBullet();
+
+        currentWeapon.bulletsInMagazine--;
     }
 
     IEnumerator BurstFire()
@@ -176,11 +178,12 @@ public class PlayerWeaponControllers : MonoBehaviour
             if (i >= currentWeapon.bulletsPerShot)
                 SetWeaponReady(true);
         }
+
+        currentWeapon.bulletsInMagazine--;
     }
 
     public void FireSingleBullet()
     {
-        currentWeapon.bulletsInMagazine--;
 
         // Raycast từ center màn hình để tìm điểm bắn
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // center screen
