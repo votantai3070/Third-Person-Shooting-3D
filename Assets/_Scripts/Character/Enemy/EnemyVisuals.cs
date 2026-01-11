@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum EnemyType
 {
@@ -16,19 +16,20 @@ public class EnemyVisuals : MonoBehaviour
     [SerializeField] EnemyType enemyType;
 
     [Header("Enemy Melee Weapon Models")]
+    public GameObject currentMeleeWeaponModel { get; private set; }
     [SerializeField] EnemyWeaponModels enemyMeleeWeaponModel;
     private EnemyWeaponModel[] enemyMeleeWeaponModels;
 
     [Header("Enemy Range Weapon Models")]
+    public GameObject currentRangeWeaponModel { get; private set; }
     [SerializeField] WeaponType enemyRangeWeaponModel;
-    private WeaponModels[] enemyRangeWeaponModels;
-    private WeaponModels currentWeaponModel;
+    public EnemyWeaponModel_Range[] enemyRangeWeaponModels;
 
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
         enemyMeleeWeaponModels = GetComponentsInChildren<EnemyWeaponModel>(true);
-        enemyRangeWeaponModels = GetComponentsInChildren<WeaponModels>(true);
+        enemyRangeWeaponModels = GetComponentsInChildren<EnemyWeaponModel_Range>(true);
 
         RandomModel();
     }
@@ -80,11 +81,10 @@ public class EnemyVisuals : MonoBehaviour
             if (model.weaponModel == enemyMeleeWeaponModel)
             {
                 model.gameObject.SetActive(true);
+                currentMeleeWeaponModel = FindMeleeWeaponModel();
+                break;
             }
-            else
-            {
-                model.gameObject.SetActive(false);
-            }
+
         }
     }
 
@@ -92,18 +92,46 @@ public class EnemyVisuals : MonoBehaviour
     {
         foreach (var model in enemyRangeWeaponModels)
         {
-            if (model.weaponModelType == enemyRangeWeaponModel)
+            bool shouldBeActive = (model.weaponType == enemyRangeWeaponModel);
+
+            if (model.gameObject.activeSelf != shouldBeActive)
             {
-                model.gameObject.SetActive(true);
-                currentWeaponModel = model;
+                model.gameObject.SetActive(shouldBeActive);
             }
-            else
+
+            if (shouldBeActive)
             {
-                model.gameObject.SetActive(false);
+                currentRangeWeaponModel = FindRangeWeaponModel();
             }
         }
     }
 
-    public WeaponModels GetCurrentWeaponModel() => currentWeaponModel;
+    private GameObject FindRangeWeaponModel()
+    {
+        foreach (var weaponModel in enemyRangeWeaponModels)
+        {
+            if (weaponModel.weaponType == enemyRangeWeaponModel)
+            {
+                return weaponModel.gameObject;
+            }
+        }
+
+        return null;
+    }
+
+    private GameObject FindMeleeWeaponModel()
+    {
+        foreach (var weaponModel in enemyMeleeWeaponModels)
+        {
+            if (weaponModel.weaponModel == enemyMeleeWeaponModel)
+            {
+                return weaponModel.gameObject;
+            }
+        }
+
+        return null;
+    }
+
+
     #endregion
 }

@@ -39,11 +39,11 @@ public class Enemy : Character
     public float recoveryTime = 1f;
 
 
+
     protected virtual void Awake()
     {
         stateMachine = new StateMachine();
     }
-
     protected virtual void Start()
     {
         pointPatrols = GetComponentsInChildren<PointPatrol>();
@@ -130,9 +130,21 @@ public class Enemy : Character
         }
     }
 
+    public void DisabledTrailRenderer()
+    {
+        visuals.currentMeleeWeaponModel.GetComponentInChildren<TrailRenderer>().enabled = false;
+    }
+
+    public void EnabledTrailRenderer()
+    {
+        visuals.currentMeleeWeaponModel.GetComponentInChildren<TrailRenderer>().enabled = true;
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, chaseRange);
+
     }
 }

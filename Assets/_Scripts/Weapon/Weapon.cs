@@ -82,7 +82,6 @@ public class Weapon
         shootType = weapon.shootType;
 
         reloadSpeed = weapon.reloadSpeed;
-
     }
 
     #region Burst methods
