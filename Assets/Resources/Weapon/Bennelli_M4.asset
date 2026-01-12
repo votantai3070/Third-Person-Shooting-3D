@@ -26,7 +26,7 @@ MonoBehaviour:
   bulletsInMagazine: 5
   totalReserveAmmo: 30
   burstAvailable: 1
-  burstActive: 1
+  burstActive: 0
   burstBulletsPerShot: 5
   burstFireRate: 1
   burstFireDelay: 2
