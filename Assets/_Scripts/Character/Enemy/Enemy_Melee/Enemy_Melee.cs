@@ -25,6 +25,8 @@ public class Enemy_Melee : Enemy
     {
         base.Start();
 
+        DisabledTrailRenderer();
+
         stateMachine.Initialize(idleState);
     }
 
@@ -32,6 +34,7 @@ public class Enemy_Melee : Enemy
     {
         base.Update();
     }
+
 
     protected override void Die()
     {

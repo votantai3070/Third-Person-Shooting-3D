@@ -21,5 +21,7 @@ public class EnemyWeaponModel : MonoBehaviour
 {
     public EnemyWeaponModels weaponModel;
     public EnemyWeaponTypes weaponType;
+
+    public TrailRenderer trailRenderer;
 }
 

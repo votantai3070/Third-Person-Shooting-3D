@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4570139001824179746}
   - component: {fileID: 4151997561594797114}
   - component: {fileID: 7727264531559541509}
+  - component: {fileID: 919611961528332969}
   m_Layer: 0
   m_Name: SM_Bullet_08
   m_TagString: Untagged
@@ -86,6 +87,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &919611961528332969
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900924452907910628}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1257417375437272083, guid: adda4f97c933a794986cd91b6a761f28, type: 3}
 --- !u!1 &7617375672060013244
 GameObject:
   m_ObjectHideFlags: 0

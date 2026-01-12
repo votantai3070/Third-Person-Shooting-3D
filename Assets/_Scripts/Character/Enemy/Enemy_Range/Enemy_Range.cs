@@ -1,8 +1,19 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy_Range : Enemy
 {
     private float lastShootTime;
+    public bool isAttack = true;
+
+    [Header("Weapon Settings")]
+    private Transform gunPoint;
+    private float bulletSpeed;
+    private Vector3 bulletDirection;
+    private float fireRate;
+
+    public GameObject bulletPrefab;
+    private Vector3 gunPointLocalOffset;
+
 
     #region States
     public IdleState_Range idleState { get; private set; }
@@ -30,11 +41,40 @@ public class Enemy_Range : Enemy
         base.Start();
 
         stateMachine.Initialize(idleState);
+
     }
 
     protected override void Update()
     {
         base.Update();
+    }
+
+    public void SetupWeapon()
+    {
+        gunPoint = visuals.currentRangeWeaponModel.GetComponent<EnemyWeaponModel_Range>().gunPoint;
+        bulletSpeed = visuals.currentRangeWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData.bulletSpeed;
+        fireRate = visuals.currentRangeWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData.fireRate;
+        bulletPrefab = visuals.currentRangeWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData.bulletPrefab;
+    }
+
+    public void FireSingleBullet()
+    {
+        //anim.SetTrigger("Shoot");
+
+        Debug.Log("Gun point position: " + gunPoint.position);
+
+        bulletDirection = (player.transform.position + Vector3.up * 1f - gunPoint.position).normalized;
+
+        Bullet newBullet = ObjectPool.instance.GetObject(bulletPrefab).GetComponent<Bullet>();
+        newBullet.transform.position = gunPoint.position;
+        newBullet.transform.rotation = Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0);
+
+        Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
+
+        //Vector3 bulletDirectionWithSpread = currentModel.weaponData.ApplyWeaponSpread(bulletDirection);
+
+        rbNewBullet.mass = 20 / bulletSpeed;
+        rbNewBullet.linearVelocity = bulletDirection * bulletSpeed;
     }
     protected override void Die()
     {
@@ -45,7 +85,7 @@ public class Enemy_Range : Enemy
 
     public bool CanShoot()
     {
-        if (Time.time >= lastShootTime + 1 / visuals.GetCurrentWeaponModel().weaponData.fireRate)
+        if (Time.time >= lastShootTime + 1 / fireRate)
         {
             lastShootTime = Time.time;
             return true;
@@ -53,20 +93,4 @@ public class Enemy_Range : Enemy
         return false;
     }
 
-    public void ShootPlayer()
-    {
-        WeaponModels currentModel = visuals.GetCurrentWeaponModel();
-        if (currentModel == null)
-            return;
-
-
-        GameObject bullet = ObjectPool.instance.GetObject(
-               currentModel.weaponData.bulletPrefab);
-        bullet.transform.position = currentModel.gunPoint.position;
-        bullet.transform.rotation = Quaternion.Euler(0, 0, 90);
-
-        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-        Vector3 direction = (player.transform.position + Vector3.up * 1.5f - currentModel.gunPoint.transform.position).normalized;
-        bulletRb.linearVelocity = direction * currentModel.weaponData.bulletSpeed;
-    }
 }

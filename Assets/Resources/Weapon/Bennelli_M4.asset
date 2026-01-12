@@ -26,13 +26,13 @@ MonoBehaviour:
   bulletsInMagazine: 5
   totalReserveAmmo: 30
   burstAvailable: 1
-  burstActive: 0
+  burstActive: 1
   burstBulletsPerShot: 5
   burstFireRate: 1
   burstFireDelay: 2
   recoilForce: 0
-  baseSpreadAngle: 5
-  maximumSpreadAngle: 5
+  baseSpreadAngle: 2
+  maximumSpreadAngle: 2
   reloadTime: 3
   reloadSpeed: 1.2
   equipmentSpeed: 1.5

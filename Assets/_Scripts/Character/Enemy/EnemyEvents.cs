@@ -14,4 +14,14 @@ public class EnemyEvents : MonoBehaviour
     {
         enemy.isTrigger = true;
     }
+
+    public void DisableTrailRenderer()
+    {
+        enemy.DisabledTrailRenderer();
+    }
+
+    public void EnableTrailRenderer()
+    {
+        enemy.EnabledTrailRenderer();
+    }
 }

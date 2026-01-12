@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class AttackState_Range : EnemyState
 {
     private Enemy_Range enemy;
@@ -13,17 +15,23 @@ public class AttackState_Range : EnemyState
 
         enemy.visuals.SetLayerAnimation(1, 0f);
 
-        enemy.agent.ResetPath();
+        enemy.agent.isStopped = true;
+        enemy.agent.velocity = Vector3.zero;
+
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        enemy.agent.isStopped = false;
     }
 
     public override void Update()
     {
         base.Update();
+
+        enemy.SetupWeapon();
 
         enemy.RotateFace(enemy.player.transform.position);
 
@@ -33,9 +41,9 @@ public class AttackState_Range : EnemyState
             return;
         }
 
-        if (enemy.CanShoot())
+        if (enemy.CanShoot() && enemy.isAttack)
         {
-            enemy.ShootPlayer();
+            enemy.FireSingleBullet();
         }
     }
 }

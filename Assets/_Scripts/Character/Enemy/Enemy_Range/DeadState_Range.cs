@@ -27,6 +27,9 @@ public class DeadState_Range : EnemyState
         base.Exit();
 
         enemy.anim.enabled = true;
+
+        enemy.ragdoll.RagdollActive(true);
+        enemy.ragdoll.CollidersActive(true);
     }
 
     public override void Update()
