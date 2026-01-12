@@ -3,9 +3,52 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [SerializeField] private Transform lastLevelPart;
     [SerializeField] private List<Transform> levelParts;
+    private List<Transform> currentLevelParts;
     [SerializeField] private SnapPoint nextSnapPoint;
 
+
+    [Space]
+    [SerializeField] private float generationCooldown;
+    private float cooldownTimer;
+    private bool generationOver;
+
+    private void Start()
+    {
+        currentLevelParts = new List<Transform>(levelParts);
+    }
+
+    private void Update()
+    {
+        if (generationOver)
+            return;
+
+        cooldownTimer -= Time.deltaTime;
+
+        if (cooldownTimer <= 0f)
+        {
+            if (currentLevelParts.Count > 0)
+            {
+                cooldownTimer = generationCooldown;
+                GenerationNextLevelPart();
+            }
+            else if (generationOver == false)
+            {
+                FinishGeneration();
+            }
+        }
+    }
+
+    private void FinishGeneration()
+    {
+        generationOver = true;
+
+        Transform levelPart = Instantiate(lastLevelPart);
+        LevelPart lp = levelPart.GetComponent<LevelPart>();
+
+        lp.SnapAndAlignPartTo(nextSnapPoint);
+    }
 
     [ContextMenu("Generate Next Level Part")]
     private void GenerationNextLevelPart()
@@ -20,11 +63,11 @@ public class LevelGenerator : MonoBehaviour
 
     private Transform ChooseRandomPart()
     {
-        int randomIndex = Random.Range(0, levelParts.Count);
+        int randomIndex = Random.Range(0, currentLevelParts.Count);
 
-        Transform choosePart = levelParts[randomIndex];
+        Transform choosePart = currentLevelParts[randomIndex];
 
-        levelParts.RemoveAt(randomIndex);
+        currentLevelParts.RemoveAt(randomIndex);
 
         return choosePart;
     }
