@@ -5017,8 +5017,11 @@ MonoBehaviour:
   levelParts:
   - {fileID: 322211435421550770, guid: 034e21985f6ef2b4e9fcaae4dbec0d59, type: 3}
   - {fileID: 6369413631686891891, guid: 09f107ad883da404cbb007818bfbc008, type: 3}
+  - {fileID: 6369413631686891891, guid: 09f107ad883da404cbb007818bfbc008, type: 3}
+  - {fileID: 6369413631686891891, guid: 09f107ad883da404cbb007818bfbc008, type: 3}
+  - {fileID: 322211435421550770, guid: 034e21985f6ef2b4e9fcaae4dbec0d59, type: 3}
   nextSnapPoint: {fileID: 2131801753}
-  generationCooldown: 1
+  generationCooldown: 0.1
 --- !u!4 &1734373262
 Transform:
   m_ObjectHideFlags: 0
@@ -6530,6 +6533,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2280270948271767399, guid: 01912a631817d7e44a296b9a6b22dfd2, type: 3}
+      propertyPath: intersectionCheckParent
+      value: 
+      objectReference: {fileID: 2131801754}
+    - target: {fileID: 2280270948271767399, guid: 01912a631817d7e44a296b9a6b22dfd2, type: 3}
+      propertyPath: intersectionLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280270948271767399, guid: 01912a631817d7e44a296b9a6b22dfd2, type: 3}
+      propertyPath: intersectionCollider.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280270948271767399, guid: 01912a631817d7e44a296b9a6b22dfd2, type: 3}
+      propertyPath: 'intersectionCollider.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2131801755}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6546,6 +6565,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a14aea759c09d54289dc0cb4a48e54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2131801754 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1684958756608020677, guid: 01912a631817d7e44a296b9a6b22dfd2, type: 3}
+  m_PrefabInstance: {fileID: 2131801752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2131801755 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1001528141803758878, guid: 01912a631817d7e44a296b9a6b22dfd2, type: 3}
+  m_PrefabInstance: {fileID: 2131801752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1515144498113346197
 PrefabInstance:
   m_ObjectHideFlags: 0

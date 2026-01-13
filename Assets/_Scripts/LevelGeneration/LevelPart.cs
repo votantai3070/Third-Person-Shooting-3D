@@ -3,6 +3,35 @@ using UnityEngine;
 
 public class LevelPart : MonoBehaviour
 {
+    [Header("Intersection check")]
+    [SerializeField] private LayerMask intersectionLayer;
+    [SerializeField] private Collider[] intersectionCollider;
+    [SerializeField] private Transform intersectionCheckParent;
+
+    public bool IntersectionDetected()
+    {
+        Physics.SyncTransforms();
+
+        foreach (Collider collider in intersectionCollider)
+        {
+            Collider[] hits = Physics.OverlapBox(collider.bounds.center, collider.bounds.extents, Quaternion.identity, intersectionLayer);
+
+            foreach (Collider hit in hits)
+            {
+                Debug.Log("Hit detected: " + hit.name);
+
+                IntersectionCheck intersectionCheck = hit.GetComponentInParent<IntersectionCheck>();
+
+                if (intersectionCheck != null && intersectionCheckParent != intersectionCheck.transform)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public void SnapAndAlignPartTo(SnapPoint targetSnapPoint)
     {
         SnapPoint enterPoint = GetEnterSnapPoint();
@@ -39,11 +68,11 @@ public class LevelPart : MonoBehaviour
         transform.position = newPosition;
     }
 
-
     public SnapPoint GetEnterSnapPoint()
     {
         return GetSnapPointOfType(SnapPointType.Enter);
     }
+
     public SnapPoint GetExitSnapPoint()
     {
         return GetSnapPointOfType(SnapPointType.Exit);
