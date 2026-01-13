@@ -70,6 +70,7 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\Enemy_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerEvents.cs" />
     <Compile Include="Assets\_Scripts\Weapon\EnemyWeaponModels.cs" />
+    <Compile Include="Assets\_Scripts\LevelGeneration\LevelPart.cs" />
     <Compile Include="Assets\_Scripts\Inventory\AmmoSlotUI.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Ammo\Ammo.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\IdleState_Range.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Character\Character.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Models.cs" />
+    <Compile Include="Assets\_Scripts\LevelGeneration\IntersectionCheck.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerWeaponControllers.cs" />
     <Compile Include="Assets\_InputManager\PlayerControls.cs" />
     <Compile Include="Assets\_Scripts\Pickups\PickupWeapon.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Assets\_Scripts\Weapon\BackupWeaponModel.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\AttackState_Range.cs" />
     <Compile Include="Assets\_Scripts\Pickups\PickupAmmo.cs" />
+    <Compile Include="Assets\_Scripts\LevelGeneration\LevelGenerator.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\EnemyState.cs" />
     <Compile Include="Assets\_Scripts\Inventory\MainSlot.cs" />
     <Compile Include="Assets\_Scripts\Inventory\AmmoInventoryUI.cs" />
@@ -115,6 +118,7 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\EnemyWeaponModel_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerAim.cs" />
     <Compile Include="Assets\_Scripts\Interfaces\IDamageable.cs" />
+    <Compile Include="Assets\_Scripts\LevelGeneration\SnapPoint.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\IdleState_Melee.cs" />
     <Compile Include="Assets\_Scripts\ObjectPool\PooledObject.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\PatrolState_Range.cs" />
