@@ -675,8 +675,7 @@ MonoBehaviour:
   intersectionLayer:
     serializedVersion: 2
     m_Bits: 128
-  intersectionCollider:
-  - {fileID: 2476939682271915556}
+  intersectionCheckColliders: []
   intersectionCheckParent: {fileID: 669345742164359635}
 --- !u!114 &1788310362205871537
 MonoBehaviour:

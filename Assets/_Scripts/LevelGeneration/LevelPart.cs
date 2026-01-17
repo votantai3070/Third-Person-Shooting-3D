@@ -5,14 +5,22 @@ public class LevelPart : MonoBehaviour
 {
     [Header("Intersection check")]
     [SerializeField] private LayerMask intersectionLayer;
-    [SerializeField] private Collider[] intersectionCollider;
+    [SerializeField] private Collider[] intersectionCheckColliders;
     [SerializeField] private Transform intersectionCheckParent;
+
+    private void Start()
+    {
+        if (intersectionCheckColliders.Length <= 0)
+        {
+            intersectionCheckColliders = intersectionCheckParent.GetComponentsInChildren<Collider>();
+        }
+    }
 
     public bool IntersectionDetected()
     {
         Physics.SyncTransforms();
 
-        foreach (Collider collider in intersectionCollider)
+        foreach (Collider collider in intersectionCheckColliders)
         {
             Collider[] hits = Physics.OverlapBox(collider.bounds.center, collider.bounds.extents, Quaternion.identity, intersectionLayer);
 

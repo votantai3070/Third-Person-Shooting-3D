@@ -500,8 +500,7 @@ MonoBehaviour:
   intersectionLayer:
     serializedVersion: 2
     m_Bits: 128
-  intersectionCollider:
-  - {fileID: 2344886218917828531}
+  intersectionCheckColliders: []
   intersectionCheckParent: {fileID: 9082477760352027631}
 --- !u!1 &8769256070644561741
 GameObject:
