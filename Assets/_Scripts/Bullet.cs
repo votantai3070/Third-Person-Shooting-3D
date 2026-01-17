@@ -3,6 +3,22 @@
 public class Bullet : MonoBehaviour
 {
     public GameObject impactVFXPrefab;
+    private float flyDistance = 50f;
+    private Vector3 startPos;
+
+    private void Update()
+    {
+        if (Vector3.Distance(startPos, transform.position) > flyDistance)
+        {
+            ObjectPool.instance.ReturnToPool(gameObject);
+        }
+    }
+
+    public void SetupBullet(float flyDistance)
+    {
+        startPos = transform.position;
+        this.flyDistance = flyDistance;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

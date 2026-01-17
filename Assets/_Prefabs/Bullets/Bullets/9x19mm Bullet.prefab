@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6102620428738256640}
   - component: {fileID: 4788433888124241398}
   - component: {fileID: 7012997887143021087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Bullet_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 512525762990472360}
   - component: {fileID: 7274797221560328922}
   - component: {fileID: -4011147307307907556}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 9x19mm Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

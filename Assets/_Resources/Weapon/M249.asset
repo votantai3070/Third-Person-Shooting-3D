@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0800b5205de0af74cb60b30c0a53087d, type: 3}
-  m_Name: M107
+  m_Name: M249
   m_EditorClassIdentifier: 
-  weaponName: M107
+  weaponName: M249
   weaponIcon: {fileID: 0}
-  bulletPrefab: {fileID: 5495583187231653505, guid: 95cb8874772943544860c889942e8615, type: 3}
+  bulletPrefab: {fileID: 7891058214873949390, guid: fda479538d924144cabef019292cfd22, type: 3}
   damage: 1
-  fireRate: 1
-  bulletSpeed: 120
-  shootRange: 1000
-  impactForce: 20
-  ammoType: 4
+  fireRate: 8
+  bulletSpeed: 100
+  shootRange: 100
+  impactForce: 12
+  ammoType: 0
   bulletsPerShot: 1
-  magazineCapacity: 5
-  bulletsInMagazine: 5
-  totalReserveAmmo: 20
+  magazineCapacity: 100
+  bulletsInMagazine: 100
+  totalReserveAmmo: 200
   burstAvailable: 0
   burstActive: 0
   burstBulletsPerShot: 0
   burstFireRate: 0
   burstFireDelay: 0
   recoilForce: 0
-  baseSpreadAngle: 0.2
-  maximumSpreadAngle: 1
+  baseSpreadAngle: 0.5
+  maximumSpreadAngle: 3
   reloadTime: 3
   reloadSpeed: 1
   equipmentSpeed: 1
@@ -40,5 +40,5 @@ MonoBehaviour:
   bulletImpactEffect: {fileID: 0}
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
-  weaponType: 6
-  shootType: 0
+  weaponType: 5
+  shootType: 1

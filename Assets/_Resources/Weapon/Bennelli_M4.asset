@@ -18,8 +18,8 @@ MonoBehaviour:
   damage: 1
   fireRate: 1
   bulletSpeed: 80
-  shootRange: 60
-  impactForce: 20
+  shootRange: 30
+  impactForce: 13
   ammoType: 5
   bulletsPerShot: 1
   magazineCapacity: 5

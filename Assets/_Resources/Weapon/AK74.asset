@@ -10,35 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0800b5205de0af74cb60b30c0a53087d, type: 3}
-  m_Name: M249
+  m_Name: AK74
   m_EditorClassIdentifier: 
-  weaponName: M249
-  weaponIcon: {fileID: 0}
+  weaponName: M4_8
+  weaponIcon: {fileID: 21300000, guid: d328936ee61909342bc41a2b3fcf02b2, type: 3}
   bulletPrefab: {fileID: 7891058214873949390, guid: fda479538d924144cabef019292cfd22, type: 3}
   damage: 1
-  fireRate: 8
-  bulletSpeed: 100
-  shootRange: 300
-  impactForce: 15
-  ammoType: 0
+  fireRate: 6
+  bulletSpeed: 80
+  shootRange: 200
+  impactForce: 8
+  ammoType: 2
   bulletsPerShot: 1
-  magazineCapacity: 100
-  bulletsInMagazine: 100
-  totalReserveAmmo: 200
-  burstAvailable: 0
+  magazineCapacity: 30
+  bulletsInMagazine: 30
+  totalReserveAmmo: 90
+  burstAvailable: 1
   burstActive: 0
-  burstBulletsPerShot: 0
-  burstFireRate: 0
-  burstFireDelay: 0
+  burstBulletsPerShot: 3
+  burstFireRate: 20
+  burstFireDelay: 0.5
   recoilForce: 0
   baseSpreadAngle: 0.5
   maximumSpreadAngle: 3
   reloadTime: 3
   reloadSpeed: 1
-  equipmentSpeed: 1
+  equipmentSpeed: 1.5
   muzzleFlashEffect: {fileID: 0}
   bulletImpactEffect: {fileID: 0}
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
-  weaponType: 5
+  weaponType: 3
   shootType: 1

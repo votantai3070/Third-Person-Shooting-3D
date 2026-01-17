@@ -10,35 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0800b5205de0af74cb60b30c0a53087d, type: 3}
-  m_Name: M4_8
+  m_Name: M107
   m_EditorClassIdentifier: 
-  weaponName: M4_8
-  weaponIcon: {fileID: 21300000, guid: 418223a3a67c4594fb9ae9517e20c2f8, type: 3}
-  bulletPrefab: {fileID: 4981483417408691638, guid: 73faa06297da07b4cb5a5e4306c17bbf, type: 3}
+  weaponName: M107
+  weaponIcon: {fileID: 0}
+  bulletPrefab: {fileID: 5495583187231653505, guid: 95cb8874772943544860c889942e8615, type: 3}
   damage: 1
-  fireRate: 6
-  bulletSpeed: 80
-  shootRange: 400
-  impactForce: 10
-  ammoType: 1
+  fireRate: 1
+  bulletSpeed: 120
+  shootRange: 500
+  impactForce: 20
+  ammoType: 4
   bulletsPerShot: 1
-  magazineCapacity: 30
-  bulletsInMagazine: 30
-  totalReserveAmmo: 90
-  burstAvailable: 1
+  magazineCapacity: 5
+  bulletsInMagazine: 5
+  totalReserveAmmo: 20
+  burstAvailable: 0
   burstActive: 0
-  burstBulletsPerShot: 3
-  burstFireRate: 20
-  burstFireDelay: 0.5
+  burstBulletsPerShot: 0
+  burstFireRate: 0
+  burstFireDelay: 0
   recoilForce: 0
-  baseSpreadAngle: 0.5
-  maximumSpreadAngle: 2
+  baseSpreadAngle: 0.2
+  maximumSpreadAngle: 1
   reloadTime: 3
-  reloadSpeed: 1.5
-  equipmentSpeed: 1.5
+  reloadSpeed: 1
+  equipmentSpeed: 1
   muzzleFlashEffect: {fileID: 0}
   bulletImpactEffect: {fileID: 0}
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
-  weaponType: 2
-  shootType: 1
+  weaponType: 6
+  shootType: 0

@@ -141,6 +141,7 @@ public class PlayerWeaponControllers : MonoBehaviour
         bulletPrefab = currentWeapon.bulletPrefab;
         averageMass = currentWeapon.impactForce;
         gunPoint = currentWeaponModel.gunPoint;
+        distanceShot = currentWeapon.weaponData.shootRange;
     }
 
     #region Shoot
@@ -211,6 +212,9 @@ public class PlayerWeaponControllers : MonoBehaviour
 
         newBullet.transform.position = gunPoint.position;
         newBullet.transform.rotation = Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0);
+
+        Bullet bulletComponent = newBullet.GetComponent<Bullet>();
+        bulletComponent.SetupBullet(distanceShot);
 
         Rigidbody rbBullet = newBullet.GetComponent<Rigidbody>();
         rbBullet.mass = averageMass / bulletSpeed;

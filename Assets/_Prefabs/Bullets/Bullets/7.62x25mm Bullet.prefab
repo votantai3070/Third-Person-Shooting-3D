@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3668311187025444295}
   - component: {fileID: 4246498580683297767}
   - component: {fileID: 5283837179060924427}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Bullet_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 7746560287952449964}
   - component: {fileID: 6276672427911741826}
   - component: {fileID: -8770564634030072846}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 7.62x25mm Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
