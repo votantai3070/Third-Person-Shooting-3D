@@ -16,6 +16,16 @@ public class LevelPart : MonoBehaviour
         }
     }
 
+    [ContextMenu("Set static to environment layer")]
+    private void SetStaticToEnvironmentLayer()
+    {
+        foreach (Transform child in transform.GetComponentsInChildren<Transform>(true))
+        {
+            if (child.gameObject.isStatic)
+                child.gameObject.layer = LayerMask.NameToLayer("Environment");
+        }
+    }
+
     public bool IntersectionDetected()
     {
         Physics.SyncTransforms();
@@ -26,8 +36,6 @@ public class LevelPart : MonoBehaviour
 
             foreach (Collider hit in hits)
             {
-                Debug.Log("Hit detected: " + hit.name);
-
                 IntersectionCheck intersectionCheck = hit.GetComponentInParent<IntersectionCheck>();
 
                 if (intersectionCheck != null && intersectionCheckParent != intersectionCheck.transform)
@@ -109,4 +117,6 @@ public class LevelPart : MonoBehaviour
 
         return null;
     }
+
+    public Enemy[] MyEnemies() => GetComponentsInChildren<Enemy>(true);
 }
