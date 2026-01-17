@@ -132,12 +132,12 @@ public class Enemy : Character
 
     public void DisabledTrailRenderer()
     {
-        visuals.currentMeleeWeaponModel.GetComponentInChildren<TrailRenderer>().enabled = false;
+        //visuals.currentMeleeWeaponModel.GetComponentInChildren<TrailRenderer>().enabled = false;
     }
 
     public void EnabledTrailRenderer()
     {
-        visuals.currentMeleeWeaponModel.GetComponentInChildren<TrailRenderer>().enabled = true;
+        //visuals.currentMeleeWeaponModel.GetComponentInChildren<TrailRenderer>().enabled = true;
     }
 
 

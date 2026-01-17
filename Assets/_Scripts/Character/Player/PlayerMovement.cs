@@ -145,7 +145,6 @@ public class PlayerMovement : MonoBehaviour
         bool isShootingRifle, isShootingPistol, isReloadingRifle, isReloadingPistol, isEquipWeapon, isInteraction;
         player.visuals.GetAnimationState(out isShootingRifle, out isShootingPistol, out isReloadingRifle, out isReloadingPistol, out isEquipWeapon, out isInteraction);
 
-
         bool isReact = isShootingRifle || isShootingPistol || isReloadingRifle || isReloadingPistol;
 
         if (isReact)
