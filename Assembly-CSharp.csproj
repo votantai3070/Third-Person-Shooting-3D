@@ -110,8 +110,11 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\AttackState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Bullet.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\RecoveryState_Melee.cs" />
+    <Compile Include="Assets\_Scripts\Mission\MissionManager.cs" />
     <Compile Include="Assets\_Scripts\Camera\CameraPOV.cs" />
+    <Compile Include="Assets\_Scripts\Mission\Mission.cs" />
     <Compile Include="Assets\_Scripts\SO\Weapon_SO.cs" />
+    <Compile Include="Assets\_Scripts\Mission\MissionTimer.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\_Scripts\StateMachine.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Ragdoll.cs" />
@@ -119,6 +122,7 @@
     <Compile Include="Assets\_Scripts\Character\Player\PlayerAim.cs" />
     <Compile Include="Assets\_Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\SnapPoint.cs" />
+    <Compile Include="Assets\_Scripts\Mission\MissionEnd_Trigger.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\IdleState_Melee.cs" />
     <Compile Include="Assets\_Scripts\ObjectPool\PooledObject.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\PatrolState_Range.cs" />
