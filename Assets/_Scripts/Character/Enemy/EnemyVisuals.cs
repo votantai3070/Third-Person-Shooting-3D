@@ -10,8 +10,6 @@ public class EnemyVisuals : MonoBehaviour
 {
     private Enemy enemy;
 
-    [SerializeField] int health = 100;
-
     [Header("Enemy Models")]
     [SerializeField] EnemyType enemyType;
 
@@ -68,10 +66,6 @@ public class EnemyVisuals : MonoBehaviour
         }
     }
 
-    public int GetHealth()
-    {
-        return health;
-    }
 
     #region Show Weapon Models
     private void ShowMeleeWeaponModel()

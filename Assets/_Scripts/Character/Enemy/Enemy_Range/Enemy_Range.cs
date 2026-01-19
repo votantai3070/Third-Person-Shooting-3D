@@ -80,6 +80,9 @@ public class Enemy_Range : Enemy
     {
         base.Die();
 
+        if (dropController.missionObjectKey != null)
+            dropController.DropItem();
+
         stateMachine.ChangeState(deadState);
     }
 

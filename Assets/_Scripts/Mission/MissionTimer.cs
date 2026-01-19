@@ -24,7 +24,6 @@ public class MissionTimer : Mission
         string timeStr = System.TimeSpan.FromSeconds(currentTime).ToString("mm':'ss");
 
         Debug.Log(timeStr);
-
     }
 
     public override bool MissionCompleted()

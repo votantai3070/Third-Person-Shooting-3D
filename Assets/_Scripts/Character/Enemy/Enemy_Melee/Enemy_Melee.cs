@@ -40,6 +40,8 @@ public class Enemy_Melee : Enemy
     {
         base.Die();
 
+        if (dropController.missionObjectKey != null)
+            dropController.DropItem();
         stateMachine.ChangeState(deadState);
     }
 }

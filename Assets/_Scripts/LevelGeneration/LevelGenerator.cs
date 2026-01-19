@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public static LevelGenerator instance { get; private set; }
+
     //Enemies
     private List<Enemy> enemyList;
 
@@ -26,6 +28,17 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private float generationCooldown;
     private float cooldownTimer;
     private bool generationOver;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        instance = this;
+    }
 
     private void Start()
     {
@@ -119,6 +132,8 @@ public class LevelGenerator : MonoBehaviour
 
         nextSnapPoint = levelPart.GetExitSnapPoint();
         enemyList.AddRange(levelPart.MyEnemies());
+
+        Debug.Log("Generated Level Part: " + newPart.name);
     }
 
     private Transform ChooseRandomPart()
@@ -130,5 +145,12 @@ public class LevelGenerator : MonoBehaviour
         currentLevelParts.RemoveAt(randomIndex);
 
         return choosePart;
+    }
+
+    public Enemy ChooseRandomEnemy()
+    {
+        int randomIndex = Random.Range(0, enemyList.Count);
+
+        return enemyList[randomIndex];
     }
 }

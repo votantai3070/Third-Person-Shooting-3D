@@ -15,6 +15,7 @@ public class Enemy : Character
     public NavMeshAgent agent { get; private set; }
     public Player player { get; private set; }
     public Enemy_Ragdoll ragdoll { get; private set; }
+    public Enemy_DropController dropController { get; private set; }
 
     [Header("General Settings")]
     public float idleTimer;
@@ -52,6 +53,7 @@ public class Enemy : Character
         agent = GetComponent<NavMeshAgent>();
         player = FindAnyObjectByType<Player>();
         ragdoll = GetComponent<Enemy_Ragdoll>();
+        dropController = GetComponent<Enemy_DropController>();
 
         IniatializePatrolPoints();
     }
@@ -59,6 +61,13 @@ public class Enemy : Character
     protected virtual void Update()
     {
         stateMachine.currentState?.Update();
+    }
+
+    public void EnemyVIP()
+    {
+        int healthVIP = Mathf.RoundToInt(GetHealth() * 1.5f);
+        Heal(healthVIP);
+        transform.localScale = transform.localScale * 1.5f;
     }
 
     public void Shooted() => isShooted = true;

@@ -106,6 +106,8 @@
     <Compile Include="Assets\_Scripts\SetupWeaponMaterials.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\EnemyEvents.cs" />
+    <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_DropController.cs" />
+    <Compile Include="Assets\_Scripts\Pickups\MissionObject_Key.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\RecoveryState_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\AttackState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Bullet.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="Assets\_Scripts\Camera\CameraPOV.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission.cs" />
     <Compile Include="Assets\_Scripts\SO\Weapon_SO.cs" />
+    <Compile Include="Assets\_Scripts\Mission\Mission_KeyFind.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionTimer.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\_Scripts\StateMachine.cs" />

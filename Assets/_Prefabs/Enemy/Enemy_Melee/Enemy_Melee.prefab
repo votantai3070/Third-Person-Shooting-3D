@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 2704571225618985155}
   - component: {fileID: 6227166981716311340}
   - component: {fileID: 2260238364676822225}
+  - component: {fileID: 5565513508691073597}
   m_Layer: 0
   m_Name: Enemy_Melee
   m_TagString: Untagged
@@ -115,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d80a6086fbb47d4a92bc680047318c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
   idleTimer: 1.5
   moveSpeed: 3.5
   turnSpeed: 5
@@ -158,6 +159,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46ebf41362d94de429fef398890c7d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5565513508691073597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940060231642938360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072dee73f391dc148a073c98167f1ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2663394716879372830
