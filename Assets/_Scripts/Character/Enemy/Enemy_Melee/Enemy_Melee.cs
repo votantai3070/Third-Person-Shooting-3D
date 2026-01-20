@@ -42,6 +42,9 @@ public class Enemy_Melee : Enemy
 
         if (dropController.missionObjectKey != null)
             dropController.DropItem();
+
+        GetComponent<MissionObject_Hunt>()?.InvokeTargetKilled();
+
         stateMachine.ChangeState(deadState);
     }
 }

@@ -3,7 +3,8 @@
 public enum EnemyType
 {
     Melee,
-    Range
+    Range,
+    Boss
 }
 
 public class EnemyVisuals : MonoBehaviour
@@ -11,7 +12,7 @@ public class EnemyVisuals : MonoBehaviour
     private Enemy enemy;
 
     [Header("Enemy Models")]
-    [SerializeField] EnemyType enemyType;
+    public EnemyType enemyType;
 
     [Header("Enemy Melee Weapon Models")]
     public GameObject currentMeleeWeaponModel { get; private set; }

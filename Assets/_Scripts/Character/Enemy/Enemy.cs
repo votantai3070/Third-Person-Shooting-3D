@@ -67,7 +67,7 @@ public class Enemy : Character
     {
         int healthVIP = Mathf.RoundToInt(GetHealth() * 1.5f);
         Heal(healthVIP);
-        transform.localScale = transform.localScale * 1.5f;
+        transform.localScale = transform.localScale * 1.2f;
     }
 
     public void Shooted() => isShooted = true;

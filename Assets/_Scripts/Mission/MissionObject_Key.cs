@@ -3,11 +3,17 @@ using UnityEngine;
 
 public class MissionObject_Key : MonoBehaviour
 {
+    private GameObject player;
     public static event Action OnKeyPickedUp;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject == player)
         {
             OnKeyPickedUp?.Invoke();
             Destroy(gameObject);

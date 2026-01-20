@@ -12,7 +12,6 @@ public class Enemy_Range : Enemy
     private float fireRate;
 
     public GameObject bulletPrefab;
-    private Vector3 gunPointLocalOffset;
 
 
     #region States
@@ -82,6 +81,8 @@ public class Enemy_Range : Enemy
 
         if (dropController.missionObjectKey != null)
             dropController.DropItem();
+
+        GetComponent<MissionObject_Hunt>()?.InvokeTargetKilled();
 
         stateMachine.ChangeState(deadState);
     }
