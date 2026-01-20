@@ -19,8 +19,6 @@ public class MissionManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Current Mission: " + currentMission.missionName);
-
         Invoke(nameof(StartMisstion), 2);
     }
 

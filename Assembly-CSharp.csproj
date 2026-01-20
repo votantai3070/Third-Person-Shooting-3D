@@ -84,6 +84,7 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\ChaseState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerMovement.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\PatrolState_Melee.cs" />
+    <Compile Include="Assets\_Scripts\Car.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\EnemyVisuals.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\RecoveryState_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\AttackState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Bullet.cs" />
+    <Compile Include="Assets\_Scripts\Mission\MissionObject_CarDeliveryZone.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\RecoveryState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionManager.cs" />
     <Compile Include="Assets\_Scripts\Camera\CameraPOV.cs" />
@@ -125,10 +127,12 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Ragdoll.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\EnemyWeaponModel_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerAim.cs" />
+    <Compile Include="Assets\_Scripts\Mission\MissionObject_CarToDelivery.cs" />
     <Compile Include="Assets\_Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\SnapPoint.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionEnd_Trigger.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\IdleState_Melee.cs" />
+    <Compile Include="Assets\_Scripts\Mission\Mission_CarDelivery.cs" />
     <Compile Include="Assets\_Scripts\ObjectPool\PooledObject.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\PatrolState_Range.cs" />
   </ItemGroup>
