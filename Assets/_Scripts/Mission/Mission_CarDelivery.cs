@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Mission Car Delivery", menuName = "Missions/Mission Car Delivery")]
+[CreateAssetMenu(fileName = "Mission Car Delivery", menuName = "Missions/Car Delivery - Mission")]
 public class Mission_CarDelivery : Mission
 {
     private bool isCarDelivered;

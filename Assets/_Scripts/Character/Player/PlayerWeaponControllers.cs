@@ -96,7 +96,7 @@ public class PlayerWeaponControllers : MonoBehaviour
 
     private void CreateWeaponInGround()
     {
-        GameObject dropped = ObjectPool.instance.GetObject(pickupWeaponPrefab);
+        GameObject dropped = ObjectPool.instance.GetObject(pickupWeaponPrefab, null);
         PickupWeapon dropWeapon = dropped.GetComponent<PickupWeapon>();
 
         // Clone weapon và set ammo = 0
@@ -208,7 +208,7 @@ public class PlayerWeaponControllers : MonoBehaviour
         Vector3 bulletDirection = currentWeapon.ApplySpread(direction);
 
         // Spawn bullet và bắn
-        GameObject newBullet = ObjectPool.instance.GetObject(bulletPrefab);
+        GameObject newBullet = ObjectPool.instance.GetObject(bulletPrefab, null);
 
         newBullet.transform.position = gunPoint.position;
         newBullet.transform.rotation = Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0);

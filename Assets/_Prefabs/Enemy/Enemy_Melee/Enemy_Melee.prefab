@@ -74,7 +74,7 @@ Transform:
   m_GameObject: {fileID: 1940060231642938360}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.52, y: 0.037, z: 4.51}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -144,7 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9768c51e6ae564b47b2d111a7cef8407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   enemyType: 0
   enemyMeleeWeaponModel: 0
   enemyRangeWeaponModel: 0
@@ -173,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072dee73f391dc148a073c98167f1ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missionObjectKey: {fileID: 0}
 --- !u!1 &2663394716879372830
 GameObject:
   m_ObjectHideFlags: 0

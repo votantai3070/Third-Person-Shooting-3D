@@ -24,22 +24,32 @@ public class ObjectPool : MonoBehaviour
 
     private void Start()
     {
-        InitializeNewPool(weaponPickup);
+        InitializeNewPool(weaponPickup, null);
         //InitializeNewPool(ammoPickup);
     }
 
-    private void InitializeNewPool(GameObject prefab)
+    private void InitializeNewPool(GameObject prefab, Transform respawn)
     {
+        if (respawn == null)
+        {
+            respawn = transform;
+        }
+
         poolDict[prefab] = new Queue<GameObject>();
 
         for (int i = 0; i < poolSize; i++)
         {
-            CreateNewObject(prefab);
+            CreateNewObject(prefab, respawn);
         }
     }
-    private void CreateNewObject(GameObject prefab)
+    private void CreateNewObject(GameObject prefab, Transform respawn)
     {
-        GameObject newObj = Instantiate(prefab, transform);
+        if (respawn == null)
+        {
+            respawn = transform;
+        }
+
+        GameObject newObj = Instantiate(prefab, respawn);
         PooledObject pooled = newObj.GetComponent<PooledObject>();
 
         if (pooled == null)
@@ -53,13 +63,13 @@ public class ObjectPool : MonoBehaviour
     }
 
 
-    public GameObject GetObject(GameObject prefab)
+    public GameObject GetObject(GameObject prefab, Transform respawn)
     {
         if (!poolDict.ContainsKey(prefab))
-            InitializeNewPool(prefab);
+            InitializeNewPool(prefab, null);
 
         if (poolDict[prefab].Count == 0)
-            CreateNewObject(prefab);
+            CreateNewObject(prefab, respawn);
 
         GameObject objectToGet = poolDict[prefab].Dequeue();
 

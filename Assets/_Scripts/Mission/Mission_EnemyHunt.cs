@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Mission Enemy Hunt", menuName = "Missions/Enemy Hunt Mission")]
+[CreateAssetMenu(fileName = "New Mission Enemy Hunt", menuName = "Missions/Mission - Enemy Hunt")]
 public class Mission_EnemyHunt : Mission
 {
     [SerializeField] private int enemiesToHunt = 10;

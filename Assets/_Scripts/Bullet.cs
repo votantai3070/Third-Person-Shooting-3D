@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
         if (enemy != null && !enemy.isShooted)
             enemy.Shooted();
 
-        GameObject impactVFX = ObjectPool.instance.GetObject(impactVFXPrefab);
+        GameObject impactVFX = ObjectPool.instance.GetObject(impactVFXPrefab, null);
         impactVFX.transform.position = collision.contacts[0].point;
 
         ObjectPool.instance.DelayReturnToPool(gameObject);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Mission Key Find", menuName = "Missions/Key Mission")]
+[CreateAssetMenu(fileName = "New Mission Key Find", menuName = "Missions/Mission - Find Key")]
 public class Mission_KeyFind : Mission
 {
     [SerializeField] private GameObject key;

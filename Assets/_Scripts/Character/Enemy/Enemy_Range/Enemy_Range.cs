@@ -64,7 +64,7 @@ public class Enemy_Range : Enemy
 
         bulletDirection = (player.transform.position + Vector3.up * 1f - gunPoint.position).normalized;
 
-        Bullet newBullet = ObjectPool.instance.GetObject(bulletPrefab).GetComponent<Bullet>();
+        Bullet newBullet = ObjectPool.instance.GetObject(bulletPrefab, null).GetComponent<Bullet>();
         newBullet.transform.position = gunPoint.position;
         newBullet.transform.rotation = Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0);
 
