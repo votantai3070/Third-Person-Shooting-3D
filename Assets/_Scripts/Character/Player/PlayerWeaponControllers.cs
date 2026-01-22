@@ -214,7 +214,7 @@ public class PlayerWeaponControllers : MonoBehaviour
         newBullet.transform.rotation = Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0);
 
         Bullet bulletComponent = newBullet.GetComponent<Bullet>();
-        bulletComponent.SetupBullet(distanceShot);
+        bulletComponent.SetupBullet(distanceShot, currentWeapon.weaponData);
 
         Rigidbody rbBullet = newBullet.GetComponent<Rigidbody>();
         rbBullet.mass = averageMass / bulletSpeed;

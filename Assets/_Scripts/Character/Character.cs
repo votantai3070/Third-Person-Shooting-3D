@@ -2,28 +2,32 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int health = 100;
+    [SerializeField] private int currentHealth = 100;
+
+    [SerializeField] private int maxHealth = 100;
 
     bool isDead;
 
     public void TakeDamage(int damageAmount)
     {
-        health -= damageAmount;
+        currentHealth -= damageAmount;
 
-        Debug.Log("Health: " + health);
+        Debug.Log("Health: " + currentHealth);
 
         if (IsDead())
             Die();
+
+        //UI.instance.ingameUI.UpdateHealthUI(currentHealth, maxHealth);
     }
 
     public void Heal(int amount)
     {
-        health += amount;
+        currentHealth += amount;
     }
 
     public int GetHealth()
     {
-        return health;
+        return currentHealth;
     }
 
     protected virtual void Die()
@@ -34,7 +38,7 @@ public class Character : MonoBehaviour, IDamageable
     {
         if (isDead) return false;
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             isDead = true;
             return true;

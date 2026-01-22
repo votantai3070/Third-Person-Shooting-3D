@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
     public PlayerControls controls;
     public PlayerMovement movement { get; private set; }
@@ -31,5 +31,13 @@ public class Player : MonoBehaviour
     private void OnDisable()
     {
         controls.Disable();
+    }
+
+
+    protected override void Die()
+    {
+        base.Die();
+
+
     }
 }

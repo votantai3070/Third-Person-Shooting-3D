@@ -17,7 +17,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4981483417408691638, guid: 73faa06297da07b4cb5a5e4306c17bbf, type: 3}
   damage: 1
   fireRate: 6
-  bulletSpeed: 80
+  bulletSpeed: 40
   shootRange: 200
   impactForce: 8
   ammoType: 1

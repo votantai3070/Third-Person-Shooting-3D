@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
     public GameObject impactVFXPrefab;
     private float flyDistance = 50f;
     private Vector3 startPos;
+    private Weapon_SO weaponData;
 
     private void Update()
     {
@@ -14,22 +15,20 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void SetupBullet(float flyDistance)
+    public void SetupBullet(float flyDistance, Weapon_SO weaponData)
     {
         startPos = transform.position;
         this.flyDistance = flyDistance;
+        this.weaponData = weaponData;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
+        IDamageable damageable = collision.gameObject.GetComponentInParent<IDamageable>();
 
-        //Player player = collision.gameObject.GetComponentInParent<Player>();
-
-        if (enemy != null)
-        {
-            enemy.TakeDamage(1);
-        }
+        if (damageable != null && weaponData != null)
+            damageable.TakeDamage((int)weaponData.damage);
 
         if (enemy != null && !enemy.isShooted)
             enemy.Shooted();

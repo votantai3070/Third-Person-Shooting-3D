@@ -60,13 +60,17 @@ public class Enemy_Range : Enemy
     {
         //anim.SetTrigger("Shoot");
 
-        Debug.Log("Gun point position: " + gunPoint.position);
+        //Debug.Log("Gun point position: " + gunPoint.position);
 
         bulletDirection = (player.transform.position + Vector3.up * 1f - gunPoint.position).normalized;
 
         Bullet newBullet = ObjectPool.instance.GetObject(bulletPrefab, null).GetComponent<Bullet>();
         newBullet.transform.position = gunPoint.position;
         newBullet.transform.rotation = Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0);
+
+        Weapon_SO weaponData = visuals.currentRangeWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData;
+
+        newBullet.SetupBullet(weaponData.shootRange, weaponData);
 
         Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
 
