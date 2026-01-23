@@ -17,7 +17,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7916240514546175496, guid: c62768fe9a835a942aecbff55fad082a, type: 3}
   damage: 1
   fireRate: 10
-  bulletSpeed: 100
+  bulletSpeed: 40
   shootRange: 200
   impactForce: 5
   ammoType: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
   reloadSpeed: 1.8
   equipmentSpeed: 1.6
   muzzleFlashEffect: {fileID: 0}
-  bulletImpactEffect: {fileID: 0}
+  bulletImpactEffect: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
   weaponType: 1

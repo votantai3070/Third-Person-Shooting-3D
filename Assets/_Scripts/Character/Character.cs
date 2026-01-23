@@ -13,11 +13,13 @@ public class Character : MonoBehaviour, IDamageable
         currentHealth -= damageAmount;
 
         Debug.Log("Health: " + currentHealth);
+        Debug.Log("Is Dead: " + isDead);
 
         if (IsDead())
             Die();
 
-        //UI.instance.ingameUI.UpdateHealthUI(currentHealth, maxHealth);
+        if (transform.GetComponent<Player>() != null)
+            UI.instance.ingameUI.UpdateHealthUI(currentHealth, maxHealth);
     }
 
     public void Heal(int amount)

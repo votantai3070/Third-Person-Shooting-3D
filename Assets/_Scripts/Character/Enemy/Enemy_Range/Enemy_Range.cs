@@ -13,7 +13,6 @@ public class Enemy_Range : Enemy
 
     public GameObject bulletPrefab;
 
-
     #region States
     public IdleState_Range idleState { get; private set; }
     public PatrolState_Range patrolState { get; private set; }
@@ -40,7 +39,6 @@ public class Enemy_Range : Enemy
         base.Start();
 
         stateMachine.Initialize(idleState);
-
     }
 
     protected override void Update()
@@ -50,17 +48,19 @@ public class Enemy_Range : Enemy
 
     public void SetupWeapon()
     {
-        gunPoint = visuals.currentRangeWeaponModel.GetComponent<EnemyWeaponModel_Range>().gunPoint;
-        bulletSpeed = visuals.currentRangeWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData.bulletSpeed;
-        fireRate = visuals.currentRangeWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData.fireRate;
-        bulletPrefab = visuals.currentRangeWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData.bulletPrefab;
+        EnemyWeaponModel_Range weaponModel = visuals.currentWeaponModel.GetComponent<EnemyWeaponModel_Range>();
+
+        Debug.Log("Current Weapon Model: " + weaponModel);
+
+        gunPoint = weaponModel.gunPoint;
+        bulletSpeed = weaponModel.weaponData.bulletSpeed;
+        fireRate = weaponModel.weaponData.fireRate;
+        bulletPrefab = weaponModel.weaponData.bulletPrefab;
     }
 
     public void FireSingleBullet()
     {
         //anim.SetTrigger("Shoot");
-
-        //Debug.Log("Gun point position: " + gunPoint.position);
 
         bulletDirection = (player.transform.position + Vector3.up * 1f - gunPoint.position).normalized;
 
@@ -68,7 +68,7 @@ public class Enemy_Range : Enemy
         newBullet.transform.position = gunPoint.position;
         newBullet.transform.rotation = Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0);
 
-        Weapon_SO weaponData = visuals.currentRangeWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData;
+        Weapon_SO weaponData = visuals.currentWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData;
 
         newBullet.SetupBullet(weaponData.shootRange, weaponData);
 

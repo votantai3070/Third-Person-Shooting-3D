@@ -13,11 +13,10 @@ public class DeadState_Range : EnemyState
     {
         base.Enter();
 
-        enemy.agent.isStopped = true;
-
-        enemy.anim.enabled = false;
-
         isInteractable = false;
+        enemy.anim.enabled = false;
+        enemy.agent.isStopped = true;
+        enemy.ragdoll.RagdollActive(true);
 
         stateTimer = 1.5f;
     }
@@ -25,17 +24,17 @@ public class DeadState_Range : EnemyState
     public override void Exit()
     {
         base.Exit();
-
-        enemy.anim.enabled = true;
-
-        enemy.ragdoll.RagdollActive(true);
-        enemy.ragdoll.CollidersActive(true);
     }
 
     public override void Update()
     {
         base.Update();
 
+        DisableInteractionIfShould();
+    }
+
+    private void DisableInteractionIfShould()
+    {
         if (stateTimer <= 0 && !isInteractable)
         {
             enemy.ragdoll.RagdollActive(false);

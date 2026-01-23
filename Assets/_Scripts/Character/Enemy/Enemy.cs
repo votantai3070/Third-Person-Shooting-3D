@@ -11,7 +11,7 @@ public class Enemy : Character
 {
     public StateMachine stateMachine { get; private set; }
     public Animator anim { get; private set; }
-    public EnemyVisuals visuals { get; private set; }
+    public Enemy_Visuals visuals { get; private set; }
     public NavMeshAgent agent { get; private set; }
     public Player player { get; private set; }
     public Enemy_Ragdoll ragdoll { get; private set; }
@@ -49,13 +49,15 @@ public class Enemy : Character
     {
         pointPatrols = GetComponentsInChildren<PointPatrol>();
         anim = GetComponentInChildren<Animator>();
-        visuals = GetComponent<EnemyVisuals>();
+        visuals = GetComponent<Enemy_Visuals>();
         agent = GetComponent<NavMeshAgent>();
         player = FindAnyObjectByType<Player>();
         ragdoll = GetComponent<Enemy_Ragdoll>();
         dropController = GetComponent<Enemy_DropController>();
 
         IniatializePatrolPoints();
+
+        ragdoll.RagdollActive(false);
     }
 
     protected virtual void Update()

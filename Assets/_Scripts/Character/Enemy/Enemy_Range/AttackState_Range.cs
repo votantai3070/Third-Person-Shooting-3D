@@ -14,7 +14,7 @@ public class AttackState_Range : EnemyState
         base.Enter();
 
         enemy.visuals.SetLayerAnimation(1, 0f);
-
+        enemy.SetupWeapon();
         enemy.agent.isStopped = true;
         enemy.agent.velocity = Vector3.zero;
 
@@ -30,8 +30,6 @@ public class AttackState_Range : EnemyState
     public override void Update()
     {
         base.Update();
-
-        enemy.SetupWeapon();
 
         enemy.RotateFace(enemy.player.transform.position);
 

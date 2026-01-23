@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: M249
   m_EditorClassIdentifier: 
   weaponName: M249
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: 1cd790762a40ea84f96d9fb1f1ab141b, type: 3}
   bulletPrefab: {fileID: 7891058214873949390, guid: fda479538d924144cabef019292cfd22, type: 3}
   damage: 1
   fireRate: 8
-  bulletSpeed: 100
+  bulletSpeed: 40
   shootRange: 100
   impactForce: 12
   ammoType: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
   reloadSpeed: 1
   equipmentSpeed: 1
   muzzleFlashEffect: {fileID: 0}
-  bulletImpactEffect: {fileID: 0}
+  bulletImpactEffect: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
   weaponType: 5

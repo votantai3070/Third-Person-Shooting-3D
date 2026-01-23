@@ -89,7 +89,6 @@
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_EnemyRespawn.cs" />
     <Compile Include="Assets\_Scripts\UI\UI.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
-    <Compile Include="Assets\_Scripts\Character\Enemy\EnemyVisuals.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Character\Character.cs" />
@@ -111,6 +110,7 @@
     <Compile Include="Assets\_Scripts\Crosshair.cs" />
     <Compile Include="Assets\_Scripts\UI\UI_Ingame.cs" />
     <Compile Include="Assets\_Scripts\SetupWeaponMaterials.cs" />
+    <Compile Include="Assets\_Scripts\Character\Player\PlayerDead.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_Hunt.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\EnemyEvents.cs" />
@@ -131,6 +131,7 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Ragdoll.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\EnemyWeaponModel_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerAim.cs" />
+    <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Visuals.cs" />
     <Compile Include="Assets\_Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\SnapPoint.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionEnd_Trigger.cs" />

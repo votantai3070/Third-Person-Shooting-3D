@@ -9,6 +9,7 @@ public class Player : Character
     public PlayerAim aim { get; private set; }
     public PlayerInteraction interaction { get; private set; }
     public Animator anim { get; private set; }
+    public PlayerDead dead { get; private set; }
 
 
     private void Awake()
@@ -21,10 +22,13 @@ public class Player : Character
         aim = GetComponent<PlayerAim>();
         interaction = GetComponent<PlayerInteraction>();
         anim = GetComponentInChildren<Animator>();
+        dead = GetComponent<PlayerDead>();
     }
 
     private void OnEnable()
     {
+        anim.enabled = true;
+
         controls.Enable();
     }
 
@@ -33,11 +37,10 @@ public class Player : Character
         controls.Disable();
     }
 
-
     protected override void Die()
     {
         base.Die();
 
-
+        dead.PlayerAnimationDead();
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: Final Defense
   missionDescription: 
-  defenseActive: 1
+  defenseActive: 0
   defenseDuration: 120
   waveCooldown: 15
   amountOfRespawnPoints: 2
