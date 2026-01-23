@@ -93,6 +93,7 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Character\Character.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Models.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\IntersectionCheck.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerWeaponControllers.cs" />
     <Compile Include="Assets\_InputManager\PlayerControls.cs" />

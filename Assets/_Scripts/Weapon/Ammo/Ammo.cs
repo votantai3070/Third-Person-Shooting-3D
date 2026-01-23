@@ -13,7 +13,7 @@ public class Ammo
     public AmmoType ammoType;
 
     [SerializeField] string ammoName;
-    [SerializeField] int totalAmmo;
+    public int totalAmmo;
 
     public Ammo(int totalAmmo, string ammoName, AmmoType ammoType, WeaponType weaponType)
     {

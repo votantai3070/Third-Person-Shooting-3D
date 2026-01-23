@@ -7,6 +7,7 @@ public class PlayerWeaponControllers : MonoBehaviour
     public Player player { private set; get; }
     public PlayerControls controls { private set; get; }
     [SerializeField] AmmoInventoryUI ammoInventory;
+    private int totalAmmoCurrentWeapon;
 
     [Header("Elements")]
     private float averageMass;
@@ -37,6 +38,8 @@ public class PlayerWeaponControllers : MonoBehaviour
         EquipStartingWeapon();
 
         Invoke(nameof(AddAmmoFromWeaponGenerateIntoInventory), .1f);
+
+        Invoke(nameof(UpdateAmmoUI), .2f);
     }
 
     private void Update()
@@ -65,6 +68,9 @@ public class PlayerWeaponControllers : MonoBehaviour
 
     private void EquipWeapon(int i)
     {
+        if (currentWeapon.weaponType == weaponSlots[i].weaponType)
+            return;
+
         if (i >= weaponSlots.Count) return;
 
         SetWeaponReady(false);
@@ -81,7 +87,16 @@ public class PlayerWeaponControllers : MonoBehaviour
 
         SetupWeapon();
 
+        UpdateAmmoUI();
+
         SetWeaponReady(true);
+    }
+
+    private void UpdateAmmoUI()
+    {
+        totalAmmoCurrentWeapon = ammoInventory.GetAmmoByType(currentWeapon.bulletPrefab.name);
+
+        UI.instance.weaponSlotUI.UpdateWeaponUI(currentWeapon.weaponData.weaponIcon, currentWeapon.bulletsInMagazine, totalAmmoCurrentWeapon);
     }
 
     private void DropWeapon()
@@ -127,6 +142,8 @@ public class PlayerWeaponControllers : MonoBehaviour
 
         currentWeapon.RefillBullets();
 
+        UpdateAmmoUI();
+
         SetWeaponReady(true);
     }
 
@@ -162,9 +179,12 @@ public class PlayerWeaponControllers : MonoBehaviour
             return;
         }
 
+
         FireSingleBullet();
 
         currentWeapon.bulletsInMagazine--;
+
+        UpdateAmmoUI();
     }
 
     IEnumerator BurstFire()
@@ -181,6 +201,8 @@ public class PlayerWeaponControllers : MonoBehaviour
         }
 
         currentWeapon.bulletsInMagazine--;
+
+        UpdateAmmoUI();
     }
 
     public void FireSingleBullet()

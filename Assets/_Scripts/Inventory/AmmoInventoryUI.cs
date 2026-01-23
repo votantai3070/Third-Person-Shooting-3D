@@ -32,7 +32,6 @@ public class AmmoInventoryUI : MonoBehaviour
         {
             slot.AddComponent<AmmoSlotUI>();
         }
-
     }
 
     private void GenerateAmmoSlotInfo()
@@ -94,6 +93,21 @@ public class AmmoInventoryUI : MonoBehaviour
             }
         }
     }
+
+    public int GetAmmoByType(string typeString)
+    {
+        foreach (var slot in ammoSlots)
+        {
+            AmmoSlotUI ammoSlotUI = slot.GetComponent<AmmoSlotUI>();
+            if (ParseAmmoType(typeString) == ammoSlotUI.GetAmmo().ammoType)
+            {
+                return ammoSlotUI.GetAmmo().totalAmmo;
+            }
+        }
+
+        return 0;
+    }
+
     private AmmoType ParseAmmoType(string spriteName)
     {
         if (spriteName.Contains("7.62x39"))
