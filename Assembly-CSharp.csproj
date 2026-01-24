@@ -88,6 +88,7 @@
     <Compile Include="Assets\_Scripts\Character\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_EnemyRespawn.cs" />
     <Compile Include="Assets\_Scripts\UI\UI.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_TransperentOnHover.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy.cs" />

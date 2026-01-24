@@ -5262,6 +5262,7 @@ GameObject:
   - component: {fileID: 2054052459}
   - component: {fileID: 2054052462}
   - component: {fileID: 2054052461}
+  - component: {fileID: 2054052463}
   m_Layer: 5
   m_Name: MissionInfo
   m_TagString: Untagged
@@ -5368,6 +5369,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &2054052463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054052457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ced9b28ac48da340865dbc35d4c0c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1515144498113346197
 PrefabInstance:
   m_ObjectHideFlags: 0
