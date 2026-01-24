@@ -12,6 +12,15 @@ public class UI_Ingame : MonoBehaviour
     [SerializeField] private TextMeshProUGUI missionText;
     [SerializeField] private TextMeshProUGUI missionDetail;
 
+    [Header("Tooltip Mission Info")]
+    [SerializeField] private GameObject missionTooltip;
+    [SerializeField] private GameObject missionInfo;
+
+    private void Start()
+    {
+        HandleMissionTooltip(true);
+    }
+
     public void UpdateHealthUI(float currentHealth, float maxHealth)
     {
         healthBar.fillAmount = currentHealth / maxHealth;
@@ -22,5 +31,11 @@ public class UI_Ingame : MonoBehaviour
     {
         missionText.text = missionTitle;
         missionDetail.text = missionDetails;
+    }
+
+    public void HandleMissionTooltip(bool show)
+    {
+        missionTooltip.SetActive(show);
+        missionInfo.SetActive(!show);
     }
 }

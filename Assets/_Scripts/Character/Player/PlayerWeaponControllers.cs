@@ -277,7 +277,12 @@ public class PlayerWeaponControllers : MonoBehaviour
         controls.Player.Equip1.performed += ctx => EquipWeapon(0);
         controls.Player.Equip2.performed += ctx => EquipWeapon(1);
 
-        controls.Player.Aim.performed += ctx => player.aim.SetAiming(true);
+        controls.Player.Aim.performed += ctx =>
+        {
+            if (player.isDead) return;
+            player.aim.SetAiming(true);
+        };
+
         controls.Player.Aim.canceled += ctx => player.aim.SetAiming(false);
     }
 }

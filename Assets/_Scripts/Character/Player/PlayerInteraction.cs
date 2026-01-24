@@ -9,6 +9,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private List<Interactable> interactList;
     [SerializeField] private Interactable closestInteractable;
 
+    bool hideMissionInfo = true;
+
     private void Start()
     {
         player = GetComponent<Player>();
@@ -66,5 +68,12 @@ public class PlayerInteraction : MonoBehaviour
             if (player.controller.OnlyTwoWeaponInSlotEquip() || closestInteractable.IsPickupAmmo())
                 InteractWithClosest();
         };
+
+        player.controls.Player.HideMissionInfo.performed += ctx =>
+        {
+            hideMissionInfo = !hideMissionInfo;
+            UI.instance.ingameUI.HandleMissionTooltip(hideMissionInfo);
+        };
+
     }
 }

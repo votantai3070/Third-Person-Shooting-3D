@@ -190,6 +190,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hide Mission Info"",
+                    ""type"": ""Button"",
+                    ""id"": ""7d1402b0-96d6-431d-b331-b1c7475108e7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -357,6 +366,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Equip - 2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d63efc4-d19e-4108-b21d-2c6d9504d7d7"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hide Mission Info"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -404,6 +424,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         m_Player_Equip1 = m_Player.FindAction("Equip - 1", throwIfNotFound: true);
         m_Player_Equip2 = m_Player.FindAction("Equip - 2", throwIfNotFound: true);
+        m_Player_HideMissionInfo = m_Player.FindAction("Hide Mission Info", throwIfNotFound: true);
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Open = m_Inventory.FindAction("Open", throwIfNotFound: true);
@@ -499,6 +520,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Drop;
     private readonly InputAction m_Player_Equip1;
     private readonly InputAction m_Player_Equip2;
+    private readonly InputAction m_Player_HideMissionInfo;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -554,6 +576,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Equip2".
         /// </summary>
         public InputAction @Equip2 => m_Wrapper.m_Player_Equip2;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/HideMissionInfo".
+        /// </summary>
+        public InputAction @HideMissionInfo => m_Wrapper.m_Player_HideMissionInfo;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -613,6 +639,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Equip2.started += instance.OnEquip2;
             @Equip2.performed += instance.OnEquip2;
             @Equip2.canceled += instance.OnEquip2;
+            @HideMissionInfo.started += instance.OnHideMissionInfo;
+            @HideMissionInfo.performed += instance.OnHideMissionInfo;
+            @HideMissionInfo.canceled += instance.OnHideMissionInfo;
         }
 
         /// <summary>
@@ -657,6 +686,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Equip2.started -= instance.OnEquip2;
             @Equip2.performed -= instance.OnEquip2;
             @Equip2.canceled -= instance.OnEquip2;
+            @HideMissionInfo.started -= instance.OnHideMissionInfo;
+            @HideMissionInfo.performed -= instance.OnHideMissionInfo;
+            @HideMissionInfo.canceled -= instance.OnHideMissionInfo;
         }
 
         /// <summary>
@@ -870,6 +902,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnEquip2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Hide Mission Info" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHideMissionInfo(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Inventory" which allows adding and removing callbacks.

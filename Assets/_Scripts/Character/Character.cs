@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int currentHealth = 100;
+    private int currentHealth;
 
     [SerializeField] private int maxHealth = 100;
 
-    bool isDead;
+    public bool isDead { get; private set; }
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
-
-        Debug.Log("Health: " + currentHealth);
-        Debug.Log("Is Dead: " + isDead);
-
 
         if (IsDead())
             Die();
