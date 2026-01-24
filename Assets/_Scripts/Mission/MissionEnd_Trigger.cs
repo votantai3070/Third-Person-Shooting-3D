@@ -11,6 +11,9 @@ public class MissionEnd_Trigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Player: " + other.gameObject.name + " entered mission end trigger.");
+        Debug.Log("Player: " + player);
+
         if (other.gameObject != player)
             return;
 

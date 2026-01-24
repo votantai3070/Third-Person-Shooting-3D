@@ -10,6 +10,7 @@ public class Player : Character
     public PlayerInteraction interaction { get; private set; }
     public Animator anim { get; private set; }
     public PlayerDead dead { get; private set; }
+    public Ragdoll ragdoll { get; private set; }
 
 
     private void Awake()
@@ -23,6 +24,7 @@ public class Player : Character
         interaction = GetComponent<PlayerInteraction>();
         anim = GetComponentInChildren<Animator>();
         dead = GetComponent<PlayerDead>();
+        ragdoll = GetComponent<Ragdoll>();
     }
 
     private void OnEnable()

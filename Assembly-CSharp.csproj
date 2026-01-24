@@ -112,6 +112,7 @@
     <Compile Include="Assets\_Scripts\UI\UI_Ingame.cs" />
     <Compile Include="Assets\_Scripts\SetupWeaponMaterials.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerDead.cs" />
+    <Compile Include="Assets\_Scripts\Character\Ragdoll.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_Hunt.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\EnemyEvents.cs" />
@@ -129,7 +130,6 @@
     <Compile Include="Assets\_Scripts\Mission\Mission_EnemyHunt.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\_Scripts\StateMachine.cs" />
-    <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Ragdoll.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\EnemyWeaponModel_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerAim.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Visuals.cs" />

@@ -14,7 +14,7 @@ public class Enemy : Character
     public Enemy_Visuals visuals { get; private set; }
     public NavMeshAgent agent { get; private set; }
     public Player player { get; private set; }
-    public Enemy_Ragdoll ragdoll { get; private set; }
+    public Ragdoll ragdoll { get; private set; }
     public Enemy_DropController dropController { get; private set; }
 
     [Header("General Settings")]
@@ -52,7 +52,7 @@ public class Enemy : Character
         visuals = GetComponent<Enemy_Visuals>();
         agent = GetComponent<NavMeshAgent>();
         player = FindAnyObjectByType<Player>();
-        ragdoll = GetComponent<Enemy_Ragdoll>();
+        ragdoll = GetComponent<Ragdoll>();
         dropController = GetComponent<Enemy_DropController>();
 
         IniatializePatrolPoints();

@@ -31,6 +31,8 @@ public class Mission_LastDefense : Mission
         respawnPoints = new List<Transform>(ClosestPoints(amountOfRespawnPoints));
 
         defenseActive = false;
+
+        UpdateMissionUI();
     }
 
     public override void UpdateMission()
@@ -47,23 +49,32 @@ public class Mission_LastDefense : Mission
             waveCooldownTimer = waveCooldown;
         }
 
-        defenseTimerText = System.TimeSpan.FromSeconds(defenseTimer).ToString("mm':'ss");
+        UpdateMissionUI();
 
-        Debug.Log("Defense Time Remaining: " + defenseTimerText);
+        DefenseSuccess();
+    }
+
+    private void DefenseSuccess()
+    {
+        if (defenseTimer > 0)
+            return;
+
+        defenseActive = false;
+        UI.instance.ingameUI.UpdateMissionUI("Last Defense - Mission Complete!", "You have successfully defended against the enemy waves.");
     }
 
     public override bool MissionCompleted()
     {
         if (!defenseActive)
         {
-            StartDefenseEnvent();
+            StartDefenseEvent();
             return false;
         }
 
         return defenseTimer < 0;
     }
 
-    private void StartDefenseEnvent()
+    private void StartDefenseEvent()
     {
         waveCooldownTimer = .5f;
         defenseTimer = defenseDuration;
@@ -121,6 +132,13 @@ public class Mission_LastDefense : Mission
         }
 
         return closestPoints;
+    }
+
+    private void UpdateMissionUI()
+    {
+        string missionTitle = "Last Defense";
+        string missionDetails = "Survive the enemy waves for " + System.TimeSpan.FromSeconds(defenseDuration).ToString("mm':'ss") + ".";
+        UI.instance.ingameUI.UpdateMissionUI(missionTitle, missionDetails);
     }
 
 }

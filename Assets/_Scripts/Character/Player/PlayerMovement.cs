@@ -67,11 +67,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (player.dead.IsDead()) return;
+
         ApplyRotation();
     }
 
     private void FixedUpdate()
     {
+        if (player.dead.IsDead()) return;
+
         ApplyMovement();
     }
 

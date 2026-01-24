@@ -14,6 +14,8 @@ public class Mission_EnemyHunt : Mission
     {
         killsTogo = enemiesToHunt;
 
+        UpdateMissionUI();
+
         MissionObject_Hunt.OnTargetKilled += EliminateKill;
 
         List<Enemy> validEnemies = new();
@@ -25,8 +27,6 @@ public class Mission_EnemyHunt : Mission
                 validEnemies.Add(enemy);
             }
         }
-
-        Debug.Log("Enemy Hunt Mission: Found " + validEnemies.Count + " valid enemies of type " + enemyType + ".");
 
         for (int i = 0; i < enemiesToHunt; i++)
         {
@@ -41,6 +41,7 @@ public class Mission_EnemyHunt : Mission
 
     public override bool MissionCompleted()
     {
+
         return killsTogo <= 0;
     }
 
@@ -48,11 +49,21 @@ public class Mission_EnemyHunt : Mission
     {
         killsTogo--;
 
+        UpdateMissionUI();
+
         Debug.Log("Enemy Hunt Mission: Enemy killed. " + killsTogo + " kills remaining.");
 
         if (killsTogo <= 0)
         {
+            UI.instance.ingameUI.UpdateMissionUI("Enemy Hunt - Mission Complete!", "All targets eliminated.");
             MissionObject_Hunt.OnTargetKilled -= EliminateKill;
         }
+    }
+
+    public void UpdateMissionUI()
+    {
+        string missionTitle = $"Enemy Hunt - Eliminate {enemiesToHunt} more {enemyType} enemies.";
+        string missionDetails = $"Target left: {killsTogo}";
+        UI.instance.ingameUI.UpdateMissionUI(missionTitle, missionDetails);
     }
 }

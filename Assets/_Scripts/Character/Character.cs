@@ -15,8 +15,12 @@ public class Character : MonoBehaviour, IDamageable
         Debug.Log("Health: " + currentHealth);
         Debug.Log("Is Dead: " + isDead);
 
+
         if (IsDead())
             Die();
+
+        if (currentHealth < 0)
+            currentHealth = 0;
 
         if (transform.GetComponent<Player>() != null)
             UI.instance.ingameUI.UpdateHealthUI(currentHealth, maxHealth);

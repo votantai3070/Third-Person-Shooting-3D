@@ -20,6 +20,8 @@ public class Mission_CarDelivery : Mission
 
         MissionObject_CarToDelivery.OnCarDelivery += HandleCarDelivery;
 
+        UpdateMissionUI();
+
         // Add MissionObject_CarToDelivery component to all cars
         Car[] cars = FindObjectsByType<Car>(FindObjectsSortMode.None);
 
@@ -38,7 +40,15 @@ public class Mission_CarDelivery : Mission
     {
         isCarDelivered = true;
 
+        UI.instance.ingameUI.UpdateMissionUI("Car Delivery - Mission Complete!", "The car has been successfully delivered.");
+
         MissionObject_CarToDelivery.OnCarDelivery -= HandleCarDelivery;
     }
 
+    private void UpdateMissionUI()
+    {
+        string missionTitle = "Car Delivery";
+        string missionDetails = "Deliver the car to the designated delivery zone.";
+        UI.instance.ingameUI.UpdateMissionUI(missionTitle, missionDetails);
+    }
 }

@@ -55,9 +55,9 @@ GameObject:
   - component: {fileID: 4096743301516165070}
   - component: {fileID: 4581750638769874527}
   - component: {fileID: 2704571225618985155}
-  - component: {fileID: 2260238364676822225}
   - component: {fileID: 5565513508691073597}
   - component: {fileID: 1870382984861541909}
+  - component: {fileID: 940182439726949284}
   m_Layer: 0
   m_Name: Enemy_Melee
   m_TagString: Untagged
@@ -133,18 +133,6 @@ MonoBehaviour:
   - {fileID: 7386993746336435920}
   - {fileID: 5960923156032254025}
   recoveryTime: 1
---- !u!114 &2260238364676822225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940060231642938360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46ebf41362d94de429fef398890c7d67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5565513508691073597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +160,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   enemyMeleeWeaponModel: 0
+  enemyMeleeWeaponModels: []
   enemyRangeWeaponModel: 0
+  enemyRangeWeaponModels: []
+--- !u!114 &940182439726949284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940060231642938360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea360ea8c5b218c42b06ea4d04a590c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdollParent: {fileID: 0}
 --- !u!1 &2663394716879372830
 GameObject:
   m_ObjectHideFlags: 0
