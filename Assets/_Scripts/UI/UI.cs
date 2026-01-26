@@ -7,6 +7,8 @@ public class UI : MonoBehaviour
     public UI_Ingame ingameUI { get; private set; }
     public UI_WeaponSlot weaponSlotUI { get; private set; }
 
+    public GameObject[] UIElement;
+
     private void Awake()
     {
         if (instance == null)
@@ -18,7 +20,17 @@ public class UI : MonoBehaviour
             Destroy(gameObject);
         }
 
-        ingameUI = GetComponentInChildren<UI_Ingame>();
+        ingameUI = GetComponentInChildren<UI_Ingame>(true);
         weaponSlotUI = GetComponentInChildren<UI_WeaponSlot>();
+    }
+
+    public void ShowUIElement(GameObject go)
+    {
+        foreach (GameObject element in UIElement)
+        {
+            element.SetActive(true);
+        }
+
+        go.SetActive(true);
     }
 }

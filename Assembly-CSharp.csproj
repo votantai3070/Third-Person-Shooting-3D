@@ -69,6 +69,7 @@
     <Compile Include="Assets\_Scripts\Pickups\Interactable.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\Enemy_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerEvents.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_TransparentOnHover.cs" />
     <Compile Include="Assets\_Scripts\Weapon\EnemyWeaponModels.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\LevelPart.cs" />
     <Compile Include="Assets\_Scripts\Inventory\AmmoSlotUI.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_Key.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\IdleState_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\DeadState_Melee.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_Button.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\DeadState_Range.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetUpdater.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\ChaseState_Range.cs" />
@@ -88,7 +90,6 @@
     <Compile Include="Assets\_Scripts\Character\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_EnemyRespawn.cs" />
     <Compile Include="Assets\_Scripts\UI\UI.cs" />
-    <Compile Include="Assets\_Scripts\UI\UI_TransperentOnHover.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy.cs" />

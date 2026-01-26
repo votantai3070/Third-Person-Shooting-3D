@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_TransperentOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UI_TransparentOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private Dictionary<Image, Color> orginalImageColors = new Dictionary<Image, Color>();
     private Dictionary<TextMeshProUGUI, Color> orginalTextColors = new Dictionary<TextMeshProUGUI, Color>();

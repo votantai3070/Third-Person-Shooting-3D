@@ -1,0 +1,63 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+{
+    [Header("Mouse hover setting")]
+    public float scaleSpeed = 1f;
+    public float scaleRate = 1.2f;
+
+    private Vector3 defaultScale;
+    private Vector3 targetScale;
+
+    private Image buttonImage;
+    private TextMeshProUGUI buttonText;
+
+
+    public virtual void Start()
+    {
+        defaultScale = transform.localScale;
+        targetScale = defaultScale;
+
+        buttonImage = GetComponent<Button>().image;
+        buttonText = GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    public virtual void Update()
+    {
+        if (Mathf.Abs(transform.lossyScale.x - targetScale.x) > 0.01f)
+        {
+            float scaleValue = Mathf.Lerp(transform.localScale.x, targetScale.x, Time.deltaTime * scaleSpeed);
+            transform.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
+        }
+    }
+
+    public virtual void OnPointerEnter(PointerEventData eventData)
+    {
+        targetScale = defaultScale * scaleRate;
+
+        buttonImage.color = Color.yellow;
+        buttonText.color = Color.yellow;
+    }
+
+    public virtual void OnPointerExit(PointerEventData eventData)
+    {
+        ReturnDefaultLook();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ReturnDefaultLook();
+    }
+
+    public virtual void ReturnDefaultLook()
+    {
+        targetScale = defaultScale;
+
+        buttonImage.color = Color.white;
+        buttonText.color = Color.white;
+    }
+
+}
