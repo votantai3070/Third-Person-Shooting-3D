@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
     public GameObject impactVFXPrefab;
     private float flyDistance = 50f;
     private Vector3 startPos;
-    private Weapon_SO weaponData;
+    private Weapon_Data weaponData;
 
     private void Update()
     {
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void SetupBullet(float flyDistance, Weapon_SO weaponData)
+    public void SetupBullet(float flyDistance, Weapon_Data weaponData)
     {
         startPos = transform.position;
         this.flyDistance = flyDistance;

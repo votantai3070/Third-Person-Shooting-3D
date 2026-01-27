@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c79de5165b93244eb92d4accb188947, type: 3}
   m_Name: Hunt Enemy - Mission
   m_EditorClassIdentifier: 
-  missionName: Hunt Enemy
-  missionDescription: 
+  missionName: "D\u1ECDn s\u1EA1ch"
+  missionDescription: "Tr\u1EA1i c\u01B0\u1EDBp \u0111\u1ECBch ch\u1EB7n tuy\u1EBFn
+    ti\u1EBFp t\u1EBF. Ti\xEAu di\u1EC7t t\u1EA5t c\u1EA3 15 k\u1EBB \u0111\u1ECBch
+    v\xE0 d\u1ECDn khu v\u1EF1c. Kh\xF4ng ai s\u1ED1ng s\xF3t. Kh\xF4ng nh\xE2n ch\u1EE9ng.
+    Kh\xF4ng th\u01B0\u01A1ng x\xF3t."
   enemiesToHunt: 1
   enemyType: 0

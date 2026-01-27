@@ -9,7 +9,7 @@ public enum PlayerViewPoint { PistolAim, RifleAim }
 
 public class WeaponModels : MonoBehaviour
 {
-    public Weapon_SO weaponData;
+    public Weapon_Data weaponData;
 
     public WeaponType weaponModelType;
     public EquipType equipType;

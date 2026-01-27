@@ -48,9 +48,9 @@ public class Weapon
     public int magazineCapacity; // Sức chứa băng đạn
     public int totalReserveAmmo; // Số đạn còn lại
 
-    public Weapon_SO weaponData;
+    public Weapon_Data weaponData;
 
-    public Weapon(Weapon_SO weapon)
+    public Weapon(Weapon_Data weapon)
     {
         weaponData = weapon;
         bulletSpeed = weapon.bulletSpeed;

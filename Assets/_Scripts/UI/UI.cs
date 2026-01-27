@@ -28,9 +28,13 @@ public class UI : MonoBehaviour
     {
         foreach (GameObject element in UIElement)
         {
-            element.SetActive(true);
+            element.SetActive(false);
         }
 
         go.SetActive(true);
     }
+
+    public void SwitchToInGameUI() => ShowUIElement(ingameUI.gameObject);
+
+    public void QuitTheGame() => Application.Quit();
 }

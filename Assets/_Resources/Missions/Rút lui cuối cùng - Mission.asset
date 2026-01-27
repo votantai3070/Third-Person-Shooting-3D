@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5609ec65eabd07c4c81564adbabf9da2, type: 3}
-  m_Name: Defense - Mission
+  m_Name: "R\xFAt lui cu\u1ED1i c\xF9ng - Mission"
   m_EditorClassIdentifier: 
-  missionName: Final Defense
-  missionDescription: 
+  missionName: "R\xFAt lui cu\u1ED1i c\xF9ng"
+  missionDescription: "Tr\u1EF1c th\u0103ng r\xFAt lui \u0111ang \u0111\u1EBFn -
+    c\xF2n 5 ph\xFAt. Gi\u1EEF khu h\u1EA1 c\xE1nh ch\u1ED1ng \u0111\u1EE3t t\u1EA5n
+    c\xF4ng \u0111\u1ECBch. N\u1EBFu m\u1EA5t LZ, b\u1EA1n b\u1ECB m\u1EAFc k\u1EB9t
+    trong v\xF9ng \u0111\u1ECBch. Kh\xF4ng l\xF9i, kh\xF4ng \u0111\u1EA7u h\xE0ng."
   defenseActive: 0
   defenseDuration: 120
   waveCooldown: 15
   amountOfRespawnPoints: 2
-  respawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  respawnPoints: []
   enemiesPerWave: 5
   possibleEnemies:
   - {fileID: 1940060231642938360, guid: e060708593bdff849a72254f18eb114d, type: 3}
-  - {fileID: 8292328192733500504, guid: 7a3804455ac46784dbeac72d9c8270d3, type: 3}
+  - {fileID: 2733796089222999987, guid: 6aea1ef2e43aea341ba163912af81606, type: 3}

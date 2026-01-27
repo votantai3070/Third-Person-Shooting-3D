@@ -2,7 +2,7 @@
 
 public class PickupWeapon : Interactable
 {
-    [SerializeField] Weapon_SO weaponData;
+    [SerializeField] Weapon_Data weaponData;
     public Weapon weapon;
 
     [SerializeField] BackupWeaponModel[] backupWeaponModels;

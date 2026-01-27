@@ -130,6 +130,5 @@ AssetOrigin:
   productId: 287096
   packageName: Gun Icons Package
   packageVersion: 1.0.0
-  assetPath: "Assets/Navidtbt/Game Weapon Icon Pack/Single Icons/PNG/Grenade/Gray/512/Name=Pineapple,
-    Rotation=30\xB0.png"
+  assetPath: "Assets/_Graphics/Weapon/Grenade/Gray/512/Name=Pineapple, Rotation=30\xB0.png"
   uploadId: 674624

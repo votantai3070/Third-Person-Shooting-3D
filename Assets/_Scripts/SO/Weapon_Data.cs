@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Weapon Data", menuName = "Weapon SO/Weapon")]
-public class Weapon_SO : ScriptableObject
+public class Weapon_Data : ScriptableObject
 {
     [Header("Weapon Info")]
     public string weaponName;
     public Sprite weaponIcon;
+    public string weaponInfo;
     public GameObject bulletPrefab;
 
     [Header("Shooting Stats")]

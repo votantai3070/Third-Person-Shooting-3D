@@ -81,7 +81,7 @@ public class AmmoInventoryUI : MonoBehaviour
         }
     }
 
-    public void MinusAmmo(Weapon_SO weaponData, int amount)
+    public void MinusAmmo(Weapon_Data weaponData, int amount)
     {
         AmmoSlotUI[] ammoTypeWeapons = GetComponentsInChildren<AmmoSlotUI>(true);
 

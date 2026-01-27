@@ -6,5 +6,5 @@ public class EnemyWeaponModel_Range : MonoBehaviour
 
     public Transform gunPoint;
 
-    public Weapon_SO weaponData;
+    public Weapon_Data weaponData;
 }

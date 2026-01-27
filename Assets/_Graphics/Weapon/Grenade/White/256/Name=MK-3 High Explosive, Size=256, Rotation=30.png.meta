@@ -130,6 +130,6 @@ AssetOrigin:
   productId: 287096
   packageName: Gun Icons Package
   packageVersion: 1.0.0
-  assetPath: Assets/Navidtbt/Game Weapon Icon Pack/Single Icons/PNG/Grenade/White/256/Name=MK-3
-    High Explosive, Size=256, Rotation=30.png
+  assetPath: Assets/_Graphics/Weapon/Grenade/White/256/Name=MK-3 High Explosive,
+    Size=256, Rotation=30.png
   uploadId: 674624

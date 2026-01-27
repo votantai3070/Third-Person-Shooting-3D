@@ -47,7 +47,7 @@ public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         ReturnDefaultLook();
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
         ReturnDefaultLook();
     }

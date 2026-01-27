@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06044f284a75c724fa8588dbdf78dd19, type: 3}
   m_Name: Timer - Mission
   m_EditorClassIdentifier: 
-  missionName: Race again time
-  missionDescription: 
-  time: 300
+  missionName: "R\xFAt lui"
+  missionDescription: "Tr\u1EF1c th\u0103ng c\u1EE9u h\u1ED9 \u0111ang \u0111\u1EBFn
+    - c\xF2n 3 ph\xFAt. \u0110\u1EBFn \u0111i\u1EC3m r\xFAt lui tr\u01B0\u1EDBc khi
+    n\xF3 bay \u0111i. \u0110\xE2y l\xE0 c\xE1ch duy nh\u1EA5t tho\xE1t ra. DI NGAY."
+  time: 180

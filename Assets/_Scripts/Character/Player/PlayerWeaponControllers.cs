@@ -20,7 +20,7 @@ public class PlayerWeaponControllers : MonoBehaviour
     private Transform gunPoint;
 
     WeaponModels currentWeaponModel;
-    [SerializeField] Weapon_SO defaultWeaponData;
+    [SerializeField] Weapon_Data defaultWeaponData;
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] List<Weapon> weaponSlots;
 

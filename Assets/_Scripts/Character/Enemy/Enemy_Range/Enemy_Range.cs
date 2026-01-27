@@ -68,7 +68,7 @@ public class Enemy_Range : Enemy
         newBullet.transform.position = gunPoint.position;
         newBullet.transform.rotation = Quaternion.LookRotation(bulletDirection) * Quaternion.Euler(90, 0, 0);
 
-        Weapon_SO weaponData = visuals.currentWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData;
+        Weapon_Data weaponData = visuals.currentWeaponModel.GetComponent<EnemyWeaponModel_Range>().weaponData;
 
         newBullet.SetupBullet(weaponData.shootRange, weaponData);
 

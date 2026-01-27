@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf2fe3e8e616bd468073c4a36c43d8f, type: 3}
   m_Name: Key Found - Mission
   m_EditorClassIdentifier: 
-  missionName: Find Key
-  missionDescription: 
+  missionName: "T\xECm ch\xECa kh\xF3a"
+  missionDescription: "Th\xF4ng tin t\u1EEB th\u01B0\u01A1ng nh\xE2n ch\u1EC9 \u0111\u1EBFn
+    k\xE9t s\u1EAFt tr\u01B0\u1EDBc chi\u1EBFn tranh gi\u1EA5u trong \u0111\u1ED1ng
+    \u0111\u1ED5 n\xE1t. Ch\xECa kh\xF3a \u1EDF \u0111\xE2u \u0111\xF3 trong t\xF2a
+    v\u0103n ph\xF2ng s\u1EADp. Kh\xF4ng bi\u1EBFt trong c\xF3 g\xEC, nh\u01B0ng
+    \u0111\xE1ng m\u1EA1o hi\u1EC3m."
   key: {fileID: 7742350244414015182, guid: afc3d9503aaa9f340b5963011534cf14, type: 3}

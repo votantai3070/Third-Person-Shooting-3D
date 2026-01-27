@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{6098D2D2-2F4E-C283-AE14-ECB1447E34B2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -82,6 +83,7 @@
     <Compile Include="Assets\_Scripts\Weapon\AimTargetUpdater.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\ChaseState_Range.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_CarToDelivery.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_WeaponSelection.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\Player.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\ChaseState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerMovement.cs" />
@@ -102,9 +104,11 @@
     <Compile Include="Assets\_Scripts\Pickups\PickupWeapon.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\_Scripts\Weapon\BackupWeaponModel.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_WeaponSelectionButton.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\AttackState_Range.cs" />
     <Compile Include="Assets\_Scripts\Pickups\PickupAmmo.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\LevelGenerator.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_MissionSelection.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\EnemyState.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission_LastDefense.cs" />
     <Compile Include="Assets\_Scripts\Inventory\MainSlot.cs" />
@@ -124,14 +128,16 @@
     <Compile Include="Assets\_Scripts\Bullet.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\RecoveryState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionManager.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_SelectedWeaponWindow.cs" />
     <Compile Include="Assets\_Scripts\Camera\CameraPOV.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission.cs" />
-    <Compile Include="Assets\_Scripts\SO\Weapon_SO.cs" />
+    <Compile Include="Assets\_Scripts\SO\Weapon_Data.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission_KeyFind.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionTimer.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission_EnemyHunt.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\_Scripts\StateMachine.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_MissionSelectionButton.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\EnemyWeaponModel_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerAim.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Visuals.cs" />
