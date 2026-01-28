@@ -9,10 +9,13 @@ public class UI_SelectedWeaponWindow : MonoBehaviour
     [SerializeField] private Image weaponIcon;
     [SerializeField] private TextMeshProUGUI weaponInfo;
 
+
     private void Start()
     {
         UpdateSlotInfo(null);
     }
+
+
 
     public void SetWeaponData(Weapon_Data newWeaponData)
     {
@@ -20,9 +23,9 @@ public class UI_SelectedWeaponWindow : MonoBehaviour
         UpdateSlotInfo(weaponData);
     }
 
-    public void UpdateSlotInfo(Weapon_Data weapon_Data)
+    public void UpdateSlotInfo(Weapon_Data weaponData)
     {
-        if (weapon_Data == null)
+        if (weaponData == null)
         {
             weaponIcon.color = Color.clear;
             weaponInfo.text = "No Weapon Selected";
@@ -30,10 +33,12 @@ public class UI_SelectedWeaponWindow : MonoBehaviour
         }
 
         weaponIcon.color = Color.white;
-        weaponIcon.sprite = weapon_Data.weaponIcon;
+        weaponIcon.sprite = weaponData.weaponIcon;
         weaponInfo.text = weaponData.weaponInfo;
     }
 
     public bool IsEmpty() => weaponData == null;
+
+
 
 }

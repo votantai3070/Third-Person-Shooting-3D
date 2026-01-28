@@ -1,12 +1,42 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI_WeaponSelection : MonoBehaviour
 {
     public UI_SelectedWeaponWindow[] seletedWeapon;
 
+    [Header("Warning info")]
+    [SerializeField] private TextMeshProUGUI warningText;
+    [SerializeField] private float displaySpeed = .25f;
+    private float currentWarningAlpha;
+    private float targetWarningAlpha;
+
     private void Start()
     {
         seletedWeapon = GetComponentsInChildren<UI_SelectedWeaponWindow>();
+    }
+
+    private void Update()
+    {
+        if (currentWarningAlpha > targetWarningAlpha)
+        {
+            currentWarningAlpha -= Time.deltaTime * displaySpeed;
+            warningText.color = new Color(1, 1, 1, currentWarningAlpha);
+        }
+    }
+
+    public List<Weapon_Data> SelectWeaponData()
+    {
+        List<Weapon_Data> selectData = new List<Weapon_Data>();
+
+        foreach (var slot in seletedWeapon)
+        {
+            if (slot.weaponData != null)
+                selectData.Add(slot.weaponData);
+        }
+
+        return selectData;
     }
 
     public UI_SelectedWeaponWindow FindEmptySlot()
@@ -30,5 +60,14 @@ public class UI_WeaponSelection : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void ShowWarningMess(string message)
+    {
+        warningText.color = Color.white;
+        warningText.text = message;
+
+        currentWarningAlpha = warningText.color.a;
+        targetWarningAlpha = 0;
     }
 }

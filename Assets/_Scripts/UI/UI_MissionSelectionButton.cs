@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,18 +9,29 @@ public class UI_MissionSelectionButton : UI_Button
     [SerializeField] private Mission myMission;
     private TextMeshProUGUI myText;
 
-    private void OnValidate()
-    {
-        gameObject.name = "Button - Select Mission: " + myMission.missionName;
-        myText.text = myMission.missionName;
-        myText.text.ToUpper();
-    }
 
     public override void Start()
     {
         base.Start();
-        myText = GetComponentInChildren<TextMeshProUGUI>();
-        missionUI = GetComponentInParent<UI_MissionSelection>();
+        myText = GetComponentInChildren<TextMeshProUGUI>(true);
+        missionUI = GetComponentInParent<UI_MissionSelection>(true);
+    }
+    private void OnValidate()
+    {
+        gameObject.name = "Button - Select Mission: " + myMission.missionName;
+
+        if (myMission != null)
+            myText.text = myMission.missionName.ToUpper();
+        else
+        {
+            // Fallback nếu chưa assign
+            gameObject.name = "Button - Unassigned Mission";
+
+            if (myText != null)
+            {
+                myText.text = "NO MISSION";
+            }
+        }
     }
 
     public override void OnPointerEnter(PointerEventData eventData)
@@ -42,6 +53,5 @@ public class UI_MissionSelectionButton : UI_Button
         base.OnPointerDown(eventData);
 
         MissionManager.instance.SetCurrentMission(myMission);
-        UI.instance.SwitchToInGameUI();
     }
 }

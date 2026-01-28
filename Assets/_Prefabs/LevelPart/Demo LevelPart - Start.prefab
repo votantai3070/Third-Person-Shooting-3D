@@ -119,7 +119,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   intersectionLayer:
     serializedVersion: 2
     m_Bits: 0
-  intersectionCollider: []
+  intersectionCheckColliders: []
   intersectionCheckParent: {fileID: 0}
 --- !u!1 &1582758769536612829
 GameObject:

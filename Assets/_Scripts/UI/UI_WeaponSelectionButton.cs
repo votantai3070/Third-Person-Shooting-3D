@@ -9,6 +9,13 @@ public class UI_WeaponSelectionButton : UI_Button
     [SerializeField] private Weapon_Data weaponData;
     [SerializeField] private Image weaponIcon;
 
+    private UI_SelectedWeaponWindow emptySlot;
+
+    private void OnValidate()
+    {
+        gameObject.name = weaponData != null ? weaponData.weaponName + " Button" : "Weapon Selection Button";
+    }
+
     public override void Start()
     {
         base.Start();
@@ -20,15 +27,48 @@ public class UI_WeaponSelectionButton : UI_Button
     public override void OnPointerEnter(PointerEventData eventData)
     {
         base.OnPointerEnter(eventData);
+        weaponIcon.color = Color.yellow;
+
+        emptySlot = weaponSelectionUI.FindEmptySlot();
+        emptySlot?.UpdateSlotInfo(weaponData);
     }
 
     public override void OnPointerExit(PointerEventData eventData)
     {
         base.OnPointerExit(eventData);
+        weaponIcon.color = Color.white;
+
+        emptySlot?.UpdateSlotInfo(null);
+        emptySlot = null;
     }
 
     public override void OnPointerDown(PointerEventData eventData)
     {
         base.OnPointerDown(eventData);
+        weaponIcon.color = Color.white;
+
+        bool noMoreEmptySlots = weaponSelectionUI.FindEmptySlot() == null;
+        bool noThisWeaponInSlots = weaponSelectionUI.FindSlotWithWeaponOfType(weaponData) == null;
+
+        if (noMoreEmptySlots && noThisWeaponInSlots)
+        {
+            weaponSelectionUI.ShowWarningMess("All slots are full!");
+            return;
+        }
+
+        UI_SelectedWeaponWindow slotBusyWithThisWeapon = weaponSelectionUI.FindSlotWithWeaponOfType(weaponData);
+
+        if (slotBusyWithThisWeapon != null)
+        {
+            slotBusyWithThisWeapon.SetWeaponData(null);
+        }
+        else
+        {
+            emptySlot = weaponSelectionUI.FindEmptySlot();
+            emptySlot?.SetWeaponData(weaponData);
+        }
+
+
+        emptySlot = null; // clear reference after assignment
     }
 }

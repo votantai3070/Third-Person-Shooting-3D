@@ -9,8 +9,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{6098D2D2-2F4E-C283-AE14-ECB1447E34B2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -92,8 +91,10 @@
     <Compile Include="Assets\_Scripts\Character\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_EnemyRespawn.cs" />
     <Compile Include="Assets\_Scripts\UI\UI.cs" />
+    <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />
+    <Compile Include="Assets\_Scripts\SO\Weapon_Data.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Character\Character.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Models.cs" />
@@ -131,7 +132,6 @@
     <Compile Include="Assets\_Scripts\UI\UI_SelectedWeaponWindow.cs" />
     <Compile Include="Assets\_Scripts\Camera\CameraPOV.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission.cs" />
-    <Compile Include="Assets\_Scripts\SO\Weapon_Data.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission_KeyFind.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionTimer.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission_EnemyHunt.cs" />

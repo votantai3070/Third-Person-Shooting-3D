@@ -9,22 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0800b5205de0af74cb60b30c0a53087d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7277d63221e39e4468437c8a4deaf87a, type: 3}
   m_Name: Uzi
   m_EditorClassIdentifier: 
-  weaponName: Uzi
+  weaponName: 
   weaponIcon: {fileID: 0}
-  bulletPrefab: {fileID: 7916240514546175496, guid: c62768fe9a835a942aecbff55fad082a, type: 3}
-  damage: 1
-  fireRate: 10
-  bulletSpeed: 40
-  shootRange: 200
-  impactForce: 5
+  weaponInfo: 
+  bulletPrefab: {fileID: 0}
+  damage: 0
+  fireRate: 0
+  bulletSpeed: 0
+  shootRange: 0
+  impactForce: 0
   ammoType: 0
-  bulletsPerShot: 1
-  magazineCapacity: 25
-  bulletsInMagazine: 25
-  totalReserveAmmo: 100
+  bulletsPerShot: 0
+  magazineCapacity: 0
+  bulletsInMagazine: 0
+  totalReserveAmmo: 0
   burstAvailable: 0
   burstActive: 0
   burstBulletsPerShot: 0
@@ -32,13 +33,13 @@ MonoBehaviour:
   burstFireDelay: 0
   recoilForce: 0
   baseSpreadAngle: 0.2
-  maximumSpreadAngle: 2
-  reloadTime: 1.8
-  reloadSpeed: 1.8
-  equipmentSpeed: 1.6
+  maximumSpreadAngle: 0
+  reloadTime: 0
+  reloadSpeed: 1
+  equipmentSpeed: 0
   muzzleFlashEffect: {fileID: 0}
-  bulletImpactEffect: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
+  bulletImpactEffect: {fileID: 0}
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
-  weaponType: 1
-  shootType: 1
+  weaponType: 0
+  shootType: 0

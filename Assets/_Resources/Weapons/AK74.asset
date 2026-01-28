@@ -9,17 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0800b5205de0af74cb60b30c0a53087d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7277d63221e39e4468437c8a4deaf87a, type: 3}
   m_Name: AK74
   m_EditorClassIdentifier: 
-  weaponName: M4_8
-  weaponIcon: {fileID: 21300000, guid: dc00dc5ca86518642911fb5f8db946be, type: 3}
+  weaponName: AK47
+  weaponIcon: {fileID: 21300000, guid: 3bbe55c1725d0e84bad7b04d8c263764, type: 3}
+  weaponInfo: "S\xE1t th\u01B0\u01A1ng l\u1EDBn, nh\u01B0ng thi\u1EBFu \u1ED5n \u0111\u1ECBnh"
   bulletPrefab: {fileID: 7891058214873949390, guid: fda479538d924144cabef019292cfd22, type: 3}
-  damage: 10
-  fireRate: 6
+  damage: 8
+  fireRate: 8
   bulletSpeed: 40
-  shootRange: 200
-  impactForce: 8
+  shootRange: 100
+  impactForce: 10
   ammoType: 2
   bulletsPerShot: 1
   magazineCapacity: 30
@@ -28,14 +29,14 @@ MonoBehaviour:
   burstAvailable: 1
   burstActive: 0
   burstBulletsPerShot: 3
-  burstFireRate: 20
-  burstFireDelay: 0.5
+  burstFireRate: 3
+  burstFireDelay: 2
   recoilForce: 0
-  baseSpreadAngle: 0.5
+  baseSpreadAngle: 0.2
   maximumSpreadAngle: 3
   reloadTime: 3
-  reloadSpeed: 1
-  equipmentSpeed: 1.5
+  reloadSpeed: 1.3
+  equipmentSpeed: 1.3
   muzzleFlashEffect: {fileID: 0}
   bulletImpactEffect: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   shootSound: {fileID: 0}

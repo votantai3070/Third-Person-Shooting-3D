@@ -9,31 +9,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0800b5205de0af74cb60b30c0a53087d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7277d63221e39e4468437c8a4deaf87a, type: 3}
   m_Name: M107
   m_EditorClassIdentifier: 
   weaponName: M107
-  weaponIcon: {fileID: 21300000, guid: 7519e0e4daf7c8c4caa06f4e179f57e8, type: 3}
+  weaponIcon: {fileID: 21300000, guid: c76ace4818886734e8ddc7c7564d0257, type: 3}
+  weaponInfo: "C\u1EF1c k\u1EF3 m\u1EA1nh v\u1EDBi c\xE1c m\u1EE5c ti\xEAu t\u1EA7m
+    xa"
   bulletPrefab: {fileID: 5495583187231653505, guid: 95cb8874772943544860c889942e8615, type: 3}
-  damage: 1
+  damage: 100
   fireRate: 1
-  bulletSpeed: 40
-  shootRange: 500
-  impactForce: 20
+  bulletSpeed: 60
+  shootRange: 300
+  impactForce: 12
   ammoType: 4
   bulletsPerShot: 1
   magazineCapacity: 5
   bulletsInMagazine: 5
-  totalReserveAmmo: 20
+  totalReserveAmmo: 15
   burstAvailable: 0
   burstActive: 0
   burstBulletsPerShot: 0
   burstFireRate: 0
   burstFireDelay: 0
   recoilForce: 0
-  baseSpreadAngle: 0.2
-  maximumSpreadAngle: 1
-  reloadTime: 3
+  baseSpreadAngle: 0
+  maximumSpreadAngle: 0
+  reloadTime: 1
   reloadSpeed: 1
   equipmentSpeed: 1
   muzzleFlashEffect: {fileID: 0}

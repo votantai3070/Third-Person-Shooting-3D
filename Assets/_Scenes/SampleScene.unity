@@ -217,7 +217,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 15228093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816624496}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
+        m_MethodName: ShowUIElement
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 434147178}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &15228093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +366,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 22147196}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816624496}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
+        m_MethodName: ShowUIElement
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 434147178}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &22147196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,7 +429,7 @@ GameObject:
   - component: {fileID: 27221329}
   - component: {fileID: 27221330}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: WeaponImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -675,8 +699,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 476, y: -152}
-  m_SizeDelta: {x: 600, y: 200}
+  m_AnchoredPosition: {x: 473, y: -176}
+  m_SizeDelta: {x: 600, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &97659710
 MonoBehaviour:
@@ -728,6 +752,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65bcbf3c2c97664bbc0c69182856188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponData: {fileID: 0}
+  weaponIcon: {fileID: 1173141476}
+  weaponInfo: {fileID: 1939429318}
 --- !u!1 &110781692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,6 +1350,142 @@ Transform:
   m_Children: []
   m_Father: {fileID: 768826474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &197646029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 197646030}
+  - component: {fileID: 197646032}
+  - component: {fileID: 197646031}
+  m_Layer: 5
+  m_Name: WarningMess
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &197646030
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197646029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 434147179}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 95.2688, y: -27.786804}
+  m_SizeDelta: {x: 374.6597, y: 592.5034}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &197646031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197646029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 88acd1008e7fd3e4f97b7b05c772012f, type: 2}
+  m_sharedMaterial: {fileID: 7344536288787732611, guid: 88acd1008e7fd3e4f97b7b05c772012f, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -229.51495, y: 36.239136, z: 21.139526, w: 114.75751}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &197646032
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197646029}
+  m_CullTransparentMesh: 1
 --- !u!1 &219992936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,7 +2656,7 @@ GameObject:
   - component: {fileID: 385003097}
   - component: {fileID: 385003098}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: WeaponImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2546,7 +2709,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3bbe55c1725d0e84bad7b04d8c263764, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2982,6 +3145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 434147179}
+  - component: {fileID: 434147180}
   m_Layer: 5
   m_Name: WeaponSelection_UI
   m_TagString: Untagged
@@ -3008,6 +3172,7 @@ RectTransform:
   - {fileID: 97659709}
   - {fileID: 1990762674}
   - {fileID: 1370206441}
+  - {fileID: 197646030}
   m_Father: {fileID: 1816624495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3015,6 +3180,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &434147180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434147178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70efaca79a240c242b16d12998985301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seletedWeapon: []
+  warningText: {fileID: 197646031}
+  displaySpeed: 0.25
 --- !u!1 &435731436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,7 +3570,7 @@ GameObject:
   - component: {fileID: 471931193}
   - component: {fileID: 471931196}
   m_Layer: 5
-  m_Name: "Button - Select Mission: R\xFAt lui cu\u1ED1i c\xF9ng"
+  m_Name: AK47 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3510,6 +3690,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16b5bd0f604f084f8defce7ac9dcaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleSpeed: 1
+  scaleRate: 1.2
+  weaponData: {fileID: 11400000, guid: 9a7cd3c8c43df6a44831d08c13f641a9, type: 2}
+  weaponIcon: {fileID: 385003098}
 --- !u!1 &492006821
 GameObject:
   m_ObjectHideFlags: 0
@@ -4290,7 +4474,7 @@ GameObject:
   - component: {fileID: 612840587}
   - component: {fileID: 612840588}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: WeaponImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4343,7 +4527,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 93a8caf9b78cbce4dac3c780199d064a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4665,7 +4849,7 @@ GameObject:
   - component: {fileID: 672604009}
   - component: {fileID: 672604012}
   m_Layer: 5
-  m_Name: "Button - Select Mission: R\xFAt lui"
+  m_Name: M107 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4785,6 +4969,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16b5bd0f604f084f8defce7ac9dcaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleSpeed: 1
+  scaleRate: 1.2
+  weaponData: {fileID: 11400000, guid: af9f1e0de2b61a04b9c3b032c6e20e7a, type: 2}
+  weaponIcon: {fileID: 1773640538}
 --- !u!1 &708884912
 GameObject:
   m_ObjectHideFlags: 0
@@ -4883,7 +5071,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 708884916}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816624496}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
+        m_MethodName: ShowUIElement
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 434147178}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &708884916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6367,7 +6567,7 @@ GameObject:
   - component: {fileID: 880534356}
   - component: {fileID: 880534359}
   m_Layer: 5
-  m_Name: "Button - Select Mission: D\u1ECDn s\u1EA1ch"
+  m_Name: Bennelli M4 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6487,6 +6687,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16b5bd0f604f084f8defce7ac9dcaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleSpeed: 1
+  scaleRate: 1.2
+  weaponData: {fileID: 11400000, guid: 1fc8a885a2e5e0f4082e7cf9abde3621, type: 2}
+  weaponIcon: {fileID: 612840588}
 --- !u!1 &888271488
 GameObject:
   m_ObjectHideFlags: 0
@@ -7657,6 +7861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1079974784}
   - component: {fileID: 1079974785}
+  - component: {fileID: 1079974786}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7692,6 +7897,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMission: {fileID: 11400000, guid: a0f914339a03737468c6a9b393a8adb0, type: 2}
+--- !u!114 &1079974786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079974783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc1aefa2b57a4540a1adf9b72c03c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1103934364
 GameObject:
   m_ObjectHideFlags: 0
@@ -8225,7 +8442,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1125195139}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816624496}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
+        m_MethodName: ShowUIElement
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 434147178}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1125195139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8603,7 +8832,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 27}
+  m_AnchoredPosition: {x: 0, y: 45}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1173141476
@@ -9380,11 +9609,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1816624496}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: ShowUIElement
-        m_Mode: 2
+        m_MethodName: StartTheGame
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1876616275}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9692,8 +9921,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.3616943, y: -1.1807861}
-  m_SizeDelta: {x: -61.4039, y: -68.489}
+  m_AnchoredPosition: {x: 2.3616943, y: 14.12225}
+  m_SizeDelta: {x: -61.4039, y: -68.2445}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1436715136
 MonoBehaviour:
@@ -10434,7 +10663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 27}
+  m_AnchoredPosition: {x: 0, y: 45}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1493327572
@@ -10512,8 +10741,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 476, y: 155}
-  m_SizeDelta: {x: 600, y: 200}
+  m_AnchoredPosition: {x: 473, y: 131}
+  m_SizeDelta: {x: 600, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1512637836
 MonoBehaviour:
@@ -10565,6 +10794,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65bcbf3c2c97664bbc0c69182856188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponData: {fileID: 0}
+  weaponIcon: {fileID: 1493327572}
+  weaponInfo: {fileID: 1436715136}
 --- !u!1 &1532619293
 GameObject:
   m_ObjectHideFlags: 0
@@ -11144,7 +11376,7 @@ GameObject:
   - component: {fileID: 1663578235}
   - component: {fileID: 1663578236}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: WeaponImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11197,7 +11429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a26fe25c25e91ce45934e471bc96dd7a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11419,7 +11651,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1752842727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816624496}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
+        m_MethodName: ShowUIElement
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 434147178}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1752842727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11592,7 +11836,7 @@ GameObject:
   - component: {fileID: 1773640537}
   - component: {fileID: 1773640538}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: WeaponImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11645,7 +11889,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c76ace4818886734e8ddc7c7564d0257, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11669,7 +11913,7 @@ GameObject:
   - component: {fileID: 1788172106}
   - component: {fileID: 1788172109}
   m_Layer: 5
-  m_Name: "Button - Select Mission: V\u1EADn chuy\u1EC3n v\u1EADt t\u01B0"
+  m_Name: M1911 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11789,6 +12033,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16b5bd0f604f084f8defce7ac9dcaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleSpeed: 1
+  scaleRate: 1.2
+  weaponData: {fileID: 11400000, guid: 30f59501d8fed1647a11024e10248886, type: 2}
+  weaponIcon: {fileID: 27221330}
 --- !u!1 &1788571211
 GameObject:
   m_ObjectHideFlags: 0
@@ -12286,6 +12534,7 @@ MonoBehaviour:
   - {fileID: 967253569}
   - {fileID: 1489817004}
   - {fileID: 283700972}
+  - {fileID: 434147178}
 --- !u!114 &1816624497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12461,7 +12710,7 @@ GameObject:
   - component: {fileID: 1908370629}
   - component: {fileID: 1908370632}
   m_Layer: 5
-  m_Name: "Button - Select Mission: T\xECm ch\xECa kh\xF3a"
+  m_Name: M4 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12581,6 +12830,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16b5bd0f604f084f8defce7ac9dcaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleSpeed: 1
+  scaleRate: 1.2
+  weaponData: {fileID: 11400000, guid: 0d427dc8ff2e2744487844f748d1bb13, type: 2}
+  weaponIcon: {fileID: 1663578236}
 --- !u!1 &1939429316
 GameObject:
   m_ObjectHideFlags: 0
@@ -12615,8 +12868,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.3616943, y: -1.1807861}
-  m_SizeDelta: {x: -61.4039, y: -68.489}
+  m_AnchoredPosition: {x: 2.3616943, y: 16}
+  m_SizeDelta: {x: -61.4039, y: -53.063713}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1939429318
 MonoBehaviour:
@@ -13914,9 +14167,9 @@ RectTransform:
   - {fileID: 1763099742}
   m_Father: {fileID: 434147179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1297, y: -568.499}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 578, y: 0}
   m_SizeDelta: {x: 600, y: 763.002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2104133858

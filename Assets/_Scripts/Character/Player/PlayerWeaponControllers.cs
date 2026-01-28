@@ -20,7 +20,7 @@ public class PlayerWeaponControllers : MonoBehaviour
     private Transform gunPoint;
 
     WeaponModels currentWeaponModel;
-    [SerializeField] Weapon_Data defaultWeaponData;
+    [SerializeField] List<Weapon_Data> defaultWeaponData;
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] List<Weapon> weaponSlots;
 
@@ -34,10 +34,6 @@ public class PlayerWeaponControllers : MonoBehaviour
     void Start()
     {
         AssignInputEvents();
-
-        EquipStartingWeapon();
-
-        Invoke(nameof(AddAmmoFromWeaponGenerateIntoInventory), .1f);
 
         Invoke(nameof(UpdateAmmoUI), .2f);
     }
@@ -58,10 +54,18 @@ public class PlayerWeaponControllers : MonoBehaviour
     }
 
     #region Equip/Drop/Reload Weapon
-    private void EquipStartingWeapon()
+    public void SetDefaultWeapon(List<Weapon_Data> newWeaponData)
     {
-        if (weaponSlots.Count == 0)
-            weaponSlots.Add(new Weapon(defaultWeaponData));
+        defaultWeaponData = new(newWeaponData);
+        weaponSlots.Clear();
+
+        foreach (var weaponData in defaultWeaponData)
+        {
+            Weapon newWeapon = new(weaponData);
+            weaponSlots.Add(newWeapon);
+        }
+
+        AddAmmoFromWeaponGenerateIntoInventory();
 
         EquipWeapon(0);
     }
@@ -111,7 +115,7 @@ public class PlayerWeaponControllers : MonoBehaviour
 
     private void CreateWeaponInGround()
     {
-        GameObject dropped = ObjectPool.instance.GetObject(pickupWeaponPrefab, null);
+        GameObject dropped = ObjectPool.instance.GetObject(pickupWeaponPrefab);
         PickupWeapon dropWeapon = dropped.GetComponent<PickupWeapon>();
 
         // Clone weapon và set ammo = 0

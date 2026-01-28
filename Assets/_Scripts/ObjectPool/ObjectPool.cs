@@ -63,7 +63,7 @@ public class ObjectPool : MonoBehaviour
     }
 
 
-    public GameObject GetObject(GameObject prefab, Transform respawn)
+    public GameObject GetObject(GameObject prefab, Transform respawn = null)
     {
         if (!poolDict.ContainsKey(prefab))
             InitializeNewPool(prefab, null);

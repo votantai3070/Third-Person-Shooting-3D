@@ -9,33 +9,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0800b5205de0af74cb60b30c0a53087d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7277d63221e39e4468437c8a4deaf87a, type: 3}
   m_Name: Bennelli_M4
   m_EditorClassIdentifier: 
-  weaponName: Bennelli_M4
-  weaponIcon: {fileID: 21300000, guid: 5e977c9dfb7607d43838345134258dcf, type: 3}
+  weaponName: Bennelli M4
+  weaponIcon: {fileID: 21300000, guid: 93a8caf9b78cbce4dac3c780199d064a, type: 3}
+  weaponInfo: "C\u1EF1c k\u1EF3 m\u1EA1nh v\u1EDBi c\xE1c m\u1EE5c ti\xEAu t\u1EA7m
+    g\u1EA7n"
   bulletPrefab: {fileID: 7617375672060013244, guid: 0fc85a5bdeff64141b6ec310c127e3e9, type: 3}
-  damage: 1
-  fireRate: 1
+  damage: 10
+  fireRate: 2
   bulletSpeed: 40
-  shootRange: 30
-  impactForce: 13
+  shootRange: 60
+  impactForce: 15
   ammoType: 5
   bulletsPerShot: 1
-  magazineCapacity: 5
-  bulletsInMagazine: 5
+  magazineCapacity: 7
+  bulletsInMagazine: 7
   totalReserveAmmo: 30
-  burstAvailable: 1
+  burstAvailable: 0
   burstActive: 0
-  burstBulletsPerShot: 5
-  burstFireRate: 1
+  burstBulletsPerShot: 7
+  burstFireRate: 2
   burstFireDelay: 2
   recoilForce: 0
-  baseSpreadAngle: 2
-  maximumSpreadAngle: 2
-  reloadTime: 3
-  reloadSpeed: 1.2
-  equipmentSpeed: 1.5
+  baseSpreadAngle: 5
+  maximumSpreadAngle: 5
+  reloadTime: 1.2
+  reloadSpeed: 1
+  equipmentSpeed: 1.2
   muzzleFlashEffect: {fileID: 0}
   bulletImpactEffect: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   shootSound: {fileID: 0}

@@ -6,6 +6,7 @@ public class UI : MonoBehaviour
 
     public UI_Ingame ingameUI { get; private set; }
     public UI_WeaponSlot weaponSlotUI { get; private set; }
+    public UI_WeaponSelection weaponSelectionUI { get; private set; }
 
     public GameObject[] UIElement;
 
@@ -21,7 +22,8 @@ public class UI : MonoBehaviour
         }
 
         ingameUI = GetComponentInChildren<UI_Ingame>(true);
-        weaponSlotUI = GetComponentInChildren<UI_WeaponSlot>();
+        weaponSlotUI = GetComponentInChildren<UI_WeaponSlot>(true);
+        weaponSelectionUI = GetComponentInChildren<UI_WeaponSelection>(true);
     }
 
     public void ShowUIElement(GameObject go)
@@ -34,7 +36,11 @@ public class UI : MonoBehaviour
         go.SetActive(true);
     }
 
-    public void SwitchToInGameUI() => ShowUIElement(ingameUI.gameObject);
+    public void StartTheGame()
+    {
+        ShowUIElement(ingameUI.gameObject);
+        GameManager.instance.GameStart();
+    }
 
     public void QuitTheGame() => Application.Quit();
 }
