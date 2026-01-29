@@ -31,7 +31,10 @@ public class GameManager : MonoBehaviour
         // Start selected mission in a LevelGenerator script, after we done with level generation
     }
 
-    public void RestartTheGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     public void GameOver()
     {
