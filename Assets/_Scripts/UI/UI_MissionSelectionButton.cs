@@ -15,23 +15,12 @@ public class UI_MissionSelectionButton : UI_Button
         base.Start();
         myText = GetComponentInChildren<TextMeshProUGUI>(true);
         missionUI = GetComponentInParent<UI_MissionSelection>(true);
+
+        myText.text = myMission.missionName;
     }
     private void OnValidate()
     {
         gameObject.name = "Button - Select Mission: " + myMission.missionName;
-
-        if (myMission != null)
-            myText.text = myMission.missionName.ToUpper();
-        else
-        {
-            // Fallback nếu chưa assign
-            gameObject.name = "Button - Unassigned Mission";
-
-            if (myText != null)
-            {
-                myText.text = "NO MISSION";
-            }
-        }
     }
 
     public override void OnPointerEnter(PointerEventData eventData)

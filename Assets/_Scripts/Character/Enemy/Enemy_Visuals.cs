@@ -69,8 +69,6 @@ public class Enemy_Visuals : MonoBehaviour
         bool thisEnemyIsMelee = GetComponent<Enemy_Melee>() != null;
         bool thisEnemyIsRange = GetComponent<Enemy_Range>() != null;
 
-        Debug.Log("thisEnemyIsMelee: " + thisEnemyIsMelee);
-        Debug.Log("thisEnemyIsRange: " + thisEnemyIsRange);
 
         if (thisEnemyIsRange)
             currentWeaponModel = FindRangeWeaponModel();

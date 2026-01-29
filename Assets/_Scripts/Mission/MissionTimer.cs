@@ -19,7 +19,9 @@ public class MissionTimer : Mission
         currentTime -= Time.deltaTime;
 
         if (currentTime < 0)
-            Debug.Log("Over Time");
+        {
+            //GameManager.instance.GameOver();
+        }
 
         string timeStr = System.TimeSpan.FromSeconds(currentTime).ToString("mm':'ss");
 

@@ -60,15 +60,20 @@ public class ThirdPersonCameraController : MonoBehaviour
             verticalRotation = cameraTarget.eulerAngles.x;
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void Update()
     {
+        if (!player.controlsEnabled)
+        {
+            return;
+        }
+
+        HandleCursorToggle();
         UpdateCameraPosition();
         UpdateCameraRotation();
-        HandleCursorToggle();
     }
 
     void UpdateCameraPosition()
@@ -111,7 +116,7 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     void HandleCursorToggle()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetMouseButtonDown(3))
         {
             bool locked = Cursor.lockState == CursorLockMode.Locked;
             Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
@@ -120,19 +125,19 @@ public class ThirdPersonCameraController : MonoBehaviour
     }
 
     // Debug visualization
-    private void OnGUI()
-    {
-        if (cameraTarget == null) return;
+    //private void OnGUI()
+    //{
+    //    if (cameraTarget == null) return;
 
-        GUIStyle style = new GUIStyle();
-        style.fontSize = 16;
-        style.normal.textColor = Color.yellow;
+    //    GUIStyle style = new GUIStyle();
+    //    style.fontSize = 16;
+    //    style.normal.textColor = Color.yellow;
 
-        GUI.Label(new Rect(10, 10, 300, 30),
-            $"Horizontal: {horizontalRotation:F1}°", style);
-        GUI.Label(new Rect(10, 35, 300, 30),
-            $"Vertical: {verticalRotation:F1}°", style);
-        GUI.Label(new Rect(10, 60, 300, 30),
-            $"Camera Rotation: {cameraTarget.eulerAngles}", style);
-    }
+    //    GUI.Label(new Rect(10, 10, 300, 30),
+    //        $"Horizontal: {horizontalRotation:F1}°", style);
+    //    GUI.Label(new Rect(10, 35, 300, 30),
+    //        $"Vertical: {verticalRotation:F1}°", style);
+    //    GUI.Label(new Rect(10, 60, 300, 30),
+    //        $"Camera Rotation: {cameraTarget.eulerAngles}", style);
+    //}
 }

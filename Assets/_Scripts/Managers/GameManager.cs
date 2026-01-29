@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,14 @@ public class GameManager : MonoBehaviour
         LevelGenerator.instance.InitializeGeneration();
 
         // Start selected mission in a LevelGenerator script, after we done with level generation
+    }
+
+    public void RestartTheGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    public void GameOver()
+    {
+        TimeManager.instance.SlowMotionFor(1.5f);
+        UI.instance.ShowGameOverUI();
     }
 
     public void SetDefaultWeaponForPlayer()

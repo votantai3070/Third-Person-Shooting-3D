@@ -34,8 +34,6 @@ public class PlayerWeaponControllers : MonoBehaviour
     void Start()
     {
         AssignInputEvents();
-
-        Invoke(nameof(UpdateAmmoUI), .2f);
     }
 
     private void Update()

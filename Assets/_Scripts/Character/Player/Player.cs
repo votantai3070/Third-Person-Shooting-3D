@@ -11,6 +11,7 @@ public class Player : Character
     public Animator anim { get; private set; }
     public PlayerDead dead { get; private set; }
     public Ragdoll ragdoll { get; private set; }
+    public bool controlsEnabled { get; private set; }
 
 
     private void Awake()
@@ -32,12 +33,16 @@ public class Player : Character
         anim.enabled = true;
 
         controls.Enable();
+
+        controls.Player.Pause.performed += ctx => UI.instance.PauseSwitch();
     }
 
     private void OnDisable()
     {
         controls.Disable();
     }
+
+    public void SetControlsEnabledTo(bool enabled) => controlsEnabled = enabled;
 
     protected override void Die()
     {

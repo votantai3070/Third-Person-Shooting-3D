@@ -19,5 +19,7 @@ public class PlayerDead : MonoBehaviour
         player.anim.enabled = false;
         player.ragdoll.RagdollActive(true);
         player.GetComponent<CharacterController>().enabled = false;
+
+        GameManager.instance.GameOver();
     }
 }
