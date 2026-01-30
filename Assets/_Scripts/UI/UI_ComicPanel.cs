@@ -52,7 +52,8 @@ public class UI_ComicPanel : MonoBehaviour, IPointerDownHandler
             if (imageIndex >= comicPanel.Length)
             {
                 comicShowOver = true;
-                playButton.SetActive(true);
+                if (playButton != null)
+                    playButton.SetActive(true);
                 return;
             }
         });

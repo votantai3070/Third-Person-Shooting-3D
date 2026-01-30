@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
         player = FindAnyObjectByType<Player>();
     }
 
+    public void GameCompleted()
+    {
+        UI.instance.LoadGameWinUI();
+        ControlsManager.instance.controls.Player.Disable();
+    }
+
     public void GameStart()
     {
         SetDefaultWeaponForPlayer();

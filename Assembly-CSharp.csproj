@@ -113,6 +113,7 @@
     <Compile Include="Assets\_Scripts\UI\UI_MissionSelection.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\EnemyState.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission_LastDefense.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_Settings.cs" />
     <Compile Include="Assets\_Scripts\Inventory\MainSlot.cs" />
     <Compile Include="Assets\_Scripts\UI\UI_GameOver.cs" />
     <Compile Include="Assets\_Scripts\Inventory\AmmoInventoryUI.cs" />

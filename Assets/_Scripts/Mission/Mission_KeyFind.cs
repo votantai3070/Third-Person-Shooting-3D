@@ -13,8 +13,12 @@ public class Mission_KeyFind : Mission
         UpdateMissionUI();
 
         Enemy enemy = LevelGenerator.instance.ChooseRandomEnemy();
-        enemy.dropController.GiveKey(key);
+        Debug.Log("Enemy Drop Controller: " + enemy.dropController);
+
         enemy.EnemyVIP();
+
+        if (enemy.dropController != null)
+            enemy.dropController.GiveKey(key);
     }
 
     public override bool MissionCompleted()

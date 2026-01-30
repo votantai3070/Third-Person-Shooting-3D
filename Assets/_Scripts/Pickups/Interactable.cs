@@ -15,8 +15,10 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerInteraction interaction = other.GetComponent<PlayerInteraction>();
-        player = other.GetComponent<Player>();
+        player = other.GetComponentInParent<Player>();
+        PlayerInteraction interaction = other.GetComponentInParent<PlayerInteraction>();
+
+        Debug.Log("Player entered interaction zone of " + gameObject.name);
 
         if (interaction != null)
         {
@@ -26,7 +28,7 @@ public class Interactable : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        PlayerInteraction interaction = other.GetComponent<PlayerInteraction>();
+        PlayerInteraction interaction = other.GetComponentInParent<PlayerInteraction>();
 
         if (interaction != null)
         {

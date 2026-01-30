@@ -56,7 +56,6 @@ GameObject:
   - component: {fileID: 7852695523222997602}
   - component: {fileID: 8312246894303970214}
   - component: {fileID: 1254474005488120014}
-  - component: {fileID: 4373458941653078780}
   - component: {fileID: 4001594421146210323}
   - component: {fileID: 8336834049575841022}
   m_Layer: 0
@@ -117,7 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cbe845b1a56b4e4191bd7a49982059d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 10
   maxHealth: 100
   idleTimer: 1.5
   moveSpeed: 3.5
@@ -146,18 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionObjectKey: {fileID: 0}
---- !u!114 &4373458941653078780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2733796089222999987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d50debeae2bd00e4eba927021e99dbcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4001594421146210323
 MonoBehaviour:
   m_ObjectHideFlags: 0

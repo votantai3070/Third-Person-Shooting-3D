@@ -32,6 +32,8 @@ public class PickupWeapon : Interactable
         // Cả súng mới và cũ đều GET ammo từ inventory
         weapon.totalReserveAmmo = GetAmmoFromInventory(weapon.weaponType);
 
+        Debug.Log("Weapon: " + weapon);
+        Debug.Log("Player: " + player);
         player.controller.GetListWeapon().Add(weapon);
         ObjectPool.instance.DelayReturnToPool(gameObject);
     }

@@ -49,15 +49,17 @@ public class Enemy : Character
     {
         pointPatrols = GetComponentsInChildren<PointPatrol>();
         anim = GetComponentInChildren<Animator>();
+        dropController = GetComponent<Enemy_DropController>();
         visuals = GetComponent<Enemy_Visuals>();
         agent = GetComponent<NavMeshAgent>();
         player = FindAnyObjectByType<Player>();
         ragdoll = GetComponent<Ragdoll>();
-        dropController = GetComponent<Enemy_DropController>();
 
         IniatializePatrolPoints();
 
         ragdoll.RagdollActive(false);
+
+        Debug.Log("Enemy Drop Controller: " + dropController.gameObject.name);
     }
 
     protected virtual void Update()

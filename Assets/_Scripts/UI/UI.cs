@@ -11,6 +11,7 @@ public class UI : MonoBehaviour
     public UI_WeaponSelection weaponSelectionUI { get; private set; }
     public UI_GameOver gameOverUI { get; private set; }
 
+    public GameObject gameWinUI;
     public GameObject pauseUI;
     public GameObject[] UIElement;
 
@@ -72,6 +73,20 @@ public class UI : MonoBehaviour
             .OnComplete(() => onComplete?.Invoke());
     }
 
+    // Sequence fade out → action → fade in
+    private void StartGameSequence(System.Action onComplete)
+    {
+        Sequence startSequence = DOTween.Sequence();
+
+        startSequence.Append(fadeImage.DOFade(1f, fadeOutDuration)) // Fade out
+            .AppendCallback(() =>
+            {
+                onComplete?.Invoke();
+            })
+            .Append(fadeImage.DOFade(0f, fadeInDuration)) // Fade in
+            .SetUpdate(true);
+    }
+
     // Restart với fade effect
     public void RestartTheGame()
     {
@@ -97,24 +112,27 @@ public class UI : MonoBehaviour
         go.SetActive(true);
     }
 
+    #region Game Win UI
+    public void LoadGameWinUI()
+    {
+        StartGameSequence(DoGameWin);
+    }
+
+    private void DoGameWin() => ShowUIElement(gameOverUI.gameObject);
+    #endregion
+
+    #region Start
     public void StartTheGame()
     {
-        StartGameSequence();
+        StartGameSequence(DoGameStart);
     }
 
-    private void StartGameSequence()
+    private void DoGameStart()
     {
-        Sequence startSequence = DOTween.Sequence();
-
-        startSequence.Append(fadeImage.DOFade(1f, fadeOutDuration)) // Fade out
-            .AppendCallback(() =>
-            {
-                GameManager.instance.GameStart();
-                ShowUIElement(ingameUI.gameObject);
-            })
-            .Append(fadeImage.DOFade(0f, fadeInDuration)) // Fade in
-            .SetUpdate(true);
+        GameManager.instance.GameStart();
+        ShowUIElement(ingameUI.gameObject);
     }
+    #endregion
 
     public void QuitTheGame() => Application.Quit();
 
