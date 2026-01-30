@@ -106,6 +106,7 @@
     <Compile Include="Assets\_Scripts\Character\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\_Scripts\Weapon\BackupWeaponModel.cs" />
     <Compile Include="Assets\_Scripts\UI\UI_WeaponSelectionButton.cs" />
+    <Compile Include="Assets\_Scripts\UI\UI_ComicPanel.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\AttackState_Range.cs" />
     <Compile Include="Assets\_Scripts\Pickups\PickupAmmo.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\LevelGenerator.cs" />
