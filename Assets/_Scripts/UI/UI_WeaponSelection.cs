@@ -1,9 +1,10 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class UI_WeaponSelection : MonoBehaviour
 {
+    [SerializeField] private GameObject nextUIToSwitchOn;
     public UI_SelectedWeaponWindow[] seletedWeapon;
 
     [Header("Warning info")]
@@ -25,6 +26,19 @@ public class UI_WeaponSelection : MonoBehaviour
             warningText.color = new Color(1, 1, 1, currentWarningAlpha);
         }
     }
+
+    public void ConfirmWeaponSelection()
+    {
+        if (AtLeastOneWeaponSeleted())
+        {
+            UI.instance.ShowUIElement(nextUIToSwitchOn);
+            UI.instance.StartLevelGeneration();
+        }
+        else
+            ShowWarningMess("Hãy chọn ít nhất 1 vũ khí");
+    }
+
+    private bool AtLeastOneWeaponSeleted() => SelectWeaponData().Count > 0;
 
     public List<Weapon_Data> SelectWeaponData()
     {

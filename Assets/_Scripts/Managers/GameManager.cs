@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     public Player player { get; private set; }
 
+    [Space]
+    public bool quickStart;
+
     private void Awake()
     {
         if (instance == null)
@@ -32,8 +35,8 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         SetDefaultWeaponForPlayer();
-        LevelGenerator.instance.InitializeGeneration();
 
+        //LevelGenerator.instance.InitializeGeneration();
         // Start selected mission in a LevelGenerator script, after we done with level generation
     }
 

@@ -17,8 +17,8 @@ public class UI : MonoBehaviour
 
     [Header("Fade Settings")]
     [SerializeField] private Image fadeImage;
-    [SerializeField] private float fadeInDuration = 1f;
-    [SerializeField] private float fadeOutDuration = 1f;
+    [SerializeField] private float fadeInDuration = .1f;
+    [SerializeField] private float fadeOutDuration = .1f;
 
     private Tween currentFadeTween; // Track fade tween để kill nếu cần
 
@@ -44,6 +44,12 @@ public class UI : MonoBehaviour
         AssignInputsUI();
 
         FadeIn();
+
+        if (GameManager.instance.quickStart)
+        {
+            LevelGenerator.instance.InitializeGeneration();
+            StartTheGame();
+        }
     }
 
     // Fade In - Hiện game (alpha 1 → 0)
@@ -112,16 +118,19 @@ public class UI : MonoBehaviour
         go.SetActive(true);
     }
 
+
     #region Game Win UI
     public void LoadGameWinUI()
     {
         StartGameSequence(DoGameWin);
     }
 
-    private void DoGameWin() => ShowUIElement(gameOverUI.gameObject);
+    private void DoGameWin() => ShowUIElement(gameWinUI);
     #endregion
 
     #region Start
+    public void StartLevelGeneration() => LevelGenerator.instance.InitializeGeneration();
+
     public void StartTheGame()
     {
         StartGameSequence(DoGameStart);
