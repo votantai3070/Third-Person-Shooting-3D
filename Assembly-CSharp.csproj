@@ -70,6 +70,7 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\Enemy_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerEvents.cs" />
     <Compile Include="Assets\_Scripts\UI\UI_TransparentOnHover.cs" />
+    <Compile Include="Assets\_Scripts\Car\Car_Wheel.cs" />
     <Compile Include="Assets\_Scripts\Weapon\EnemyWeaponModels.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\LevelPart.cs" />
     <Compile Include="Assets\_Scripts\Inventory\AmmoSlotUI.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_EnemyRespawn.cs" />
     <Compile Include="Assets\_Scripts\UI\UI.cs" />
     <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\_Scripts\Car\ComponentTransform.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />
     <Compile Include="Assets\_Scripts\SO\Weapon_Data.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\AttackState_Range.cs" />
     <Compile Include="Assets\_Scripts\Pickups\PickupAmmo.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\LevelGenerator.cs" />
+    <Compile Include="Assets\_Scripts\Car\Car_Controller.cs" />
     <Compile Include="Assets\_Scripts\UI\UI_MissionSelection.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\EnemyState.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission_LastDefense.cs" />

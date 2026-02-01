@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [Space]
     public bool quickStart;
+    public bool isPlayerView;
 
     private void Awake()
     {

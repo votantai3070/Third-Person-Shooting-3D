@@ -2,6 +2,8 @@
 
 public class AimTargetUpdater : MonoBehaviour
 {
+    public static AimTargetUpdater instance;
+
     public Player player { get; private set; }
 
     [Header("References")]
@@ -13,8 +15,12 @@ public class AimTargetUpdater : MonoBehaviour
     [SerializeField] private float maxAimDistance = 1000f;
     [SerializeField] private float defaultAimDistance = 50f;
 
+    public bool isPlayerView;
+
     private void Awake()
     {
+        instance = this;
+
         player = GetComponentInParent<Player>();
 
         if (player == null)

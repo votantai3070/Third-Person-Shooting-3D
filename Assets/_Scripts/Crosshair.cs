@@ -21,6 +21,7 @@ public class Crosshair : MonoBehaviour
     private Camera playerCamera;
     private RectTransform crosshairRect;
 
+
     private void Awake()
     {
         if (instance != null)

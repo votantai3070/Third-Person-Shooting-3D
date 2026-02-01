@@ -13,7 +13,7 @@ public class ControlsManager : MonoBehaviour
 
     private void Start()
     {
-        controls = GameManager.instance.player.controls;
+        controls = new PlayerControls();
         player = GameManager.instance.player;
 
         SwitchToCharacterControls();
@@ -22,14 +22,46 @@ public class ControlsManager : MonoBehaviour
     public void SwitchToCharacterControls()
     {
         controls.Player.Enable();
+
+        controls.Car.Disable();
         controls.UI.Disable();
+
+        GameManager.instance.isPlayerView = true;
+
         player.SetControlsEnabledTo(true);
     }
 
     public void SwitchToUIControls()
     {
-        controls.Player.Disable();
         controls.UI.Enable();
+
+        controls.Player.Disable();
+        controls.Car.Enable();
+
+        GameManager.instance.isPlayerView = true;
+
         player.SetControlsEnabledTo(false);
+    }
+
+    public void SwitchToCarControl()
+    {
+        controls.Car.Enable();
+
+        controls.Player.Disable();
+        controls.UI.Disable();
+
+        GameManager.instance.isPlayerView = false;
+
+        player.SetControlsEnabledTo(false);
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
     }
 }

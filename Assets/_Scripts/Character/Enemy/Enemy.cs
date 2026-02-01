@@ -59,7 +59,6 @@ public class Enemy : Character
 
         ragdoll.RagdollActive(false);
 
-        Debug.Log("Enemy Drop Controller: " + dropController.gameObject.name);
     }
 
     protected virtual void Update()

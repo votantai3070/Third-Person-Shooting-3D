@@ -10,16 +10,29 @@ public class ThirdPersonCameraController : MonoBehaviour
     [SerializeField] private Transform cameraTarget;
     [SerializeField] private float transitionSpeed = 5f;
 
-    private Vector3 normalOffset = new Vector3(0f, 2f, -2f);
+    private Vector3 playerOffset = new Vector3(0f, 2f, -2f);
     private Vector3 aimOffset = new Vector3(0.6f, 1.25f, 2.33f);
+    private Vector3 carOffset = new Vector3(0, 5, 0);
 
     [Header("Mouse Settings")]
     [SerializeField] private float mouseSensitivity = 100f;
     [SerializeField] private bool invertY = false;
 
     [Header("Vertical Limits")]
-    [SerializeField] private float minVerticalAngle = -30f; // Nhìn xuống
-    [SerializeField] private float maxVerticalAngle = 70f;  // Nhìn lên
+    [SerializeField] private float minVerticalAngle = -30f;
+    [SerializeField] private float maxVerticalAngle = 70f;
+
+    // ========== ZOOM SETTINGS (MỚI) ==========
+    [Header("Zoom Settings")]
+    [SerializeField] private float zoomSensitivity = 1f;
+    [SerializeField] private float minDistance = 2f;
+    [SerializeField] private float maxDistance = 10f;
+    [SerializeField] private float zoomSpeed = 10f;
+
+    private float targetDistance;
+    private float currentDistance;
+    private float defaultDistance; // Lưu distance mặc định
+    // ==========================================
 
     private CinemachineOrbitalFollow orbitalFollow;
     private CinemachineThirdPersonFollow thirdPersonFollow;
@@ -45,12 +58,24 @@ public class ThirdPersonCameraController : MonoBehaviour
             {
                 cameraTarget = virtualCamera.Follow;
             }
+
+            // ========== INITIALIZE ZOOM (MỚI) ==========
+            if (thirdPersonFollow != null)
+            {
+                defaultDistance = thirdPersonFollow.CameraDistance;
+                currentDistance = defaultDistance;
+                targetDistance = defaultDistance;
+            }
+            // ===========================================
         }
 
         // Set initial shoulder offset
         if (virtualCamera.TryGetComponent<CinemachineThirdPersonFollow>(out var position))
         {
-            position.ShoulderOffset = normalOffset;
+            if (GameManager.instance.isPlayerView)
+                position.ShoulderOffset = playerOffset;
+            else
+                position.ShoulderOffset = carOffset;
         }
 
         // Initialize rotations
@@ -74,21 +99,23 @@ public class ThirdPersonCameraController : MonoBehaviour
         HandleCursorToggle();
         UpdateCameraPosition();
         UpdateCameraRotation();
+        UpdateCameraZoom();
     }
 
     void UpdateCameraPosition()
     {
-        Vector3 targetOffset = player.aim.IsAiming() ? aimOffset : normalOffset;
+        Vector3 targetOffset = player.aim.IsAiming()
+            ? aimOffset : GameManager.instance.isPlayerView
+            ? playerOffset : carOffset;
 
         if (virtualCamera.TryGetComponent<CinemachineThirdPersonFollow>(out var position))
         {
             position.ShoulderOffset = Vector3.Lerp(
-        position.ShoulderOffset,
-        targetOffset,
-        Time.deltaTime * transitionSpeed);
+                position.ShoulderOffset,
+                targetOffset,
+                Time.deltaTime * transitionSpeed);
         }
     }
-
 
     void UpdateCameraRotation()
     {
@@ -98,20 +125,36 @@ public class ThirdPersonCameraController : MonoBehaviour
 
         if (mouseDelta.magnitude < 0.001f) return;
 
-        // ========== HORIZONTAL (Trái/Phải) ==========
         horizontalRotation += mouseDelta.x * mouseSensitivity * Time.deltaTime;
 
-        // ========== VERTICAL (Lên/Xuống) ==========
         float verticalInput = mouseDelta.y * mouseSensitivity * Time.deltaTime;
+
         if (invertY) verticalInput = -verticalInput;
 
         verticalRotation -= verticalInput;
 
-        // Clamp vertical rotation
         verticalRotation = Mathf.Clamp(verticalRotation, minVerticalAngle, maxVerticalAngle);
 
-        // Apply rotation to camera target
         cameraTarget.rotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0);
+    }
+
+    void UpdateCameraZoom()
+    {
+        if (thirdPersonFollow == null) return;
+
+        if (player.aim.IsAiming()) return;
+
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+
+        if (scrollInput != 0f)
+        {
+            targetDistance -= scrollInput * zoomSensitivity;
+            targetDistance = Mathf.Clamp(targetDistance, minDistance, maxDistance);
+        }
+
+        // Smooth zoom transition
+        currentDistance = Mathf.Lerp(currentDistance, targetDistance, Time.deltaTime * zoomSpeed);
+        thirdPersonFollow.CameraDistance = currentDistance;
     }
 
     void HandleCursorToggle()
@@ -122,6 +165,16 @@ public class ThirdPersonCameraController : MonoBehaviour
             Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = locked;
         }
+    }
+
+    public void ResetZoom()
+    {
+        targetDistance = defaultDistance;
+    }
+
+    public void SetZoom(float distance)
+    {
+        targetDistance = Mathf.Clamp(distance, minDistance, maxDistance);
     }
 
     // Debug visualization
@@ -139,5 +192,10 @@ public class ThirdPersonCameraController : MonoBehaviour
     //        $"Vertical: {verticalRotation:F1}°", style);
     //    GUI.Label(new Rect(10, 60, 300, 30),
     //        $"Camera Rotation: {cameraTarget.eulerAngles}", style);
+    //    
+    //    // ========== DEBUG ZOOM (MỚI) ==========
+    //    GUI.Label(new Rect(10, 85, 300, 30),
+    //        $"Zoom Distance: {currentDistance:F2}", style);
+    //    // ======================================
     //}
 }

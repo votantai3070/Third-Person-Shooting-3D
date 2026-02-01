@@ -16,7 +16,7 @@ public class Player : Character
 
     private void Awake()
     {
-        controls = new PlayerControls();
+        controls = ControlsManager.instance.controls;
 
         movement = GetComponent<PlayerMovement>();
         visuals = GetComponent<PlayerWeaponVisuals>();
@@ -32,15 +32,12 @@ public class Player : Character
     {
         anim.enabled = true;
 
-        controls.Enable();
+
 
         controls.Player.Pause.performed += ctx => UI.instance.PauseSwitch();
     }
 
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
+
 
     public void SetControlsEnabledTo(bool enabled) => controlsEnabled = enabled;
 

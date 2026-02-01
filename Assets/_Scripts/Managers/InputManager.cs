@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
 
     public void Start()
     {
-        controls = player.controls;
+        controls = ControlsManager.instance.controls;
 
         if (controls == null)
         {
