@@ -10529,12 +10529,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   turnSensetivity: 30
+  driveType: 0
   centerOfMass: {fileID: 521864050}
+  carMass: 446
+  wheelsMass: 30
+  frontWheelTraction: 0.887
+  backWheelTraction: 0.974
   currentSpeed: 0
   maxSpeed: 10
   accleerationSpeed: 5
   motorForce: 1800
-  brakeSensetivity: 4
+  frontBrakeSensetivity: 5
+  backBrakeSensetivity: 5
   brakePower: 5000
   frontDriftFactor: 0.557
   backDriftFactor: 0.438
