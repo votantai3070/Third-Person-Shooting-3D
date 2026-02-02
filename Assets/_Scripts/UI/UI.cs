@@ -171,7 +171,7 @@ public class UI : MonoBehaviour
 
     private void AssignInputsUI()
     {
-        PlayerControls controls = GameManager.instance.player.controls;
+        PlayerControls controls = ControlsManager.instance.controls;
         controls.UI.Pause.performed += ctx => PauseSwitch();
     }
 

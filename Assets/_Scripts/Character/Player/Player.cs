@@ -16,8 +16,6 @@ public class Player : Character
 
     private void Awake()
     {
-        controls = ControlsManager.instance.controls;
-
         movement = GetComponent<PlayerMovement>();
         visuals = GetComponent<PlayerWeaponVisuals>();
         controller = GetComponent<PlayerWeaponControllers>();
@@ -28,18 +26,23 @@ public class Player : Character
         ragdoll = GetComponent<Ragdoll>();
     }
 
+    private void Start()
+    {
+        controls = ControlsManager.instance.controls;
+    }
+
     private void OnEnable()
     {
         anim.enabled = true;
 
-
-
         controls.Player.Pause.performed += ctx => UI.instance.PauseSwitch();
     }
 
-
-
-    public void SetControlsEnabledTo(bool enabled) => controlsEnabled = enabled;
+    public void SetControlsEnabledTo(bool enabled)
+    {
+        controlsEnabled = enabled;
+        ragdoll.CollidersActive(enabled); // Disable colliders when into car
+    }
 
     protected override void Die()
     {

@@ -22,11 +22,6 @@ public class AimTargetUpdater : MonoBehaviour
         instance = this;
 
         player = GetComponentInParent<Player>();
-
-        if (player == null)
-        {
-            player = FindAnyObjectByType<Player>();
-        }
     }
 
     private void Start()

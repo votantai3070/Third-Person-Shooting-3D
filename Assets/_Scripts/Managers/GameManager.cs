@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         player = FindAnyObjectByType<Player>();
     }
 
+
     public void GameCompleted()
     {
         UI.instance.LoadGameWinUI();

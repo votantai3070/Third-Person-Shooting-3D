@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     private Player player;
+    private PlayerControls controls;
 
     [SerializeField] private List<Interactable> interactList;
     [SerializeField] private Interactable closestInteractable;
@@ -14,6 +15,9 @@ public class PlayerInteraction : MonoBehaviour
     private void Start()
     {
         player = GetComponent<Player>();
+
+        controls = ControlsManager.instance.controls;
+
         AssignInputEvents();
 
         InventoryManager.instance.SetMainWeaponList(player.controller.GetListWeapon());
@@ -63,13 +67,16 @@ public class PlayerInteraction : MonoBehaviour
 
     private void AssignInputEvents()
     {
-        player.controls.Player.Interact.performed += ctx =>
+        controls.Player.Interact.performed += ctx =>
         {
             if (player.controller.OnlyTwoWeaponInSlotEquip() || closestInteractable.IsPickupAmmo())
                 InteractWithClosest();
         };
 
-        player.controls.Player.HideMissionInfo.performed += ctx =>
+        controls.Player.CarEnter.performed += ctx => InteractWithClosest();
+
+
+        controls.Player.HideMissionInfo.performed += ctx =>
         {
             hideMissionInfo = !hideMissionInfo;
             UI.instance.ingameUI.HandleMissionTooltip(hideMissionInfo);

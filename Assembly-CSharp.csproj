@@ -91,9 +91,9 @@
     <Compile Include="Assets\_Scripts\Car.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_EnemyRespawn.cs" />
+    <Compile Include="Assets\_Scripts\Car\Car_Interaction.cs" />
     <Compile Include="Assets\_Scripts\UI\UI.cs" />
     <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
-    <Compile Include="Assets\_Scripts\Car\ComponentTransform.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />
     <Compile Include="Assets\_Scripts\SO\Weapon_Data.cs" />
@@ -102,6 +102,7 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Models.cs" />
     <Compile Include="Assets\_Scripts\UI\UI_WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\IntersectionCheck.cs" />
+    <Compile Include="Assets\_Scripts\Car\ComponentTransfer.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerWeaponControllers.cs" />
     <Compile Include="Assets\_InputManager\PlayerControls.cs" />
     <Compile Include="Assets\_Scripts\Pickups\PickupWeapon.cs" />

@@ -9,11 +9,12 @@ public class ControlsManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        controls = new PlayerControls();
     }
 
     private void Start()
     {
-        controls = new PlayerControls();
         player = GameManager.instance.player;
 
         SwitchToCharacterControls();

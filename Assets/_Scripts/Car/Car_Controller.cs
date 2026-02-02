@@ -3,8 +3,11 @@ using UnityEngine;
 
 public enum DriveType { FrontWheelDrive, BackWheelDrive, AllWheelDrive }
 
+[RequireComponent(typeof(Rigidbody))]
 public class Car_Controller : MonoBehaviour
 {
+    public bool activateCar;
+
     private PlayerControls controls;
     private Rigidbody rb;
     private float moveInput;
@@ -30,9 +33,9 @@ public class Car_Controller : MonoBehaviour
     [SerializeField] private float currentSpeed;
     [Range(7, 12)]
     [SerializeField] private float maxSpeed = 7;
-    [Range(.5f, 5)]
+    [Range(.5f, 10)]
     [SerializeField] private float accleerationSpeed = 2;
-    [Range(1500, 3000)]
+    [Range(1500, 6000)]
     [SerializeField] private float motorForce = 1500f;
 
     [Header("Brakes Settings")]
@@ -63,7 +66,7 @@ public class Car_Controller : MonoBehaviour
         wheels = GetComponentsInChildren<Car_Wheel>(true);
 
         controls = ControlsManager.instance.controls;
-        ControlsManager.instance.SwitchToCarControl();
+        //ControlsManager.instance.SwitchToCarControl();
 
         AssignInputEvents();
         SetupDefaultValue();
@@ -71,6 +74,9 @@ public class Car_Controller : MonoBehaviour
 
     private void Update()
     {
+        if (!activateCar)
+            return;
+
         speed = rb.linearVelocity.magnitude;
 
         // Stop drift
@@ -81,11 +87,14 @@ public class Car_Controller : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!activateCar)
+            return;
+
         ApplyAnimateWheels();
         ApplyDrive();
         ApplySteering();
         ApplyBrakes();
-        AppltSpeedLimit();
+        ApplySpeedLimit();
 
         if (isDrifting)
             ApplyDrift();
@@ -93,6 +102,8 @@ public class Car_Controller : MonoBehaviour
             StopDrift();
 
     }
+
+    public void ActivatedCar(bool active) => activateCar = active;
     private void SetupDefaultValue()
     {
         rb.centerOfMass = centerOfMass.localPosition;
@@ -133,7 +144,7 @@ public class Car_Controller : MonoBehaviour
         }
     }
 
-    private void AppltSpeedLimit()
+    private void ApplySpeedLimit()
     {
         if (rb.linearVelocity.magnitude > maxSpeed)
             rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
@@ -178,8 +189,7 @@ public class Car_Controller : MonoBehaviour
 
             float newBrakeTorque = brakePower * brakeSensetivity * Time.fixedDeltaTime;
             float currentBrakeTorque = isBraking ? newBrakeTorque : 0;
-            if (wheel.axelType == AxelType.Back)
-                wheel.cd.brakeTorque = currentBrakeTorque;
+            wheel.cd.brakeTorque = currentBrakeTorque;
         }
     }
 
@@ -229,5 +239,14 @@ public class Car_Controller : MonoBehaviour
         };
 
         controls.Car.Brake.canceled += ctx => isBraking = false;
+
+        controls.Car.CarExit.performed += ctx => GetComponent<Car_Interaction>().GetOutOfTheCar();
+    }
+
+    [ContextMenu("Focus camera and enable")]
+    public void TestThisCar()
+    {
+        activateCar = true;
+        ThirdPersonCameraController.instance.ChangeCameraTarget(transform);
     }
 }

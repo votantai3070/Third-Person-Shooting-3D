@@ -29,6 +29,8 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
+        player = FindAnyObjectByType<Player>();
+
         AssignInputEvents();
 
         originPos = inventoryPanel.transform.position;

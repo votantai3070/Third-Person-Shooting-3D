@@ -196,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
 
     void AssignInput()
     {
-        controls = player.controls;
+        controls = ControlsManager.instance.controls;
 
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;

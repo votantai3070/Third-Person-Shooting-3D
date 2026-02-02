@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ThirdPersonCameraController : MonoBehaviour
 {
+    public static ThirdPersonCameraController instance;
+
     Player player;
 
     [Header("Cinemachine")]
@@ -13,6 +15,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     private Vector3 playerOffset = new Vector3(0f, 2f, -2f);
     private Vector3 aimOffset = new Vector3(0.6f, 1.25f, 2.33f);
     private Vector3 carOffset = new Vector3(0, 5, 0);
+    private Vector3 defaultOffset;
 
     [Header("Mouse Settings")]
     [SerializeField] private float mouseSensitivity = 100f;
@@ -22,7 +25,6 @@ public class ThirdPersonCameraController : MonoBehaviour
     [SerializeField] private float minVerticalAngle = -30f;
     [SerializeField] private float maxVerticalAngle = 70f;
 
-    // ========== ZOOM SETTINGS (MỚI) ==========
     [Header("Zoom Settings")]
     [SerializeField] private float zoomSensitivity = 1f;
     [SerializeField] private float minDistance = 2f;
@@ -31,14 +33,18 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     private float targetDistance;
     private float currentDistance;
-    private float defaultDistance; // Lưu distance mặc định
-    // ==========================================
+    private float defaultDistance;
 
     private CinemachineOrbitalFollow orbitalFollow;
     private CinemachineThirdPersonFollow thirdPersonFollow;
 
     private float horizontalRotation = 0f;
     private float verticalRotation = 0f;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -59,14 +65,12 @@ public class ThirdPersonCameraController : MonoBehaviour
                 cameraTarget = virtualCamera.Follow;
             }
 
-            // ========== INITIALIZE ZOOM (MỚI) ==========
             if (thirdPersonFollow != null)
             {
                 defaultDistance = thirdPersonFollow.CameraDistance;
                 currentDistance = defaultDistance;
                 targetDistance = defaultDistance;
             }
-            // ===========================================
         }
 
         // Set initial shoulder offset
@@ -91,11 +95,6 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     private void Update()
     {
-        if (!player.controlsEnabled)
-        {
-            return;
-        }
-
         HandleCursorToggle();
         UpdateCameraPosition();
         UpdateCameraRotation();
@@ -105,7 +104,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     void UpdateCameraPosition()
     {
         Vector3 targetOffset = player.aim.IsAiming()
-            ? aimOffset : GameManager.instance.isPlayerView
+            ? aimOffset : player.controlsEnabled
             ? playerOffset : carOffset;
 
         if (virtualCamera.TryGetComponent<CinemachineThirdPersonFollow>(out var position))
@@ -177,25 +176,13 @@ public class ThirdPersonCameraController : MonoBehaviour
         targetDistance = Mathf.Clamp(distance, minDistance, maxDistance);
     }
 
-    // Debug visualization
-    //private void OnGUI()
-    //{
-    //    if (cameraTarget == null) return;
+    public void ChangeCameraDistance(float distance)
+    {
+        thirdPersonFollow.CameraDistance = distance;
+    }
 
-    //    GUIStyle style = new GUIStyle();
-    //    style.fontSize = 16;
-    //    style.normal.textColor = Color.yellow;
-
-    //    GUI.Label(new Rect(10, 10, 300, 30),
-    //        $"Horizontal: {horizontalRotation:F1}°", style);
-    //    GUI.Label(new Rect(10, 35, 300, 30),
-    //        $"Vertical: {verticalRotation:F1}°", style);
-    //    GUI.Label(new Rect(10, 60, 300, 30),
-    //        $"Camera Rotation: {cameraTarget.eulerAngles}", style);
-    //    
-    //    // ========== DEBUG ZOOM (MỚI) ==========
-    //    GUI.Label(new Rect(10, 85, 300, 30),
-    //        $"Zoom Distance: {currentDistance:F2}", style);
-    //    // ======================================
-    //}
+    public void ChangeCameraTarget(Transform target)
+    {
+        virtualCamera.Follow = target;
+    }
 }
