@@ -3,7 +3,6 @@
 public class Car_Interaction : Interactable
 {
     private Car_Controller car;
-    private Transform player;
     [SerializeField] Transform playerView;
 
     private float defaultPlayerScale;
@@ -16,12 +15,6 @@ public class Car_Interaction : Interactable
     private void Awake()
     {
         car = GetComponent<Car_Controller>();
-        player = GameManager.instance.player.transform;
-    }
-
-    private void Update()
-    {
-        Debug.Log("position exit: " + GetExitPoint());
     }
 
     public override void Interact()
@@ -37,11 +30,11 @@ public class Car_Interaction : Interactable
         ControlsManager.instance.SwitchToCarControl();
         car.ActivatedCar(true);
 
-        defaultPlayerScale = player.localScale.x;
+        defaultPlayerScale = player.transform.localScale.x;
 
-        player.localScale = new Vector3(.01f, .01f, .01f);
-        player.parent = car.transform;
-        player.localPosition = Vector3.up / 2;
+        player.transform.localScale = new Vector3(.01f, .01f, .01f);
+        player.transform.parent = car.transform;
+        player.transform.localPosition = Vector3.up / 2;
 
         ThirdPersonCameraController.instance.ChangeCameraTarget(transform);
         //ThirdPersonCameraController.instance.ChangeCameraDistance(10);
@@ -54,9 +47,9 @@ public class Car_Interaction : Interactable
 
         car.ActivatedCar(false);
 
-        player.parent = null;
-        player.position = GetExitPoint();
-        player.transform.localScale = new Vector3(defaultPlayerScale, defaultPlayerScale, defaultPlayerScale);
+        player.transform.parent = null;
+        player.transform.position = GetExitPoint();
+        player.transform.transform.localScale = new Vector3(defaultPlayerScale, defaultPlayerScale, defaultPlayerScale);
 
         Rigidbody playerRb = player.GetComponent<Rigidbody>();
         if (playerRb != null)

@@ -16,10 +16,10 @@ TagManager:
   - IntersectionCheck
   - Environment
   - Ground
+  - Enemy
+  - CarVSEnemy
   - Bullet
-  - 
-  - 
-  - 
+  - Player
   - 
   - 
   - 

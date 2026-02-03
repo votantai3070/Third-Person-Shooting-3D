@@ -72,6 +72,7 @@
     <Compile Include="Assets\_Scripts\UI\UI_TransparentOnHover.cs" />
     <Compile Include="Assets\_Scripts\Car\Car_Wheel.cs" />
     <Compile Include="Assets\_Scripts\Weapon\EnemyWeaponModels.cs" />
+    <Compile Include="Assets\_Scripts\Car\Car_DamageZone.cs" />
     <Compile Include="Assets\_Scripts\LevelGeneration\LevelPart.cs" />
     <Compile Include="Assets\_Scripts\Inventory\AmmoSlotUI.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Ammo\Ammo.cs" />

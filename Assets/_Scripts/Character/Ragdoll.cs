@@ -7,10 +7,19 @@ public class Ragdoll : MonoBehaviour
     Collider[] ragdollAllColliders;
     Rigidbody[] ragdollAllRigidbodies;
 
-    public void RagdollActive(bool active)
+    private void Awake()
     {
         ragdollAllRigidbodies = GetComponentsInChildren<Rigidbody>();
+        ragdollAllColliders = GetComponentsInChildren<Collider>();
 
+        RagdollActive(false);
+
+        foreach (Rigidbody rb in ragdollAllRigidbodies)
+            rb.interpolation = RigidbodyInterpolation.Interpolate;
+    }
+
+    public void RagdollActive(bool active)
+    {
         foreach (var rigid in ragdollAllRigidbodies)
         {
             rigid.isKinematic = !active;
@@ -19,8 +28,6 @@ public class Ragdoll : MonoBehaviour
 
     public void CollidersActive(bool active)
     {
-        ragdollAllColliders = GetComponentsInChildren<Collider>();
-
         foreach (var col in ragdollAllColliders)
         {
             col.enabled = active;
