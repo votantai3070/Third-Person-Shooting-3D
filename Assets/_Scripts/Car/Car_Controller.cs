@@ -68,6 +68,8 @@ public class Car_Controller : MonoBehaviour
         controls = ControlsManager.instance.controls;
         //ControlsManager.instance.SwitchToCarControl();
 
+        ActivatedCar(false);
+
         AssignInputEvents();
         SetupDefaultValue();
     }
@@ -103,7 +105,16 @@ public class Car_Controller : MonoBehaviour
 
     }
 
-    public void ActivatedCar(bool active) => activateCar = active;
+    public void ActivatedCar(bool active)
+    {
+        activateCar = active;
+
+        if (active)
+            rb.constraints = RigidbodyConstraints.None;
+        else
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
+
     private void SetupDefaultValue()
     {
         rb.centerOfMass = centerOfMass.localPosition;
