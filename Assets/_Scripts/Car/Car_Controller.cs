@@ -6,6 +6,8 @@ public enum DriveType { FrontWheelDrive, BackWheelDrive, AllWheelDrive }
 [RequireComponent(typeof(Rigidbody))]
 public class Car_Controller : MonoBehaviour
 {
+    public Car_HealthController carHealthController { get; private set; }
+
     public Rigidbody rb { get; private set; }
     public bool activateCar;
 
@@ -13,7 +15,7 @@ public class Car_Controller : MonoBehaviour
     private float moveInput;
     private float steerInput;
 
-    public float speed;
+    [SerializeField] float speed;
 
     [Range(30, 60)]
     [SerializeField] private float turnSensetivity;
@@ -60,6 +62,11 @@ public class Car_Controller : MonoBehaviour
 
     private Car_Wheel[] wheels;
 
+    private void Awake()
+    {
+        carHealthController = GetComponent<Car_HealthController>();
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -78,6 +85,8 @@ public class Car_Controller : MonoBehaviour
     {
         if (!activateCar)
             return;
+
+        UI.instance.ingameUI.UpdateSpeedText(Mathf.RoundToInt(speed * 10));
 
         speed = rb.linearVelocity.magnitude;
 
@@ -263,12 +272,5 @@ public class Car_Controller : MonoBehaviour
         {
             GetComponent<Car_Interaction>().GetOutOfTheCar();
         };
-    }
-
-    [ContextMenu("Focus camera and enable")]
-    public void TestThisCar()
-    {
-        activateCar = true;
-        ThirdPersonCameraController.instance.ChangeCameraTarget(transform);
     }
 }

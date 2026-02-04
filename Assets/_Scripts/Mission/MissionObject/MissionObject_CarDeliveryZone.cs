@@ -7,7 +7,7 @@ public class MissionObject_CarDeliveryZone : MonoBehaviour
         if (!other.CompareTag("Car"))
             return;
 
-        Car car = other.GetComponent<Car>();
+        Car_Controller car = other.GetComponent<Car_Controller>();
 
         car.GetComponent<MissionObject_CarToDelivery>().InvokeOnCarDelivery();
     }

@@ -28,6 +28,8 @@ public class Car_Interaction : Interactable
     private void GetIntoTheCar()
     {
         ControlsManager.instance.SwitchToCarControl();
+        car.carHealthController.UpdateCarHealthUI();
+
         car.ActivatedCar(true);
 
         defaultPlayerScale = player.transform.localScale.x;
@@ -36,8 +38,7 @@ public class Car_Interaction : Interactable
         player.transform.parent = car.transform;
         player.transform.localPosition = Vector3.up / 2;
 
-        ThirdPersonCameraController.instance.ChangeCameraTarget(transform);
-        //ThirdPersonCameraController.instance.ChangeCameraDistance(10);
+        ThirdPersonCameraController.instance.ChangeCameraTarget(transform, 20);
     }
 
     public void GetOutOfTheCar()
@@ -47,8 +48,6 @@ public class Car_Interaction : Interactable
 
         car.ActivatedCar(false);
 
-        Debug.Log("Player: " + player);
-
         if (player != null)
         {
             player.transform.parent = null;
@@ -57,7 +56,7 @@ public class Car_Interaction : Interactable
         }
 
         ControlsManager.instance.SwitchToCharacterControls();
-        ThirdPersonCameraController.instance.ChangeCameraTarget(playerView);
+        ThirdPersonCameraController.instance.ChangeCameraTarget(playerView, 10);
     }
 
     private Vector3 GetExitPoint()

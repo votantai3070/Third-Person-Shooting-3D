@@ -5,17 +5,19 @@ public class ThirdPersonCameraController : MonoBehaviour
 {
     public static ThirdPersonCameraController instance;
 
+    [SerializeField] private CinemachineCamera virtualCamera;
+    private CinemachineThirdPersonFollow thirdPersonFollow;
+    private CinemachineRotationComposer rotationComposer;
+
     Player player;
 
     [Header("Cinemachine")]
-    [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private Transform cameraTarget;
     [SerializeField] private float transitionSpeed = 5f;
 
     private Vector3 playerOffset = new Vector3(0f, 2f, -2f);
     private Vector3 aimOffset = new Vector3(0.6f, 1.25f, 2.33f);
     private Vector3 carOffset = new Vector3(0, 5, 0);
-    private Vector3 defaultOffset;
 
     [Header("Mouse Settings")]
     [SerializeField] private float mouseSensitivity = 100f;
@@ -31,12 +33,14 @@ public class ThirdPersonCameraController : MonoBehaviour
     [SerializeField] private float maxDistance = 10f;
     [SerializeField] private float zoomSpeed = 10f;
 
+    [Header("Lookahead Settings")]
+    [Range(0f, 1f)]
+    [SerializeField] private float carLookahead = 1;
+    private float playerLookahead = 0;
+
     private float targetDistance;
     private float currentDistance;
     private float defaultDistance;
-
-    private CinemachineOrbitalFollow orbitalFollow;
-    private CinemachineThirdPersonFollow thirdPersonFollow;
 
     private float horizontalRotation = 0f;
     private float verticalRotation = 0f;
@@ -48,7 +52,7 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     private void Start()
     {
-        player = GetComponentInParent<Player>();
+        player = FindAnyObjectByType<Player>();
 
         if (virtualCamera == null)
         {
@@ -57,8 +61,8 @@ public class ThirdPersonCameraController : MonoBehaviour
 
         if (virtualCamera != null)
         {
-            orbitalFollow = virtualCamera.GetComponent<CinemachineOrbitalFollow>();
             thirdPersonFollow = virtualCamera.GetComponent<CinemachineThirdPersonFollow>();
+            rotationComposer = virtualCamera.GetComponent<CinemachineRotationComposer>();
 
             if (cameraTarget == null)
             {
@@ -176,13 +180,17 @@ public class ThirdPersonCameraController : MonoBehaviour
         targetDistance = Mathf.Clamp(distance, minDistance, maxDistance);
     }
 
-    public void ChangeCameraDistance(float distance)
+    private void ChangeCameraDistance(float distance)
     {
         thirdPersonFollow.CameraDistance = distance;
+        rotationComposer.Lookahead = GameManager.instance.isPlayerView
+            ? new LookaheadSettings { Enabled = false, Time = playerLookahead, Smoothing = 0, IgnoreY = false }
+            : new LookaheadSettings { Enabled = true, Time = carLookahead, Smoothing = 0, IgnoreY = true };
     }
 
-    public void ChangeCameraTarget(Transform target)
+    public void ChangeCameraTarget(Transform target, float cameraDistance)
     {
         virtualCamera.Follow = target;
+        ChangeCameraDistance(cameraDistance);
     }
 }

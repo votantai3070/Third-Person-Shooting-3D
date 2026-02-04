@@ -50,8 +50,6 @@ public class Enemy_Range : Enemy
     {
         EnemyWeaponModel_Range weaponModel = visuals.currentWeaponModel.GetComponent<EnemyWeaponModel_Range>();
 
-        Debug.Log("Current Weapon Model: " + weaponModel);
-
         gunPoint = weaponModel.gunPoint;
         bulletSpeed = weaponModel.weaponData.bulletSpeed;
         fireRate = weaponModel.weaponData.fireRate;
@@ -62,7 +60,7 @@ public class Enemy_Range : Enemy
     {
         //anim.SetTrigger("Shoot");
 
-        bulletDirection = (player.transform.position + Vector3.up * 1f - gunPoint.position).normalized;
+        bulletDirection = (player.transform.position - gunPoint.position).normalized;
 
         Bullet newBullet = ObjectPool.instance.GetObject(bulletPrefab, null).GetComponent<Bullet>();
         newBullet.transform.position = gunPoint.position;

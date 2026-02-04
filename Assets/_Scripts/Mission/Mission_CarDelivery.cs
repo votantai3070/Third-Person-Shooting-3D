@@ -23,7 +23,7 @@ public class Mission_CarDelivery : Mission
         UpdateMissionUI();
 
         // Add MissionObject_CarToDelivery component to all cars
-        Car[] cars = FindObjectsByType<Car>(FindObjectsSortMode.None);
+        Car_Controller[] cars = FindObjectsByType<Car_Controller>(FindObjectsSortMode.None);
 
         foreach (var car in cars)
         {

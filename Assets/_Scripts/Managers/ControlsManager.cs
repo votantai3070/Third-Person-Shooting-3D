@@ -30,6 +30,7 @@ public class ControlsManager : MonoBehaviour
         GameManager.instance.isPlayerView = true;
 
         player.SetControlsEnabledTo(true);
+        UI.instance.ingameUI.SwitchToCharacterUI();
     }
 
     public void SwitchToUIControls()
@@ -54,6 +55,7 @@ public class ControlsManager : MonoBehaviour
         GameManager.instance.isPlayerView = false;
 
         player.SetControlsEnabledTo(false);
+        UI.instance.ingameUI.SwitchToCarUI();
     }
 
     private void OnEnable()

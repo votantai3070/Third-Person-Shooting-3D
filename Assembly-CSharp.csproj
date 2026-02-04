@@ -89,7 +89,6 @@
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\ChaseState_Melee.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerMovement.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\PatrolState_Melee.cs" />
-    <Compile Include="Assets\_Scripts\Car.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_EnemyRespawn.cs" />
     <Compile Include="Assets\_Scripts\Car\Car_Interaction.cs" />

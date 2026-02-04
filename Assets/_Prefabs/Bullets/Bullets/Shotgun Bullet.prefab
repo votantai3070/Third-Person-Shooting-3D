@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4151997561594797114}
   - component: {fileID: 7727264531559541509}
   - component: {fileID: 919611961528332969}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: SM_Bullet_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: -2067091109081441990}
   - component: {fileID: 282764938927304228}
   - component: {fileID: 2278403741925671915}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Shotgun Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

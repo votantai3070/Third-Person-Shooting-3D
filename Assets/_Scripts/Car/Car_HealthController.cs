@@ -16,6 +16,11 @@ public class Car_HealthController : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
     }
 
+    public void UpdateCarHealthUI()
+    {
+        UI.instance.ingameUI.UpdateCarHealthUI(currentHealth, maxHealth);
+    }
+
     public void ReduceHealthCar(float damage)
     {
         currentHealth -= damage;
@@ -36,5 +41,6 @@ public class Car_HealthController : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         ReduceHealthCar(damage);
+        UpdateCarHealthUI();
     }
 }
