@@ -94,6 +94,7 @@
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_EnemyRespawn.cs" />
     <Compile Include="Assets\_Scripts\Car\Car_Interaction.cs" />
     <Compile Include="Assets\_Scripts\UI\UI.cs" />
+    <Compile Include="Assets\_Scripts\Car\Car_HealthController.cs" />
     <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />

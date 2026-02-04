@@ -41,6 +41,7 @@ public class Player : Character
     public void SetControlsEnabledTo(bool enabled)
     {
         controlsEnabled = enabled;
+        ragdoll.CollidersActive(enabled); // Important: Disabled collider when into car
     }
 
     protected override void Die()

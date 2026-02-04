@@ -6,7 +6,7 @@ public class Car_DamageZone : MonoBehaviour
 
     [SerializeField] float minSpeedToDamage = 1.5f;
 
-    [SerializeField] float carDamage;
+    [SerializeField] int carDamage;
     [SerializeField] float impactForce = 150;
     [SerializeField] float upwardsMultiplier = 3;
 
@@ -24,7 +24,7 @@ public class Car_DamageZone : MonoBehaviour
         if (damageable == null)
             return;
 
-        damageable.TakeDamage(((int)carDamage));
+        damageable.TakeDamage(carDamage);
 
         Rigidbody rb = other.GetComponent<Rigidbody>();
         if (rb != null)

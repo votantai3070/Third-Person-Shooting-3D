@@ -105,6 +105,14 @@ public class Car_Controller : MonoBehaviour
 
     }
 
+    public void GetBrokenTheCar()
+    {
+        motorForce = 0;
+        isDrifting = true;
+        frontDriftFactor = .9f;
+        backDriftFactor = .9f;
+    }
+
     public void ActivatedCar(bool active)
     {
         activateCar = active;
@@ -251,7 +259,10 @@ public class Car_Controller : MonoBehaviour
 
         controls.Car.Brake.canceled += ctx => isBraking = false;
 
-        controls.Car.CarExit.performed += ctx => GetComponent<Car_Interaction>().GetOutOfTheCar();
+        controls.Car.CarExit.performed += ctx =>
+        {
+            GetComponent<Car_Interaction>().GetOutOfTheCar();
+        };
     }
 
     [ContextMenu("Focus camera and enable")]

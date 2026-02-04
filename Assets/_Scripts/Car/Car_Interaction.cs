@@ -32,7 +32,7 @@ public class Car_Interaction : Interactable
 
         defaultPlayerScale = player.transform.localScale.x;
 
-        player.transform.localScale = new Vector3(.01f, .01f, .01f);
+        player.transform.localScale = new Vector3(.05f, .05f, .05f);
         player.transform.parent = car.transform;
         player.transform.localPosition = Vector3.up / 2;
 
@@ -47,15 +47,13 @@ public class Car_Interaction : Interactable
 
         car.ActivatedCar(false);
 
-        player.transform.parent = null;
-        player.transform.position = GetExitPoint();
-        player.transform.transform.localScale = new Vector3(defaultPlayerScale, defaultPlayerScale, defaultPlayerScale);
+        Debug.Log("Player: " + player);
 
-        Rigidbody playerRb = player.GetComponent<Rigidbody>();
-        if (playerRb != null)
+        if (player != null)
         {
-            playerRb.linearVelocity = Vector3.zero;      // Dừng velocity
-            playerRb.angularVelocity = Vector3.zero;    // Dừng rotation
+            player.transform.parent = null;
+            player.transform.position = GetExitPoint();
+            player.transform.transform.localScale = new Vector3(defaultPlayerScale, defaultPlayerScale, defaultPlayerScale);
         }
 
         ControlsManager.instance.SwitchToCharacterControls();

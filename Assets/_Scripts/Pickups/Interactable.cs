@@ -6,6 +6,11 @@ public class Interactable : MonoBehaviour
 
     protected bool isAmmoPickup;
 
+    private void Start()
+    {
+        player = FindAnyObjectByType<Player>().GetComponent<Player>();
+    }
+
     public virtual void Interact()
     {
         Debug.Log(gameObject.name);
@@ -15,7 +20,6 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        player = other.GetComponentInParent<Player>();
         PlayerInteraction interaction = other.GetComponentInParent<PlayerInteraction>();
 
         Debug.Log("Player entered interaction zone of " + gameObject.name);

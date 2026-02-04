@@ -4,8 +4,8 @@ public class Ragdoll : MonoBehaviour
 {
     [SerializeField] Transform ragdollParent;
 
-    Collider[] ragdollAllColliders;
-    Rigidbody[] ragdollAllRigidbodies;
+    public Collider[] ragdollAllColliders;
+    public Rigidbody[] ragdollAllRigidbodies;
 
     private void Awake()
     {
