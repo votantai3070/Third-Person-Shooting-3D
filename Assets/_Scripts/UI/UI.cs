@@ -180,4 +180,15 @@ public class UI : MonoBehaviour
     {
         currentFadeTween?.Kill();
     }
+
+    [ContextMenu("Assign Audio Button")]
+    public void AssignButtonAudioSource()
+    {
+        UI_Button[] UIButtons = GetComponentsInChildren<UI_Button>(true);
+
+        foreach (var button in UIButtons)
+        {
+            button.AssignAudioSource();
+        }
+    }
 }
