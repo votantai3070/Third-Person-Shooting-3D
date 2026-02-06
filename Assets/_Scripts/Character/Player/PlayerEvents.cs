@@ -20,6 +20,9 @@ public class PlayerEvents : MonoBehaviour
         //Refill bullets
         player.controller.CurrentWeapon().RefillBullets();
 
+        if (player.controller.CurrentWeaponModel().reloadSFX != null)
+            player.controller.CurrentWeaponModel().reloadSFX.Stop();
+
         player.controller.SetWeaponReady(true);
     }
 

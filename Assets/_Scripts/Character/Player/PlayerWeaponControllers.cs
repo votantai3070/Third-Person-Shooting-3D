@@ -140,6 +140,9 @@ public class PlayerWeaponControllers : MonoBehaviour
 
         player.visuals.PlayReloadAnimation();
 
+        if (currentWeaponModel.reloadSFX != null)
+            currentWeaponModel.reloadSFX.Play();
+
         yield return new WaitForSeconds(currentWeapon.reloadTime);
 
         currentWeapon.RefillBullets();
@@ -187,6 +190,9 @@ public class PlayerWeaponControllers : MonoBehaviour
         currentWeapon.bulletsInMagazine--;
 
         UpdateAmmoUI();
+
+        if (currentWeaponModel.fireSFX != null)
+            currentWeaponModel.fireSFX.Play();
     }
 
     IEnumerator BurstFire()
@@ -205,11 +211,13 @@ public class PlayerWeaponControllers : MonoBehaviour
         currentWeapon.bulletsInMagazine--;
 
         UpdateAmmoUI();
+
+        if (currentWeaponModel.fireSFX != null)
+            currentWeaponModel.fireSFX.Play();
     }
 
     public void FireSingleBullet()
     {
-
         // Raycast từ center màn hình để tìm điểm bắn
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // center screen
         Vector3 targetPoint;
@@ -248,11 +256,19 @@ public class PlayerWeaponControllers : MonoBehaviour
 
     public List<Weapon> GetListWeapon() => weaponSlots;
 
-    public void SetWeaponReady(bool ready) => weaponReady = ready;
+    public void SetWeaponReady(bool ready)
+    {
+        weaponReady = ready;
+
+        if (player.sound.weaponReady != null)
+            player.sound.weaponReady.Play();
+    }
 
     public bool WeaponReady() => weaponReady;
 
     public Weapon CurrentWeapon() => currentWeapon;
+
+    public WeaponModels CurrentWeaponModel() => currentWeaponModel;
 
     void AssignInputEvents()
     {

@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Gravity")]
     [SerializeField] private float gravity = 9.81f;
 
+    [Header("Audio")]
+    private AudioSource walkSFX;
+    private AudioSource runSFX;
+
     private float verticalVelocity = 0f;
 
     private void Awake()
@@ -61,6 +65,12 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         movementSpeed = runSpeed;
+
+        if (player.sound.walkSFX != null)
+            walkSFX = player.sound.walkSFX;
+
+        if (player.sound.runSFX != null)
+            runSFX = player.sound.runSFX;
 
         AssignInput();
     }
@@ -167,6 +177,13 @@ public class PlayerMovement : MonoBehaviour
             movementSpeed = runSpeed;
         }
 
+        //Apply SFX
+        if (movementSpeed == moveSpeed && moveDirection.magnitude > 0)
+            SoundWalkFX();
+        else if (movementSpeed == runSpeed && moveDirection.magnitude > 0)
+            SoundRunFX();
+        else
+            StopMoveFX();
 
         // Apply movement
         characterController.Move(moveDirection * movementSpeed * Time.deltaTime);
@@ -179,6 +196,23 @@ public class PlayerMovement : MonoBehaviour
         player.visuals.SetRunning(moveDirection, isShootingRifle, isShootingPistol, isReloadingRifle, isReloadingPistol, isEquipWeapon, isInteraction);
     }
 
+    private void SoundRunFX()
+    {
+        runSFX.Play();
+        walkSFX.Stop();
+    }
+
+    private void StopMoveFX()
+    {
+        runSFX.Stop();
+        walkSFX.Stop();
+    }
+
+    private void SoundWalkFX()
+    {
+        walkSFX.Play();
+        runSFX.Stop();
+    }
 
     void ApplyGravity()
     {
@@ -199,6 +233,10 @@ public class PlayerMovement : MonoBehaviour
         controls = ControlsManager.instance.controls;
 
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+        controls.Player.Move.canceled += ctx =>
+        {
+            StopMoveFX();
+            moveInput = Vector2.zero;
+        };
     }
 }

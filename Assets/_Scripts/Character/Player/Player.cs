@@ -12,7 +12,7 @@ public class Player : Character
     public PlayerDead dead { get; private set; }
     public Ragdoll ragdoll { get; private set; }
     public bool controlsEnabled { get; private set; }
-
+    public Player_SoundFX sound { get; private set; }
 
     private void Awake()
     {
@@ -24,6 +24,7 @@ public class Player : Character
         anim = GetComponentInChildren<Animator>();
         dead = GetComponent<PlayerDead>();
         ragdoll = GetComponent<Ragdoll>();
+        sound = GetComponent<Player_SoundFX>();
     }
 
     private void Start()

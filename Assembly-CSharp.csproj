@@ -76,6 +76,7 @@
     <Compile Include="Assets\_Scripts\LevelGeneration\LevelPart.cs" />
     <Compile Include="Assets\_Scripts\Inventory\AmmoSlotUI.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Ammo\Ammo.cs" />
+    <Compile Include="Assets\_Scripts\Character\Player\Player_SoundFX.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionObject\MissionObject_Key.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\IdleState_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\DeadState_Melee.cs" />
@@ -145,8 +146,8 @@
     <Compile Include="Assets\_Scripts\Mission\Mission.cs" />
     <Compile Include="Assets\_Scripts\Mission\Mission_KeyFind.cs" />
     <Compile Include="Assets\_Scripts\Mission\MissionTimer.cs" />
-    <Compile Include="Assets\_Scripts\Mission\Mission_EnemyHunt.cs" />
     <Compile Include="Assets\_Scripts\UI\UI_HandleButton.cs" />
+    <Compile Include="Assets\_Scripts\Mission\Mission_EnemyHunt.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\_Scripts\StateMachine.cs" />
     <Compile Include="Assets\_Scripts\UI\UI_MissionSelectionButton.cs" />

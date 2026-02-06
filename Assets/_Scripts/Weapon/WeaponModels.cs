@@ -23,4 +23,7 @@ public class WeaponModels : MonoBehaviour
 
     public float gunDistance = 100f;
 
+    [Header("Audio")]
+    public AudioSource fireSFX;
+    public AudioSource reloadSFX;
 }
