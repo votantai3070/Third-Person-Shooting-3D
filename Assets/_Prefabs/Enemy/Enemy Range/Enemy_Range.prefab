@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 1254474005488120014}
   - component: {fileID: 4001594421146210323}
   - component: {fileID: 8336834049575841022}
+  - component: {fileID: 8596279254444712365}
   m_Layer: 12
   m_Name: Enemy_Range
   m_TagString: Untagged
@@ -116,7 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cbe845b1a56b4e4191bd7a49982059d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   idleTimer: 1.5
   moveSpeed: 3.5
   turnSpeed: 5
@@ -174,6 +174,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollParent: {fileID: 995337960538681298}
+  ragdollAllColliders: []
+  ragdollAllRigidbodies: []
+--- !u!114 &8596279254444712365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2733796089222999987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f61c3efae8e0a4ea5430cef9698ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  enemyMelee: {fileID: 0}
+  enemyRange: {fileID: 0}
+  maxHealth: 100
 --- !u!1 &6702982476012255441
 GameObject:
   m_ObjectHideFlags: 0

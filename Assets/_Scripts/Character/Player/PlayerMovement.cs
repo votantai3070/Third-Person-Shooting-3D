@@ -77,14 +77,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (player.isDead) return;
+        if (player.healthController.isDead) return;
 
         ApplyRotation();
     }
 
     private void FixedUpdate()
     {
-        if (player.isDead) return;
+        if (player.healthController.isDead) return;
 
         ApplyMovement();
     }

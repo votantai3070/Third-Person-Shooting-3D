@@ -12,11 +12,11 @@ public class DeadState_Melee : EnemyState
     public override void Enter()
     {
         base.Enter();
-        enemy.agent.isStopped = true;
-
-        enemy.anim.enabled = false;
 
         isInteractable = false;
+        enemy.anim.enabled = false;
+        enemy.agent.isStopped = true;
+        enemy.ragdoll.RagdollActive(true);
 
         stateTimer = 1.5f;
     }
@@ -24,8 +24,6 @@ public class DeadState_Melee : EnemyState
     public override void Exit()
     {
         base.Exit();
-
-        enemy.anim.enabled = true;
     }
 
     public override void Update()

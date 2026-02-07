@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : Character
+public class Player : MonoBehaviour
 {
     public PlayerControls controls;
     public PlayerMovement movement { get; private set; }
@@ -13,6 +13,7 @@ public class Player : Character
     public Ragdoll ragdoll { get; private set; }
     public bool controlsEnabled { get; private set; }
     public Player_SoundFX sound { get; private set; }
+    public Player_HealthController healthController { get; private set; }
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class Player : Character
         dead = GetComponent<PlayerDead>();
         ragdoll = GetComponent<Ragdoll>();
         sound = GetComponent<Player_SoundFX>();
+        healthController = GetComponent<Player_HealthController>();
     }
 
     private void Start()
@@ -45,10 +47,8 @@ public class Player : Character
         ragdoll.CollidersActive(enabled); // Important: Disabled collider when into car
     }
 
-    protected override void Die()
+    public void Die()
     {
-        base.Die();
-
         dead.PlayerAnimationDead();
     }
 }

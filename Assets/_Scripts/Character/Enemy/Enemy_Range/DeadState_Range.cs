@@ -39,6 +39,7 @@ public class DeadState_Range : EnemyState
         {
             enemy.ragdoll.RagdollActive(false);
             enemy.ragdoll.CollidersActive(false);
+            isInteractable = true;
         }
     }
 }

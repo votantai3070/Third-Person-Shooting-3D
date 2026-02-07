@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager instance;
+
     [SerializeField] private AudioSource[] bgm;
 
     [SerializeField] private bool playBgm;
 
     private int bgmIndex;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
@@ -14,6 +21,18 @@ public class AudioManager : MonoBehaviour
             StopAllBMG();
         else if (!bgm[bgmIndex].isPlaying)
             PlayRandomMusic();
+    }
+
+    public void PlaySFX(AudioSource sfx, bool randomPitch = false, float minPitch = .85f, float maxPitch = 1.1f)
+    {
+        if (sfx == null)
+            return;
+
+        float randomPitchValue = Random.Range(minPitch, maxPitch);
+
+        if (randomPitch)
+            sfx.pitch = randomPitchValue;
+        sfx.Play();
     }
 
     public void PlayBMG(int index)

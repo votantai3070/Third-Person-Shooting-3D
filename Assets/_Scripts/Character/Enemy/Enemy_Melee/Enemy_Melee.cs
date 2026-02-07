@@ -1,5 +1,7 @@
 public class Enemy_Melee : Enemy
 {
+    public Enemy_MeleeSFX meleeSFX { get; private set; }
+
     #region States
     public IdleState_Melee idleState { get; private set; }
     public PatrolState_Melee patrolState { get; private set; }
@@ -19,6 +21,8 @@ public class Enemy_Melee : Enemy
         attackState = new AttackState_Melee(this, stateMachine, "Attack");
         recoveryState = new RecoveryState_Melee(this, stateMachine, "Recovery");
         deadState = new DeadState_Melee(this, stateMachine, "Idle");
+
+        meleeSFX = GetComponent<Enemy_MeleeSFX>();
     }
 
     protected override void Start()
@@ -35,11 +39,8 @@ public class Enemy_Melee : Enemy
         base.Update();
     }
 
-
-    protected override void Die()
+    public void Die()
     {
-        base.Die();
-
         if (dropController.missionObjectKey != null)
             dropController.DropItem();
 

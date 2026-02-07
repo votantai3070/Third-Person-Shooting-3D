@@ -77,10 +77,8 @@ public class Enemy_Range : Enemy
         rbNewBullet.mass = 20 / bulletSpeed;
         rbNewBullet.linearVelocity = bulletDirection * bulletSpeed;
     }
-    protected override void Die()
+    public void Die()
     {
-        base.Die();
-
         if (dropController.missionObjectKey != null)
             dropController.DropItem();
 

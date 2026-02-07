@@ -7,7 +7,7 @@ public enum EnemyAnimationType
     TwoHand_Melee
 }
 
-public class Enemy : Character
+public class Enemy : MonoBehaviour
 {
     public StateMachine stateMachine { get; private set; }
     public Animator anim { get; private set; }
@@ -16,6 +16,8 @@ public class Enemy : Character
     public Player player { get; private set; }
     public Ragdoll ragdoll { get; private set; }
     public Enemy_DropController dropController { get; private set; }
+    public AudioManager audioManager { get; private set; }
+    public Enemy_HealthController healthController { get; private set; }
 
     [Header("General Settings")]
     public float idleTimer;
@@ -54,10 +56,13 @@ public class Enemy : Character
         agent = GetComponent<NavMeshAgent>();
         player = FindAnyObjectByType<Player>();
         ragdoll = GetComponent<Ragdoll>();
+        healthController = GetComponent<Enemy_HealthController>();
 
         IniatializePatrolPoints();
 
         ragdoll.RagdollActive(false);
+
+        audioManager = AudioManager.instance;
 
     }
 
@@ -68,8 +73,8 @@ public class Enemy : Character
 
     public void EnemyVIP()
     {
-        int healthVIP = Mathf.RoundToInt(GetHealth() * 1.5f);
-        Heal(healthVIP);
+        int healthVIP = Mathf.RoundToInt(healthController.GetHealth() * 1.5f);
+        healthController.Heal(healthVIP);
         transform.localScale = transform.localScale * 1.2f;
     }
 

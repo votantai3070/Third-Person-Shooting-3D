@@ -297,7 +297,7 @@ public class PlayerWeaponControllers : MonoBehaviour
 
         controls.Player.Aim.performed += ctx =>
         {
-            if (player.isDead) return;
+            if (player.healthController.isDead) return;
             player.aim.SetAiming(true);
         };
 
