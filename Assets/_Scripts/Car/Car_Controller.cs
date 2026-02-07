@@ -6,6 +6,7 @@ public enum DriveType { FrontWheelDrive, BackWheelDrive, AllWheelDrive }
 [RequireComponent(typeof(Rigidbody))]
 public class Car_Controller : MonoBehaviour
 {
+    public Car_Sound carSound { get; private set; }
     public Car_HealthController carHealthController { get; private set; }
 
     public Rigidbody rb { get; private set; }
@@ -15,7 +16,7 @@ public class Car_Controller : MonoBehaviour
     private float moveInput;
     private float steerInput;
 
-    [SerializeField] float speed;
+    public float speed;
 
     [Range(30, 60)]
     [SerializeField] private float turnSensetivity;
@@ -34,7 +35,7 @@ public class Car_Controller : MonoBehaviour
     [Header("Engine Settings")]
     [SerializeField] private float currentSpeed;
     [Range(7, 12)]
-    [SerializeField] private float maxSpeed = 7;
+    public float maxSpeed = 7;
     [Range(.5f, 10)]
     [SerializeField] private float accleerationSpeed = 2;
     [Range(1500, 6000)]
@@ -65,6 +66,7 @@ public class Car_Controller : MonoBehaviour
     private void Awake()
     {
         carHealthController = GetComponent<Car_HealthController>();
+        carSound = GetComponent<Car_Sound>();
     }
 
     private void Start()
@@ -125,6 +127,8 @@ public class Car_Controller : MonoBehaviour
     public void ActivatedCar(bool active)
     {
         activateCar = active;
+
+        carSound.PlayCarSoundSfx(active);
 
         if (active)
             rb.constraints = RigidbodyConstraints.None;
