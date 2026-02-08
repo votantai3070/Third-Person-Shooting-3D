@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -43,6 +44,9 @@ public class AudioManager : MonoBehaviour
         bgm[index].Play();
     }
 
+    public void SFXDelayAndFade(AudioSource sound, bool play, float targetVolume, float delay, float duration = 1)
+        => StartCoroutine(SFXDelayAndFadeCo(sound, play, targetVolume, delay, duration));
+
     public void StopAllBMG()
     {
         foreach (var bmg in bgm)
@@ -68,5 +72,32 @@ public class AudioManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    private IEnumerator SFXDelayAndFadeCo(AudioSource sound, bool play, float targetVolume, float delay = 1, float duration = 1)
+    {
+        yield return new WaitForSeconds(delay);
+
+        float startVolume = play ? 0 : sound.volume;
+        float endVolume = play ? targetVolume : 0;
+        float elapsed = 0;
+
+        if (play)
+        {
+            sound.volume = 0;
+            sound.Play();
+        }
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            sound.volume = Mathf.Lerp(startVolume, endVolume, elapsed / duration);
+            yield return null;
+        }
+
+        sound.volume = endVolume;
+
+        if (!play)
+            sound.Stop();
     }
 }

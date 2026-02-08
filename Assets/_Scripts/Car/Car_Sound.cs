@@ -10,6 +10,7 @@ public class Car_Sound : MonoBehaviour
 
     [SerializeField] private float minPitch = .75f;
     [SerializeField] private float maxPitch = 1.5f;
+    [SerializeField] private float carWordVolume = .07f;
 
     private bool allowCarSound;
 
@@ -40,11 +41,11 @@ public class Car_Sound : MonoBehaviour
         if (active)
         {
             carOnSfx.Play();
-            carWorkSfx.Play();
+            AudioManager.instance.SFXDelayAndFade(carWorkSfx, true, carWordVolume, 1);
         }
         else
         {
-            carWorkSfx.Stop();
+            AudioManager.instance.SFXDelayAndFade(carWorkSfx, false, 0, .25f);
             carOffSfx.Play();
         }
     }
