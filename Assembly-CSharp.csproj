@@ -98,6 +98,7 @@
     <Compile Include="Assets\_Scripts\Car\Car_Sound.cs" />
     <Compile Include="Assets\_Scripts\Car\Car_HealthController.cs" />
     <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\_Scripts\Footsteps_Visuals.cs" />
     <Compile Include="Assets\_Scripts\Managers\AudioManager.cs" />
     <Compile Include="Assets\_Scripts\FixShaders.cs" />
     <Compile Include="Assets\_Scripts\Weapon\AimTargetController.cs" />

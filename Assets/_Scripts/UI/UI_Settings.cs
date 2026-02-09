@@ -32,4 +32,15 @@ public class UI_Settings : MonoBehaviour
         audioMixer.SetFloat(bgmParameter, newValue);
     }
 
+    public void LoadSettings()
+    {
+        sfxSlider.value = PlayerPrefs.GetFloat("sfx", .7f);
+        bgmSlider.value = PlayerPrefs.GetFloat("sfx", .7f);
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetFloat("sfx", sfxSlider.value);
+        PlayerPrefs.SetFloat("bgm", bgmSlider.value);
+    }
 }

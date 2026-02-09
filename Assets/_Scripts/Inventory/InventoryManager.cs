@@ -8,6 +8,7 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance;
 
     [SerializeField] Player player;
+    private PlayerControls controls;
     [SerializeField] GameObject inventoryPanel;
     [Space]
     [SerializeField] private List<Weapon> mainWeaponList;
@@ -30,6 +31,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         player = FindAnyObjectByType<Player>();
+        controls = ControlsManager.instance.controls;
 
         AssignInputEvents();
 
@@ -76,6 +78,6 @@ public class InventoryManager : MonoBehaviour
 
     void AssignInputEvents()
     {
-        player.controls.Inventory.Open.performed += ctx => InventoryEnable();
+        controls.Inventory.Open.performed += ctx => InventoryEnable();
     }
 }

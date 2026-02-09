@@ -9,6 +9,8 @@ public class Car_Controller : MonoBehaviour
     public Car_Sound carSound { get; private set; }
     public Car_HealthController carHealthController { get; private set; }
 
+    [SerializeField] private LayerMask whatIsGround;
+
     public Rigidbody rb { get; private set; }
     public bool activateCar;
 
@@ -103,6 +105,8 @@ public class Car_Controller : MonoBehaviour
         if (!activateCar)
             return;
 
+        ApplyTrails();
+
         ApplyAnimateWheels();
         ApplyDrive();
         ApplySteering();
@@ -114,6 +118,26 @@ public class Car_Controller : MonoBehaviour
         else
             StopDrift();
 
+    }
+
+    private void ApplyTrails()
+    {
+        foreach (var wheel in wheels)
+        {
+            WheelHit hit;
+
+            if (wheel.cd.GetGroundHit(out hit))
+            {
+                if (whatIsGround == (whatIsGround | (1 << hit.collider.gameObject.layer)))
+                {
+                    wheel.trail.emitting = true;
+                }
+                else
+                    wheel.trail.emitting = false;
+            }
+            else
+                wheel.trail.emitting = false;
+        }
     }
 
     public void GetBrokenTheCar()

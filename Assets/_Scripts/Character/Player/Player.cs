@@ -27,18 +27,19 @@ public class Player : MonoBehaviour
         ragdoll = GetComponent<Ragdoll>();
         sound = GetComponent<Player_SoundFX>();
         healthController = GetComponent<Player_HealthController>();
+
+        controls = ControlsManager.instance.controls;
     }
 
     private void Start()
     {
-        controls = ControlsManager.instance.controls;
+        AssignInputEvents();
     }
 
     private void OnEnable()
     {
         anim.enabled = true;
 
-        controls.Player.Pause.performed += ctx => UI.instance.PauseSwitch();
     }
 
     public void SetControlsEnabledTo(bool enabled)
@@ -50,5 +51,10 @@ public class Player : MonoBehaviour
     public void Die()
     {
         dead.PlayerAnimationDead();
+    }
+
+    private void AssignInputEvents()
+    {
+        controls.Player.Pause.performed += ctx => UI.instance.PauseSwitch();
     }
 }

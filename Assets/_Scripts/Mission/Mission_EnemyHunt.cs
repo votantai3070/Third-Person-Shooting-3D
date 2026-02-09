@@ -19,6 +19,7 @@ public class Mission_EnemyHunt : Mission
         MissionObject_Hunt.OnTargetKilled += EliminateKill;
 
         List<Enemy> validEnemies = new();
+
         // Gather all enemies of the specified type
         foreach (Enemy enemy in LevelGenerator.instance.GetEnemyList())
         {

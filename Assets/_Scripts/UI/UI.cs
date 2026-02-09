@@ -6,10 +6,13 @@ public class UI : MonoBehaviour
 {
     public static UI instance;
 
+    private PlayerControls controls;
+
     public UI_Ingame ingameUI { get; private set; }
     public UI_WeaponSlot weaponSlotUI { get; private set; }
     public UI_WeaponSelection weaponSelectionUI { get; private set; }
     public UI_GameOver gameOverUI { get; private set; }
+    public UI_Settings settingsUI { get; private set; }
 
     public GameObject gameWinUI;
     public GameObject pauseUI;
@@ -24,19 +27,15 @@ public class UI : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        instance = this;
+
+        controls = ControlsManager.instance.controls;
 
         ingameUI = GetComponentInChildren<UI_Ingame>(true);
         weaponSlotUI = GetComponentInChildren<UI_WeaponSlot>(true);
         weaponSelectionUI = GetComponentInChildren<UI_WeaponSelection>(true);
         gameOverUI = GetComponentInChildren<UI_GameOver>(true);
+        settingsUI = GetComponentInChildren<UI_Settings>(true);
     }
 
     private void Start()
@@ -116,6 +115,9 @@ public class UI : MonoBehaviour
         }
 
         go.SetActive(true);
+
+        if (go == settingsUI.gameObject)
+            settingsUI.LoadSettings();
     }
 
 
@@ -171,7 +173,6 @@ public class UI : MonoBehaviour
 
     private void AssignInputsUI()
     {
-        PlayerControls controls = ControlsManager.instance.controls;
         controls.UI.Pause.performed += ctx => PauseSwitch();
     }
 
