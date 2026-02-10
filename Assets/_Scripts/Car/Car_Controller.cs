@@ -98,6 +98,9 @@ public class Car_Controller : MonoBehaviour
         driftTimer -= Time.deltaTime;
         if (driftTimer < 0)
             isDrifting = false;
+
+        if (carHealthController.carBroken)
+            rb.linearDamping = 1;
     }
 
     private void FixedUpdate()
