@@ -15,6 +15,7 @@ public class AttackState_Melee : EnemyState
     public override void Enter()
     {
         base.Enter();
+        enemy.EnableColliderEnemyZombie(false);
 
         attackIndex = attackTypeIndex == 1 ? Random.Range(0, 2) : -1;
 

@@ -4,11 +4,13 @@ public class EnemyEvents : MonoBehaviour
 {
     private Enemy enemy;
     private Enemy_Melee enemyMelee;
+    private Enemy_Zombie_Attack[] enemyZombieAttack;
 
     private void Awake()
     {
         enemy = GetComponentInParent<Enemy>();
         enemyMelee = GetComponentInParent<Enemy_Melee>();
+        enemyZombieAttack = GetComponentsInChildren<Enemy_Zombie_Attack>(true);
     }
 
     // Animation Event
@@ -29,6 +31,12 @@ public class EnemyEvents : MonoBehaviour
 
     public void EnemyMeleeAttackCheck()
     {
+        enemyMelee.EnableColliderEnemyZombie(true);
         enemy.audioManager.PlaySFX(enemyMelee.meleeSFX.swoosh, true);
+
+        foreach (var enemyScript in enemyZombieAttack)
+        {
+            enemyScript.OnAttackAnimationEnd();
+        }
     }
 }

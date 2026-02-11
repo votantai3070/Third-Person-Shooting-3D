@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Enemy_Melee : Enemy
 {
     public Enemy_MeleeSFX meleeSFX { get; private set; }
@@ -10,6 +12,12 @@ public class Enemy_Melee : Enemy
     public RecoveryState_Melee recoveryState { get; private set; }
     public DeadState_Melee deadState { get; private set; }
     #endregion
+
+    public int damaged = 10;
+
+    [Header("Zombie Enemy Info")]
+    public CapsuleCollider armLeftZombieCollider;
+    public CapsuleCollider armRightZombieCollider;
 
     protected override void Awake()
     {
@@ -47,5 +55,14 @@ public class Enemy_Melee : Enemy
         GetComponent<MissionObject_Hunt>()?.InvokeTargetKilled();
 
         stateMachine.ChangeState(deadState);
+    }
+
+    public void EnableColliderEnemyZombie(bool enabled)
+    {
+        if (armLeftZombieCollider != null)
+            armLeftZombieCollider.enabled = enabled;
+
+        if (armRightZombieCollider != null)
+            armRightZombieCollider.enabled = enabled;
     }
 }

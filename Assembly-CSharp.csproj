@@ -155,6 +155,7 @@
     <Compile Include="Assets\_Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\_Scripts\StateMachine.cs" />
     <Compile Include="Assets\_Scripts\UI\UI_MissionSelectionButton.cs" />
+    <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Melee\Enemy_Zombie_Attack.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Range\EnemyWeaponModel_Range.cs" />
     <Compile Include="Assets\_Scripts\Character\Player\PlayerAim.cs" />
     <Compile Include="Assets\_Scripts\Character\Enemy\Enemy_Visuals.cs" />

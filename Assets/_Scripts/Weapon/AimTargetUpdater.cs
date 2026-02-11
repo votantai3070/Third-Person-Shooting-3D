@@ -15,8 +15,6 @@ public class AimTargetUpdater : MonoBehaviour
     [SerializeField] private float maxAimDistance = 1000f;
     [SerializeField] private float defaultAimDistance = 50f;
 
-    public bool isPlayerView;
-
     private void Awake()
     {
         instance = this;

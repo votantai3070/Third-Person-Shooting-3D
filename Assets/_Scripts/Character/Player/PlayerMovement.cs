@@ -198,6 +198,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void SoundRunFX()
     {
+        float pitch = Random.Range(.8f, 1.3f);
+        runSFX.pitch = pitch;
         runSFX.Play();
         walkSFX.Stop();
     }
@@ -210,6 +212,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void SoundWalkFX()
     {
+        float pitch = Random.Range(.8f, 1.3f);
+        walkSFX.pitch = pitch;
         walkSFX.Play();
         runSFX.Stop();
     }

@@ -102,7 +102,7 @@ public class LevelGenerator : MonoBehaviour
 
         foreach (Enemy enemy in enemyList)
         {
-            enemy.transform.parent = null;
+            //enemy.transform.parent = null;
             enemy.gameObject.SetActive(true);
         }
 
